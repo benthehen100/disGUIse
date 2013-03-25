@@ -1,0 +1,264 @@
+import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+public class addPatientPanel extends JPanel {
+	private JTextField addPatientFirstInput;
+	private JTextField addPatientLastInput;
+	private JTextField addPatientPatientIDInput;
+	private JTextField addPatientUsernameInput;
+	private JTextField addPatientPasswordInput;
+	private JTextField addPatientStreetInput;
+	private JTextField addPatientCityInput;
+	private JTextField addPatientStateInput;
+	private JTextField addPatientZipInput;
+	private JTextField addPatientNurseIDInput;
+	private JTextField addPatientDoctorIDInput;
+	private JTextField addPatientInsuranceInput;
+	private JTextField addPatientEmailInput;
+	private JTextField addPatientDOBInput;
+	private JTextField addPatientPhoneInput;
+	private JButton addPatientSubmit;
+	private JButton addPatientCancel;
+	
+	public addPatientPanel() {
+		
+		addPatientFirstInput = new JTextField(10);
+		addPatientLastInput = new JTextField(10);
+		addPatientPatientIDInput = new JTextField(10);
+		addPatientUsernameInput = new JTextField(10);
+		addPatientPasswordInput = new JTextField(10);
+		addPatientStreetInput = new JTextField(10);
+		
+		addPatientCityInput = new JTextField(10);
+		addPatientStateInput = new JTextField(10);
+		addPatientZipInput = new JTextField(10);
+		
+		addPatientNurseIDInput = new JTextField(10);
+		addPatientDoctorIDInput = new JTextField(10);
+		
+		addPatientInsuranceInput = new JTextField(10);
+		addPatientEmailInput = new JTextField(10);
+		addPatientDOBInput = new JTextField(10);
+		addPatientPhoneInput = new JTextField(10);
+		
+		JLabel lblFirst = new JLabel("First:");
+		JLabel lblLast = new JLabel("Last: ");
+		JLabel lblNewLabel = new JLabel("Patient ID:");
+		JLabel lblPatientUsername = new JLabel("Patient Username:");
+		JLabel lblPatientPassword = new JLabel("Patient Password:");
+		
+		JLabel lblStreet = new JLabel("Street:");
+		JLabel lblCity = new JLabel("City:");
+		JLabel lblState = new JLabel("State:");
+		JLabel lblZip = new JLabel("Zip:");
+		JLabel lblPatientAddress = new JLabel("Patient Address");
+		JLabel lblPatientInformation = new JLabel("Patient Name");
+		
+		JLabel lblNurseId = new JLabel("Nurse ID:");
+		JLabel lblDoctorId = new JLabel("Doctor ID:");
+		
+		JLabel lblInsurance = new JLabel("Insurance:");
+		JLabel lblEmail = new JLabel("Email:");
+		JLabel lblDob = new JLabel("DOB:");
+		JLabel lblPhone = new JLabel("Phone:");
+		
+		addPatientSubmit = new JButton("Submit");
+		addPatientCancel = new JButton("Cancel");
+		
+		JLabel lblAddPatient = new JLabel("Add Patient");
+		lblAddPatient.setForeground(new Color(0, 0, 139));
+		lblAddPatient.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 21));
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(240)
+					.addComponent(lblAddPatient))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(73)
+					.addComponent(lblPatientInformation))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(112)
+					.addComponent(lblFirst)
+					.addGap(10)
+					.addComponent(addPatientFirstInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(123)
+					.addComponent(lblNurseId)
+					.addGap(6)
+					.addComponent(addPatientNurseIDInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(110)
+					.addComponent(lblLast)
+					.addGap(10)
+					.addComponent(addPatientLastInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(119)
+					.addComponent(lblDoctorId)
+					.addGap(6)
+					.addComponent(addPatientDoctorIDInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(85)
+					.addComponent(lblNewLabel)
+					.addGap(10)
+					.addComponent(addPatientPatientIDInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(48)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblPatientUsername)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(lblPatientPassword))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(13)
+							.addComponent(lblPatientAddress))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(55)
+							.addComponent(lblStreet))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(66)
+							.addComponent(lblCity))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(59)
+							.addComponent(lblState)))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(addPatientUsernameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(addPatientPasswordInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(addPatientStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(addPatientCityInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(addPatientStateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(103)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblInsurance)
+						.addComponent(lblEmail)
+						.addComponent(lblDob)
+						.addComponent(lblPhone))
+					.addGap(19)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(addPatientInsuranceInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(addPatientEmailInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(addPatientDOBInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(addPatientPhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(119)
+					.addComponent(lblZip)
+					.addGap(10)
+					.addComponent(addPatientZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(358)
+					.addComponent(addPatientSubmit)
+					.addGap(6)
+					.addComponent(addPatientCancel))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(17)
+					.addComponent(lblAddPatient)
+					.addGap(6)
+					.addComponent(lblPatientInformation)
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblFirst))
+						.addComponent(addPatientFirstInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblNurseId))
+						.addComponent(addPatientNurseIDInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblLast))
+						.addComponent(addPatientLastInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblDoctorId))
+						.addComponent(addPatientDoctorIDInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel)
+						.addComponent(addPatientPatientIDInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(5)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblPatientUsername)
+							.addGap(11)
+							.addComponent(lblPatientPassword)
+							.addGap(6)
+							.addComponent(lblPatientAddress)
+							.addGap(14)
+							.addComponent(lblStreet)
+							.addGap(12)
+							.addComponent(lblCity)
+							.addGap(17)
+							.addComponent(lblState))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(6)
+							.addComponent(addPatientUsernameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(addPatientPasswordInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(13)
+							.addComponent(addPatientStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(addPatientCityInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(addPatientStateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(28)
+							.addComponent(lblInsurance)
+							.addGap(12)
+							.addComponent(lblEmail)
+							.addGap(17)
+							.addComponent(lblDob)
+							.addGap(17)
+							.addComponent(lblPhone))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(25)
+							.addComponent(addPatientInsuranceInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(addPatientEmailInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(addPatientDOBInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(addPatientPhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblZip))
+						.addComponent(addPatientZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(5)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(addPatientSubmit)
+						.addComponent(addPatientCancel)))
+		);
+		setLayout(groupLayout);
+		addPatientEvents();
+	}
+	private void addPatientEvents()
+	{
+		addPatientSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				//submit button
+				JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit");
+			}
+		});
+		//
+		addPatientCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				//cancel button
+			}
+		});
+	}
+
+}
