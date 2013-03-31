@@ -249,6 +249,25 @@ public class addPatientPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				//submit button
+				
+				// Saves the text in the field to a corresponding string
+				String pPatientID = addPatientPatientIDInput.getText(); // Patient ID
+				String pFirst = addPatientFirstInput.getText(); // Patient's first name
+				String pLast = addPatientLastInput.getText(); // Patient's last name
+				String pStreet = addPatientStreetInput.getText(); // Patient's street (address)
+				String pCity = addPatientCityInput.getText(); // Patient's city (address)
+				String pState = addPatientStateInput.getText(); // Patient's state (address)
+				String pZip = addPatientZipInput.getText(); // Patient's zipcode (address)
+				String pPhone = addPatientPhoneInput.getText(); // Patient's phone number
+				String pEmail = addPatientEmailInput.getText(); // Patient's email
+				String pDOB = addPatientDOBInput.getText(); // Patient's Date of birth
+				String pInsurance = addPatientInsuranceInput.getText(); // Patient's insurance
+				String pUsername = addPatientUsernameInput.getText(); // Patient username
+				String pPassword = addPatientPasswordInput.getText(); // Patient password
+				String pDoctorID = addPatientDoctorIDInput.getText(); // Doctor ID (of assigned doctor)
+				String pNurseID = addPatientNurseIDInput.getText(); // Nurse ID (of assigned nurse)
+				
+				// Pop up message after clicking submit
 				JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit");
 			}
 		});
