@@ -1,4 +1,5 @@
 import java.awt.CardLayout;
+import java.io.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,7 @@ public class loginPanel extends JPanel {
 	private JButton forgotBL=new JButton("Forgot Password?");
 	private JLabel passLbl=new JLabel("Password:");
 	private JLabel usernameLbl=new JLabel("Username:");
-	
+	public Link temp;
 	public loginPanel()
 	{
 		setBackground(Color.RED);
@@ -67,6 +68,8 @@ public class loginPanel extends JPanel {
 		setLayout(gl_loginPanel);
 			logInEvents();
 	}
+	
+
 	private void logInEvents()
 	{
 		final CardLayout card=(CardLayout)disGuiseFrame.contentPane.getLayout();
@@ -74,8 +77,62 @@ public class loginPanel extends JPanel {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				String username,password;
 				System.out.println("Button Pressed");
-				if(uNameInput.getText().equals("nurse"))
+				username = uNameInput.getText();
+				password = passInput.getText();
+				
+				linkList people = new linkList();
+				Link temp;
+				FileReader fr;
+				try {
+					fr = new FileReader("New.txt");
+				
+				BufferedReader br = new BufferedReader(fr);
+				String a,b,c;
+				while((a = br.readLine()) != null)
+				{
+					b = br.readLine();
+					c = br.readLine();
+					people.insert(a, b, c);
+				}
+				//people.printList();
+				fr.close();
+				
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				temp = people.head;
+				while(temp != null)
+				{
+					System.out.println(temp.username);
+					System.out.println(username);
+					if(username.equalsIgnoreCase(temp.username))
+					{
+						if(password.equals(temp.password))
+						{
+							System.out.println("Matched!");
+							if(temp.type.equalsIgnoreCase("nurse"))
+								card.show(disGuiseFrame.contentPane, disGuiseFrame.NURSE);
+							else if(temp.type.equalsIgnoreCase("doctor"))
+								card.show(disGuiseFrame.contentPane, disGuiseFrame.DOCTOR);
+							else if(temp.type.equalsIgnoreCase("patient"))
+								card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
+						}
+						else
+						{
+							System.out.println("Incorrect Username/Password");
+						}
+					}
+					temp = temp.next;
+
+				}
+
+
+				
+				/*if(uNameInput.getText().equals("nurse"))
 				{
 					card.show(disGuiseFrame.contentPane, disGuiseFrame.NURSE);
 				}
@@ -87,8 +144,13 @@ public class loginPanel extends JPanel {
 				{
 					card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
 				}
+				*/
 			}
 		});
 	}
+	
+	public Link returnLink(String Username)
+	{
+		return temp;
+	}
 }
-
