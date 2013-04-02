@@ -1,0 +1,9 @@
+dbach
+123456
+Doctor
+aawad
+123456
+Nurse
+shanson
+123456
+Patient

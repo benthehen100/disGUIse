@@ -86,7 +86,7 @@ public class loginPanel extends JPanel {
 				Link temp;
 				FileReader fr;
 				try {
-					fr = new FileReader("New.txt");
+					fr = new FileReader("LoginCred.txt");
 				
 				BufferedReader br = new BufferedReader(fr);
 				String a,b,c;
