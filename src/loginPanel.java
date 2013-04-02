@@ -7,16 +7,18 @@ import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 
 public class loginPanel extends JPanel {
 	private JTextField uNameInput=new JTextField(10);
-	private JTextField passInput=new JTextField(10);
-	private JButton submitBL=new JButton("SignIn");
+	private JPasswordField passInput = new JPasswordField(10);
+	private JButton submitBL=new JButton("Log In");
 	private JButton forgotBL=new JButton("Forgot Password?");
 	private JLabel passLbl=new JLabel("Password:");
 	private JLabel usernameLbl=new JLabel("Username:");
@@ -94,6 +96,9 @@ public class loginPanel extends JPanel {
 				{
 					b = br.readLine();
 					c = br.readLine();
+					System.out.println("a = " + a);
+					System.out.println("b = " + b);
+					System.out.println("c = " + c);
 					people.insert(a, b, c);
 				}
 				//people.printList();
@@ -113,7 +118,7 @@ public class loginPanel extends JPanel {
 					{
 						if(password.equals(temp.password))
 						{
-							System.out.println("Matched!");
+							System.out.println("User match!");
 							if(temp.type.equalsIgnoreCase("nurse"))
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.NURSE);
 							else if(temp.type.equalsIgnoreCase("doctor"))
@@ -124,27 +129,25 @@ public class loginPanel extends JPanel {
 						else
 						{
 							System.out.println("Incorrect Username/Password");
+							
+							JOptionPane.showMessageDialog(null, "Invalid username or password. Try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
 						}
 					}
 					temp = temp.next;
 
 				}
-
-
-				
-				/*if(uNameInput.getText().equals("nurse"))
-				{
-					card.show(disGuiseFrame.contentPane, disGuiseFrame.NURSE);
-				}
-				else if(uNameInput.getText().equals("doctor"))
-				{
-					card.show(disGuiseFrame.contentPane, disGuiseFrame.DOCTOR);
-				}
-				else if(uNameInput.getText().equals("patient"))
-				{
-					card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
-				}
-				*/
+			}
+		});
+		
+		forgotBL.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				// Opens new box when 'Forgot Password?' is selected
+				popUp p1=new popUp();
+				changePassword cp = new changePassword();
+				p1.getContentPane().add(cp);
+				p1.pack();
+				p1.show();
 			}
 		});
 	}

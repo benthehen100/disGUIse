@@ -50,6 +50,7 @@ public class doctorPane extends JTabbedPane{
 		private JLabel label_2;
 		private JLabel label_3;
 		private JTextField doctorContactPanelOfficePhoneInput;
+		private String user = "null";
 		
 		public doctorPane()
 		{
@@ -79,6 +80,7 @@ public class doctorPane extends JTabbedPane{
 			doctorContactPanelDoctorInput.setBounds(122, 76, 86, 20);
 			doctorContactPanelDoctorInput.setEditable(false);
 			doctorContactPanelDoctorInput.setColumns(10);
+			doctorContactPanelDoctorInput.setText(user);
 			
 			doctorContactpanelIDInput = new JTextField();
 			doctorContactpanelIDInput.setBounds(122, 114, 86, 20);

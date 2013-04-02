@@ -1,0 +1,6 @@
+4/2/2013
+- Connected functionality of 'Forgot Password?' button on loginPanel.
+- Changed password field in loginPanel to a hidden text field.
+- Removed old login function that wasn't being used.
+- Added pop up error message to loginPanel when username or password is incorrect.
+----------- Commit
