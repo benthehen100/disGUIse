@@ -196,7 +196,7 @@ public class doctorPane extends JTabbedPane{
 											.addGap(60)
 											.addComponent(doctorAddPatient)
 											.addGap(97)
-											.addComponent(doctorSelectPatient, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
+											.addComponent(doctorSelectPatient, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
 											.addGroup(gl_doctorPatientsPanel.createSequentialGroup()
 													.addContainerGap()
 													.addComponent(doctorScrollPane, GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)))
@@ -275,9 +275,9 @@ public class doctorPane extends JTabbedPane{
 							.addGap(46)
 							.addGroup(gl_doctorAccountPanel.createParallelGroup(Alignment.LEADING)
 									.addComponent(doctorAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorChangePassword, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorRecoverPassword, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorManageSecurityQuestions, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE))
+									.addComponent(doctorChangePassword, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+									.addComponent(doctorRecoverPassword, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+									.addComponent(doctorManageSecurityQuestions, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
 									.addContainerGap(86, Short.MAX_VALUE))
 					);
 			gl_doctorAccountPanel.setVerticalGroup(
