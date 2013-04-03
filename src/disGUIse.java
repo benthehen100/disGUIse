@@ -15,7 +15,7 @@ public class disGUIse
 		mainFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(disGUIse.class.getResource("/disGUIse_images/new_add_plus_red.png")));
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		mainFrame.pack();
-		//mainFrame.show();
+		mainFrame.show();
 	}
 }
 class disGuiseFrame extends JFrame
@@ -25,7 +25,7 @@ class disGuiseFrame extends JFrame
 	final static String NURSE="nursePanel"; //made static
 	final static String DOCTOR="doctorPanel";
 	static JPanel contentPane; //made static
-	
+	String username;
 	public disGuiseFrame() 
 	{
 		String userName;
@@ -42,7 +42,6 @@ class disGuiseFrame extends JFrame
 		contentPane.setLayout(new CardLayout(0, 0));
 		
 		loginPanel login=new loginPanel();
-		userName = login.returnUser();
 		contentPane.add(login,LOGINSCREEN);
 		JPanel panel3=new JPanel();
 	
@@ -56,8 +55,7 @@ class disGuiseFrame extends JFrame
 		contentPane.add(patient,PATIENT);
 		
 		
-	}
-}
+	}}
 
 class disGUIseMenuBar extends JMenuBar  
 {  
@@ -96,6 +94,7 @@ class disGUIseMenuBar extends JMenuBar
 		mnAbout.add(mntmAboutDisguise);
 	}  
 }  
+
 
 
 

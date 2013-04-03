@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -50,10 +52,35 @@ public class doctorPane extends JTabbedPane{
 		private JLabel label_2;
 		private JLabel label_3;
 		private JTextField doctorContactPanelOfficePhoneInput;
-		private String user = "null";
+		private String name, id, email, phone, address, state, zip;
 		
 		public doctorPane()
 		{
+			
+			linkList people = new linkList();
+			Link temp;
+			FileReader fr;
+			try {
+				fr = new FileReader("dbach.txt");
+			
+			BufferedReader br = new BufferedReader(fr);
+			name = br.readLine();
+		
+				id = br.readLine();
+				email = br.readLine();
+				phone = br.readLine();
+				address = br.readLine();
+				state = br.readLine();
+				zip = br.readLine();
+			
+			//people.printList();
+			fr.close();
+			
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			setTabPlacement(JTabbedPane.LEFT);
 			doctorContactPanel = new JPanel();
 			doctorContactPanel.setBorder(null);
@@ -77,35 +104,40 @@ public class doctorPane extends JTabbedPane{
 			doctorContactPhoneLbl.setBounds(34, 226, 78, 14);
 			
 			doctorContactPanelDoctorInput = new JTextField();
-			doctorContactPanelDoctorInput.setBounds(122, 76, 86, 20);
+			doctorContactPanelDoctorInput.setBounds(122, 76, 400, 20);
 			doctorContactPanelDoctorInput.setEditable(false);
 			doctorContactPanelDoctorInput.setColumns(10);
-			doctorContactPanelDoctorInput.setText(user);
+			doctorContactPanelDoctorInput.setText(name);
 			
 			doctorContactpanelIDInput = new JTextField();
-			doctorContactpanelIDInput.setBounds(122, 114, 86, 20);
+			doctorContactpanelIDInput.setBounds(122, 114, 400, 20);
 			doctorContactpanelIDInput.setEditable(false);
 			doctorContactpanelIDInput.setColumns(10);
+			doctorContactpanelIDInput.setText(id);
 			
 			doctorContactPanelEmailInput = new JTextField();
-			doctorContactPanelEmailInput.setBounds(122, 152, 86, 20);
+			doctorContactPanelEmailInput.setBounds(122, 152, 400, 20);
 			doctorContactPanelEmailInput.setEditable(false);
 			doctorContactPanelEmailInput.setColumns(10);
+			doctorContactPanelEmailInput.setText(email);
 			
 			doctorContactPanelZipInput = new JTextField();
-			doctorContactPanelZipInput.setBounds(122, 348, 86, 20);
+			doctorContactPanelZipInput.setBounds(122, 348, 400, 20);
 			doctorContactPanelZipInput.setEditable(false);
 			doctorContactPanelZipInput.setColumns(10);
+			doctorContactPanelZipInput.setText(zip);
 			
 			doctorContactPanelStateInput = new JTextField();
-			doctorContactPanelStateInput.setBounds(122, 322, 86, 20);
+			doctorContactPanelStateInput.setBounds(122, 322, 400, 20);
 			doctorContactPanelStateInput.setEditable(false);
 			doctorContactPanelStateInput.setColumns(10);
+			doctorContactPanelStateInput.setText(state);
 			
 			doctorContactPanelStreetInput = new JTextField();
-			doctorContactPanelStreetInput.setBounds(122, 296, 86, 20);
+			doctorContactPanelStreetInput.setBounds(122, 296, 400, 20);
 			doctorContactPanelStreetInput.setEditable(false);
 			doctorContactPanelStreetInput.setColumns(10);
+			doctorContactPanelStreetInput.setText(address);
 			
 			label = new JLabel("Office Address:");
 			label.setBounds(34, 271, 118, 14);
@@ -121,9 +153,10 @@ public class doctorPane extends JTabbedPane{
 			label_3.setBounds(75, 354, 34, 14);
 			
 			doctorContactPanelOfficePhoneInput = new JTextField();
-			doctorContactPanelOfficePhoneInput.setBounds(122, 226, 86, 20);
+			doctorContactPanelOfficePhoneInput.setBounds(122, 226, 400, 20);
 			doctorContactPanelOfficePhoneInput.setEditable(false);
 			doctorContactPanelOfficePhoneInput.setColumns(10);
+			doctorContactPanelOfficePhoneInput.setText(phone);
 			
 			doctorContactPanel.setLayout(null);
 			doctorContactPanel.add(doctorContactBanner);

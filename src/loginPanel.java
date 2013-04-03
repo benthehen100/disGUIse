@@ -23,6 +23,12 @@ public class loginPanel extends JPanel {
 	private JLabel passLbl=new JLabel("Password:");
 	private JLabel usernameLbl=new JLabel("Username:");
 	public String user;
+	
+	public String returnUser()
+	{
+		return user; 
+	}
+	
 	public loginPanel()
 	{
 		setBackground(Color.white);
@@ -69,6 +75,8 @@ public class loginPanel extends JPanel {
 		);
 		setLayout(gl_loginPanel);
 			logInEvents();
+			
+
 	}
 	
 
@@ -151,10 +159,8 @@ public class loginPanel extends JPanel {
 				p1.show();
 			}
 		});
+		
 	}
 	
-	public String returnUser()
-	{
-		return user;
-	}
+
 }
