@@ -19,6 +19,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.SwingConstants;
 import java.awt.Component;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 public class patientPane extends JTabbedPane
@@ -72,9 +74,11 @@ public class patientPane extends JTabbedPane
 	private JLabel label_9;
 	private JLabel label_10;
 	private JLabel label_11;
+	
 
 	public patientPane()
 	{
+		
 		setTabPlacement(LEFT);
 		patientRecordsPane = new JTabbedPane(JTabbedPane.TOP);
 		patientAccountPanel = new JPanel();

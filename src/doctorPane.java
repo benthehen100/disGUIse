@@ -57,8 +57,6 @@ public class doctorPane extends JTabbedPane{
 		public doctorPane()
 		{
 			
-			linkList people = new linkList();
-			Link temp;
 			FileReader fr;
 			try {
 				fr = new FileReader("dbach.txt");
