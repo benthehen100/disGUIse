@@ -22,10 +22,10 @@ public class loginPanel extends JPanel {
 	private JButton forgotBL=new JButton("Forgot Password?");
 	private JLabel passLbl=new JLabel("Password:");
 	private JLabel usernameLbl=new JLabel("Username:");
-	public Link temp;
+	public String user;
 	public loginPanel()
 	{
-		setBackground(Color.RED);
+		setBackground(Color.white);
 		setBounds(0, 0, 482, 343);
 		setVisible(true);
 		
@@ -119,6 +119,7 @@ public class loginPanel extends JPanel {
 						if(password.equals(temp.password))
 						{
 							System.out.println("User match!");
+							user = temp.username;
 							if(temp.type.equalsIgnoreCase("nurse"))
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.NURSE);
 							else if(temp.type.equalsIgnoreCase("doctor"))
@@ -152,8 +153,8 @@ public class loginPanel extends JPanel {
 		});
 	}
 	
-	public Link returnLink(String Username)
+	public String returnUser()
 	{
-		return temp;
+		return user;
 	}
 }

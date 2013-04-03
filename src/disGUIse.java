@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -26,11 +28,12 @@ class disGuiseFrame extends JFrame
 	
 	public disGuiseFrame() 
 	{
+		String userName;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("disGUIse Well-Check Clinic");
 		setBounds(100, 100, 600, 492);
 		setVisible(true);
-
+		
 		disGUIseMenuBar menu1=new disGUIseMenuBar();
 		setJMenuBar(menu1);
 		
@@ -39,6 +42,7 @@ class disGuiseFrame extends JFrame
 		contentPane.setLayout(new CardLayout(0, 0));
 		
 		loginPanel login=new loginPanel();
+		userName = login.returnUser();
 		contentPane.add(login,LOGINSCREEN);
 		JPanel panel3=new JPanel();
 	
@@ -57,9 +61,10 @@ class disGuiseFrame extends JFrame
 
 class disGUIseMenuBar extends JMenuBar  
 {  
+	
 	public disGUIseMenuBar()  
 	{  
-		setBackground(Color.cyan);  
+		setBackground(Color.LIGHT_GRAY);  
 		setPreferredSize(new Dimension(200, 20));  
 
 		JMenu mnFile = new JMenu("File");		
@@ -67,9 +72,23 @@ class disGUIseMenuBar extends JMenuBar
 		
 		JMenuItem mntmSignout = new JMenuItem("SignOut");
 		mnFile.add(mntmSignout);
+		mntmSignout.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				disGUIse again = new disGUIse();
+		}}
+		);
 		
+
 		JMenuItem mntmExitDisguise = new JMenuItem("Exit disGUIse");
 		mnFile.add(mntmExitDisguise);
+		mntmExitDisguise.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+		}}
+		);
+		
 		JMenu mnAbout = new JMenu("About");
 		add(mnAbout);
 		
