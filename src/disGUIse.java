@@ -41,9 +41,27 @@ class disGuiseFrame extends JFrame
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
+		
+		
 		loginPanel login=new loginPanel();
-		contentPane.add(login,LOGINSCREEN);
-		JPanel panel3=new JPanel();
+		
+		login.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		Box box=new Box(BoxLayout.Y_AXIS);
+		box.add(Box.createVerticalGlue());
+		box.add(login);
+		box.add(Box.createVerticalGlue());
+		
+		/*JPanel panel3=new JPanel();
+		Dimension expectedDimension = new Dimension(250, 150);
+
+        panel3.setPreferredSize(expectedDimension);
+        panel3.setMaximumSize(expectedDimension);
+        panel3.setMinimumSize(expectedDimension);
+		panel3.add(box);*/
+		
+		contentPane.add(box,LOGINSCREEN);
+		//contentPane.add(panel3,LOGINSCREEN);
+		
 	
 		nursePane nurse=new nursePane();
 		contentPane.add(nurse,NURSE);
@@ -60,39 +78,50 @@ class disGuiseFrame extends JFrame
 class disGUIseMenuBar extends JMenuBar  
 {  
 	
+	private JMenuItem mntmExitDisguise;
+	private JMenuItem mntmAboutDisguise;
+	private JMenu mnAbout;
+	private JMenuItem mntmSignout;
+	private JMenu mnFile;
 	public disGUIseMenuBar()  
 	{  
 		setBackground(Color.LIGHT_GRAY);  
 		setPreferredSize(new Dimension(200, 20));  
 
-		JMenu mnFile = new JMenu("File");		
+		mnFile = new JMenu("File");		
 		add(mnFile);
 		
-		JMenuItem mntmSignout = new JMenuItem("SignOut");
+		mntmSignout = new JMenuItem("SignOut");
 		mnFile.add(mntmSignout);
-		mntmSignout.addActionListener(new ActionListener()
+		
+		
+
+		mntmExitDisguise = new JMenuItem("Exit disGUIse");
+		mnFile.add(mntmExitDisguise);
+		
+		
+		mnAbout = new JMenu("About");
+		add(mnAbout);
+		
+		mntmAboutDisguise = new JMenuItem("About disGUIse");
+		mnAbout.add(mntmAboutDisguise);
+		menuEvents();
+	}  
+	private void menuEvents()
+	{
+		/*mntmSignout.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
 				disGUIse again = new disGUIse();
 		}}
-		);
-		
-
-		JMenuItem mntmExitDisguise = new JMenuItem("Exit disGUIse");
-		mnFile.add(mntmExitDisguise);
+		);*/
 		mntmExitDisguise.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 		}}
 		);
-		
-		JMenu mnAbout = new JMenu("About");
-		add(mnAbout);
-		
-		JMenuItem mntmAboutDisguise = new JMenuItem("About disGUIse");
-		mnAbout.add(mntmAboutDisguise);
-	}  
+	}
 }  
 
 

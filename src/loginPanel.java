@@ -1,11 +1,15 @@
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.io.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -32,14 +36,19 @@ public class loginPanel extends JPanel {
 	public loginPanel()
 	{
 		setBackground(Color.white);
-		setBounds(0, 0, 482, 343);
-		setVisible(true);
+		
+		Dimension expectedDimension = new Dimension(250, 150);
+
+        setPreferredSize(expectedDimension);
+        setMaximumSize(expectedDimension);
+        setMinimumSize(expectedDimension);
+       
 		
 		GroupLayout gl_loginPanel = new GroupLayout(this);
 		gl_loginPanel.setHorizontalGroup(
 			gl_loginPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_loginPanel.createSequentialGroup()
-					.addGap(147)
+					.addGap(31)
 					.addGroup(gl_loginPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_loginPanel.createSequentialGroup()
 							.addComponent(submitBL)
@@ -54,12 +63,12 @@ public class loginPanel extends JPanel {
 							.addGroup(gl_loginPanel.createParallelGroup(Alignment.LEADING)
 								.addComponent(uNameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(passInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(147, Short.MAX_VALUE))
+					.addContainerGap(31, Short.MAX_VALUE))
 		);
 		gl_loginPanel.setVerticalGroup(
 			gl_loginPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_loginPanel.createSequentialGroup()
-					.addGap(128)
+					.addGap(32)
 					.addGroup(gl_loginPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(uNameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(usernameLbl))
@@ -71,7 +80,7 @@ public class loginPanel extends JPanel {
 					.addGroup(gl_loginPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(submitBL)
 						.addComponent(forgotBL))
-					.addContainerGap(128, Short.MAX_VALUE))
+					.addContainerGap(31, Short.MAX_VALUE))
 		);
 		setLayout(gl_loginPanel);
 			logInEvents();
