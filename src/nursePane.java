@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Component;
 
 
 public class nursePane extends JTabbedPane {
@@ -364,29 +365,30 @@ public class nursePane extends JTabbedPane {
 
 			GroupLayout gl_nurseAccountPanel = new GroupLayout(nurseAccountPanel);
 			gl_nurseAccountPanel.setHorizontalGroup(
-					gl_nurseAccountPanel.createParallelGroup(Alignment.LEADING)
+				gl_nurseAccountPanel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_nurseAccountPanel.createSequentialGroup()
-							.addGap(54)
-							.addGroup(gl_nurseAccountPanel.createParallelGroup(Alignment.LEADING)
-									.addComponent(nurseManageSecurityQuestions)
-									.addComponent(nurseRecoverPassword)
-									.addComponent(nurseChangePassword)
-									.addComponent(nurseAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
-									.addContainerGap(78, Short.MAX_VALUE))
-					);
-			gl_nurseAccountPanel.setVerticalGroup(
-					gl_nurseAccountPanel.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_nurseAccountPanel.createSequentialGroup()
-							.addGap(11)
-							.addComponent(nurseAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-							.addGap(56)
-							.addComponent(nurseChangePassword)
-							.addGap(18)
-							.addComponent(nurseRecoverPassword)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addGap(54)
+						.addGroup(gl_nurseAccountPanel.createParallelGroup(Alignment.LEADING)
 							.addComponent(nurseManageSecurityQuestions)
-							.addContainerGap(217, Short.MAX_VALUE))
-					);
+							.addComponent(nurseRecoverPassword)
+							.addComponent(nurseChangePassword)
+							.addComponent(nurseAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			);
+			gl_nurseAccountPanel.setVerticalGroup(
+				gl_nurseAccountPanel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_nurseAccountPanel.createSequentialGroup()
+						.addGap(11)
+						.addComponent(nurseAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+						.addGap(56)
+						.addComponent(nurseChangePassword)
+						.addGap(18)
+						.addComponent(nurseRecoverPassword)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(nurseManageSecurityQuestions)
+						.addContainerGap(84, Short.MAX_VALUE))
+			);
+			gl_nurseAccountPanel.linkSize(SwingConstants.HORIZONTAL, new Component[] {nurseChangePassword, nurseRecoverPassword, nurseManageSecurityQuestions});
 			nurseAccountPanel.setLayout(gl_nurseAccountPanel);
 			nursePaneEvents();
 		}
@@ -429,7 +431,7 @@ public class nursePane extends JTabbedPane {
 				{
 					popUp p4=new popUp();
 					passwordReset pr=new passwordReset();
-					p4.add(pr);
+					p4.getContentPane().add(pr);
 					p4.pack();
 					p4.show();
 				}

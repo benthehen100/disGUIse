@@ -1,3 +1,4 @@
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+import java.awt.Component;
 
 
 public class doctorPane extends JTabbedPane{
@@ -93,9 +95,9 @@ public class doctorPane extends JTabbedPane{
 			doctorContactBanner.setBackground(Color.WHITE);
 
 			doctorContactDoctorLbl = new JLabel("Doctor:");
-			doctorContactDoctorLbl.setBounds(34, 76, 67, 14);
+			doctorContactDoctorLbl.setBounds(34, 82, 67, 14);
 			doctorContactDoctorIdLbl = new JLabel("Doctor ID:");
-			doctorContactDoctorIdLbl.setBounds(34, 114, 67, 14);
+			doctorContactDoctorIdLbl.setBounds(34, 120, 67, 14);
 			doctorContactEmailLbl = new JLabel("Email Address:");
 			doctorContactEmailLbl.setBounds(34, 152, 93, 14);
 			doctorContactPhoneLbl = new JLabel("Office Phone:");
@@ -114,7 +116,7 @@ public class doctorPane extends JTabbedPane{
 			doctorContactpanelIDInput.setText(id);
 			
 			doctorContactPanelEmailInput = new JTextField();
-			doctorContactPanelEmailInput.setBounds(122, 152, 400, 20);
+			doctorContactPanelEmailInput.setBounds(122, 146, 400, 20);
 			doctorContactPanelEmailInput.setEditable(false);
 			doctorContactPanelEmailInput.setColumns(10);
 			doctorContactPanelEmailInput.setText(email);
@@ -268,29 +270,30 @@ public class doctorPane extends JTabbedPane{
 			doctorAccountManagementBanner.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 			GroupLayout gl_doctorAccountPanel = new GroupLayout(doctorAccountPanel);
 			gl_doctorAccountPanel.setHorizontalGroup(
-					gl_doctorAccountPanel.createParallelGroup(Alignment.LEADING)
+				gl_doctorAccountPanel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_doctorAccountPanel.createSequentialGroup()
-							.addGap(46)
-							.addGroup(gl_doctorAccountPanel.createParallelGroup(Alignment.LEADING)
-									.addComponent(doctorAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorChangePassword, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorRecoverPassword, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorManageSecurityQuestions, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-									.addContainerGap(86, Short.MAX_VALUE))
-					);
+						.addGap(46)
+						.addGroup(gl_doctorAccountPanel.createParallelGroup(Alignment.LEADING)
+							.addComponent(doctorAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE)
+							.addComponent(doctorChangePassword, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+							.addComponent(doctorRecoverPassword, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+							.addComponent(doctorManageSecurityQuestions, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			);
 			gl_doctorAccountPanel.setVerticalGroup(
-					gl_doctorAccountPanel.createParallelGroup(Alignment.LEADING)
+				gl_doctorAccountPanel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_doctorAccountPanel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(doctorAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-							.addGap(56)
-							.addComponent(doctorChangePassword)
-							.addGap(18)
-							.addComponent(doctorRecoverPassword)
-							.addGap(11)
-							.addComponent(doctorManageSecurityQuestions)
-							.addContainerGap(217, Short.MAX_VALUE))
-					);
+						.addContainerGap()
+						.addComponent(doctorAccountManagementBanner, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+						.addGap(56)
+						.addComponent(doctorChangePassword)
+						.addGap(18)
+						.addComponent(doctorRecoverPassword)
+						.addGap(11)
+						.addComponent(doctorManageSecurityQuestions)
+						.addContainerGap(84, Short.MAX_VALUE))
+			);
+			gl_doctorAccountPanel.linkSize(SwingConstants.HORIZONTAL, new Component[] {doctorManageSecurityQuestions, doctorRecoverPassword, doctorChangePassword});
 			doctorAccountPanel.setLayout(gl_doctorAccountPanel);
 			doctorPaneEvents();
 		}
@@ -334,7 +337,7 @@ public class doctorPane extends JTabbedPane{
 				{
 					popUp p4=new popUp();
 					passwordReset pr=new passwordReset();
-					p4.add(pr);
+					p4.getContentPane().add(pr);
 					p4.pack();
 					p4.show();
 				}
@@ -347,7 +350,6 @@ public class doctorPane extends JTabbedPane{
 					p5.getContentPane().add(sq);
 					p5.pack();
 					p5.show();
-					
 				}
 			});
 

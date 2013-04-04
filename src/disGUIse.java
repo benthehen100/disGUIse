@@ -32,7 +32,6 @@ class disGuiseFrame extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("disGUIse Well-Check Clinic");
 		setBounds(100, 100, 600, 492);
-		setVisible(true);
 		
 		disGUIseMenuBar menu1=new disGUIseMenuBar();
 		setJMenuBar(menu1);
@@ -41,26 +40,20 @@ class disGuiseFrame extends JFrame
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
-		
+		contentPane.setBackground(Color.WHITE);
 		
 		loginPanel login=new loginPanel();
 		
-		login.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		
+	    login.setAlignmentX(JComponent.CENTER_ALIGNMENT);
 		Box box=new Box(BoxLayout.Y_AXIS);
 		box.add(Box.createVerticalGlue());
 		box.add(login);
 		box.add(Box.createVerticalGlue());
 		
-		/*JPanel panel3=new JPanel();
-		Dimension expectedDimension = new Dimension(250, 150);
-
-        panel3.setPreferredSize(expectedDimension);
-        panel3.setMaximumSize(expectedDimension);
-        panel3.setMinimumSize(expectedDimension);
-		panel3.add(box);*/
 		
 		contentPane.add(box,LOGINSCREEN);
-		//contentPane.add(panel3,LOGINSCREEN);
+		//contentPane.add(login,LOGINSCREEN);
 		
 	
 		nursePane nurse=new nursePane();
@@ -71,21 +64,18 @@ class disGuiseFrame extends JFrame
 		
 		patientPane patient=new patientPane();
 		contentPane.add(patient,PATIENT);
-		
-		
-	}}
+	}
+}
 
 class disGUIseMenuBar extends JMenuBar  
 {  
-	
 	private JMenuItem mntmExitDisguise;
 	private JMenuItem mntmAboutDisguise;
 	private JMenu mnAbout;
 	private JMenuItem mntmSignout;
 	private JMenu mnFile;
 	public disGUIseMenuBar()  
-	{  
-		setBackground(Color.LIGHT_GRAY);  
+	{    
 		setPreferredSize(new Dimension(200, 20));  
 
 		mnFile = new JMenu("File");		
@@ -93,12 +83,9 @@ class disGUIseMenuBar extends JMenuBar
 		
 		mntmSignout = new JMenuItem("SignOut");
 		mnFile.add(mntmSignout);
-		
-		
 
 		mntmExitDisguise = new JMenuItem("Exit disGUIse");
 		mnFile.add(mntmExitDisguise);
-		
 		
 		mnAbout = new JMenu("About");
 		add(mnAbout);
@@ -109,14 +96,14 @@ class disGUIseMenuBar extends JMenuBar
 	}  
 	private void menuEvents()
 	{
-		/*mntmSignout.addActionListener(new ActionListener()
-		{
+		mntmSignout.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				disGUIse again = new disGUIse();
+			
+				final CardLayout card=(CardLayout)disGuiseFrame.contentPane.getLayout();
+				card.show(disGuiseFrame.contentPane, disGuiseFrame.LOGINSCREEN);
 		}}
-		);*/
-		mntmExitDisguise.addActionListener(new ActionListener()
-		{
+		);
+		mntmExitDisguise.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 		}}

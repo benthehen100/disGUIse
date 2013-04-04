@@ -38,12 +38,13 @@ public class loginPanel extends JPanel {
 		setBackground(Color.white);
 		
 		Dimension expectedDimension = new Dimension(250, 150);
-
-        setPreferredSize(expectedDimension);
-        setMaximumSize(expectedDimension);
-        setMinimumSize(expectedDimension);
-       
 		
+
+       setPreferredSize(expectedDimension);
+       setMaximumSize(expectedDimension);
+       setMinimumSize(expectedDimension);
+       
+       
 		GroupLayout gl_loginPanel = new GroupLayout(this);
 		gl_loginPanel.setHorizontalGroup(
 			gl_loginPanel.createParallelGroup(Alignment.LEADING)
@@ -83,6 +84,8 @@ public class loginPanel extends JPanel {
 					.addContainerGap(31, Short.MAX_VALUE))
 		);
 		setLayout(gl_loginPanel);
+		
+			
 			logInEvents();
 			
 
