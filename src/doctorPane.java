@@ -311,42 +311,42 @@ public class doctorPane extends JTabbedPane{
 				public void actionPerformed(ActionEvent e)
 				{
 					//when the doctor clicks on a patient profile
-					popUp p1=new popUp();
+					popUp p2=new popUp();
 					selectedPatientPane spp=new selectedPatientPane();
-					p1.getContentPane().add(spp);
-					p1.pack();
-					p1.show();
+					p2.getContentPane().add(spp);
+					p2.pack();
+					p2.show();
 					
 				}
 			});
 			doctorChangePassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					popUp p2=new popUp();
+					popUp p3=new popUp();
 					changePassword cp=new changePassword();
-					p2.getContentPane().add(cp);
-					p2.pack();
-					p2.show();
+					p3.getContentPane().add(cp);
+					p3.pack();
+					p3.show();
 				}
 			});
 			doctorRecoverPassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					popUp p1=new popUp();
+					popUp p4=new popUp();
 					passwordReset pr=new passwordReset();
-					p1.add(pr);
-					p1.pack();
-					p1.show();
+					p4.add(pr);
+					p4.pack();
+					p4.show();
 				}
 			});
 			doctorManageSecurityQuestions.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					popUp p3=new popUp();
+					popUp p5=new popUp();
 					securityQuestion sq=new securityQuestion();
-					p3.getContentPane().add(sq);
-					p3.pack();
-					p3.show();
+					p5.getContentPane().add(sq);
+					p5.pack();
+					p5.show();
 					
 				}
 			});
