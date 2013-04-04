@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class changePassword extends JPanel {
+public class changePassword extends JPanel {// changepassword Panel
 	private JTextField confirmPasswordInput;
 	private JTextField oldPasswordInput;
 	private JTextField newPasswordInput;
@@ -20,23 +20,24 @@ public class changePassword extends JPanel {
 
 	public changePassword() {
 		
-		confirmPasswordInput = new JTextField(10);
-		oldPasswordInput = new JTextField(10);
+		confirmPasswordInput = new JTextField(10); //creates textfields and sets size to 10
+		oldPasswordInput = new JTextField(10); //textfields are for inputs
 		newPasswordInput = new JTextField(10);
 		
 		
-		JLabel oldPasswordLbl = new JLabel("Old Password: ");
+		JLabel oldPasswordLbl = new JLabel("Old Password: "); //creates labels
 		JLabel newPasswordLbl = new JLabel("New Password: ");
 		JLabel confirmPasswordLbl = new JLabel("Confirm Password: ");
 		
-		changePasswordSubmit = new JButton("Submit");
-		changePasswordCancel = new JButton("Cancel");
+		changePasswordSubmit = new JButton("Submit"); //submit button
+		changePasswordCancel = new JButton("Cancel"); //cancel button
 		
 		
-		JLabel changePasswordReset = new JLabel("disGUIse Password Change");
+		JLabel changePasswordReset = new JLabel("disGUIse Password Change"); //password change label
 		changePasswordReset.setForeground(new Color(0, 0, 139));
 		changePasswordReset.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 24));
 		
+		//grouplayout for changepassword class
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -86,22 +87,23 @@ public class changePassword extends JPanel {
 						.addComponent(changePasswordCancel))
 					.addContainerGap(104, Short.MAX_VALUE))
 		);
-		setLayout(groupLayout);
-		changePasswordEvents();
+		setLayout(groupLayout); //sets the layout for this class to grouplayout
+		
+		changePasswordEvents(); //action events
 	}
 	private void changePasswordEvents()
 	{
 		changePasswordSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				//submit button
+				//submit button effects
 			}
 		});
 		//
 		changePasswordCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				//cancel button
+				//cancel button effects
 			}
 		});
 	}

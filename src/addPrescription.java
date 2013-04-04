@@ -12,32 +12,34 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class addPrescription extends JPanel {
+public class addPrescription extends JPanel { //creates addprescription jPanel
 	private JTextField addPrescriptionDateInput;
 	private JTextField addPresciptionPrescriptionInput;
 	private JButton addPresciptionSubmit;
 	private JButton addPrescriptionCancel;
 	
-	public addPrescription() {
+	public addPrescription() { //main calss
 		
-		addPrescriptionDateInput = new JTextField(10);
+		addPrescriptionDateInput = new JTextField(10); //creates textfields
 		addPresciptionPrescriptionInput = new JTextField(10);
 		
-		JTextArea addPresciptionsCommentInput = new JTextArea();
+		JTextArea addPresciptionsCommentInput = new JTextArea(); //textarea for comments
 		JLabel addPrescriptionPrescriptionLbl = new JLabel("Prescription: ");
 		JLabel addPrescriptionDateLbl = new JLabel("Date: ");
 		
-		JLabel lblComments = new JLabel("Comments: ");
+		JLabel lblComments = new JLabel("Comments: "); //creates labels
 		lblComments.setLabelFor(addPresciptionsCommentInput);
 		
 		addPresciptionSubmit = new JButton("Submit");
 		addPrescriptionCancel = new JButton("Cancel");
 		
 		
-		JLabel lblAddPrescription = new JLabel("Add Prescription");
+		JLabel lblAddPrescription = new JLabel("Add Prescription"); //add priscription banner
 		lblAddPrescription.setForeground(new Color(0, 0, 139));
 		lblAddPrescription.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 24));
-		
+	
+		//creates grouplayout for adprescription panel
+		//this is used for positioning of Jcomponents
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -85,23 +87,23 @@ public class addPrescription extends JPanel {
 						.addComponent(addPrescriptionCancel))
 					.addContainerGap(33, Short.MAX_VALUE))
 		);
-		setLayout(groupLayout);
+		setLayout(groupLayout); //sets layout of this panel to grouplayout
 		
-		addPrescriptionEvents();
+		addPrescriptionEvents(); //calls the events
 	}
 	private void addPrescriptionEvents()
 	{
 		addPresciptionSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				//submit button
+				//submit button effects
 			}
 		});
 		//
 		addPrescriptionCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				//cancel button
+				//cancel button effects
 			}
 		});
 		

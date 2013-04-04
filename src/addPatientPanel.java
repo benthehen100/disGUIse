@@ -7,12 +7,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class addPatientPanel extends JPanel {
+public class addPatientPanel extends JPanel { //this panel is the called when a new patient is created
+	
 	private JTextField addPatientFirstInput;
 	private JTextField addPatientLastInput;
 	private JTextField addPatientPatientIDInput;
 	private JTextField addPatientUsernameInput;
-	private JTextField addPatientPasswordInput;
+	private JTextField addPatientPasswordInput; //parameters
 	private JTextField addPatientStreetInput;
 	private JTextField addPatientCityInput;
 	private JTextField addPatientStateInput;
@@ -30,7 +31,7 @@ public class addPatientPanel extends JPanel {
 		
 		addPatientFirstInput = new JTextField(10);
 		addPatientLastInput = new JTextField(10);
-		addPatientPatientIDInput = new JTextField(10);
+		addPatientPatientIDInput = new JTextField(10); //sets size of textfields to 10
 		addPatientUsernameInput = new JTextField(10);
 		addPatientPasswordInput = new JTextField(10);
 		addPatientStreetInput = new JTextField(10);
@@ -47,7 +48,7 @@ public class addPatientPanel extends JPanel {
 		addPatientDOBInput = new JTextField(10);
 		addPatientPhoneInput = new JTextField(10);
 		
-		JLabel lblFirst = new JLabel("First:");
+		JLabel lblFirst = new JLabel("First:"); //creates and sets labels 
 		JLabel lblLast = new JLabel("Last: ");
 		JLabel lblNewLabel = new JLabel("Patient ID:");
 		JLabel lblPatientUsername = new JLabel("Patient Username:");
@@ -68,13 +69,15 @@ public class addPatientPanel extends JPanel {
 		JLabel lblDob = new JLabel("DOB:");
 		JLabel lblPhone = new JLabel("Phone:");
 		
-		addPatientSubmit = new JButton("Submit");
-		addPatientCancel = new JButton("Cancel");
+		addPatientSubmit = new JButton("Submit"); //submit button for the patient
+		addPatientCancel = new JButton("Cancel"); //cancel the character creation
 		
-		JLabel lblAddPatient = new JLabel("Add Patient");
+		JLabel lblAddPatient = new JLabel("Add Patient"); //add patient banner
 		lblAddPatient.setForeground(new Color(0, 0, 139));
 		lblAddPatient.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 21));
-		GroupLayout groupLayout = new GroupLayout(this);
+		
+		//group layout sets the layout and positioning of addPatient panel
+		GroupLayout groupLayout = new GroupLayout(this); 
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -241,13 +244,14 @@ public class addPatientPanel extends JPanel {
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(addPatientSubmit)
 								.addComponent(addPatientCancel)))))
-		);
-		setLayout(groupLayout);
-		addPatientEvents();
+		); //end of grouplayout
+		setLayout(groupLayout); //sets the layout of this panel to groupLayout
+		//
+		addPatientEvents(); //calls the events that are done in this panel
 	}
 	private void addPatientEvents()
 	{
-		addPatientSubmit.addActionListener(new ActionListener() {
+		addPatientSubmit.addActionListener(new ActionListener() { //what happens when the user submits
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				//submit button
@@ -270,11 +274,11 @@ public class addPatientPanel extends JPanel {
 				String pNurseID = addPatientNurseIDInput.getText(); // Nurse ID (of assigned nurse)
 				
 				// Pop up message after clicking submit
-				JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit");
+				JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit"); //ask user for confirmation
 			}
 		});
 		//
-		addPatientCancel.addActionListener(new ActionListener() {
+		addPatientCancel.addActionListener(new ActionListener() { //what happens when user cancels
 			public void actionPerformed(ActionEvent e) 
 			{
 				//cancel button
