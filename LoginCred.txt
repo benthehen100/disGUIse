@@ -7,3 +7,6 @@ Nurse
 shanson
 123456
 Patient
+migi
+123
+Doctor

@@ -74,7 +74,74 @@ public class patientPane extends JTabbedPane
 	private JLabel label_9;
 	private JLabel label_10;
 	private JLabel label_11;
+	String name, id, email, phone, address, state, zip, insurance, doctor, doctorFile;
 	
+	public void refreshPanel(String file)
+	{
+		
+		FileReader fr; //reads data from file
+		
+		try {
+			fr = new FileReader(file);
+		
+		BufferedReader br = new BufferedReader(fr);
+		name = br.readLine();
+	
+			id = br.readLine(); //sets lines to variables
+			phone = br.readLine();
+			email = br.readLine();
+			address = br.readLine();
+			state = br.readLine();
+			zip = br.readLine();
+			insurance = br.readLine();
+			doctor = br.readLine();
+		
+		//people.printList();
+		fr.close();
+		
+		} catch (Throwable e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		doctorFile = doctor + ".txt";
+		patientContactPanelNameInput.setText(name);
+		patientContactPanelIdInput.setText(id);
+		patientContactPanelPatientPhoneInput.setText(phone);
+		patientContactPanelEmailInput.setText(email);
+		patientContactPanelStreetInput.setText(address);
+		patientContactPanelStateInput.setText(state);
+		patientContactPanelZipInput.setText(zip);
+		patientContactPanelInsuranceInput.setText(insurance);
+		patientContactPanelDoctorInput.setText(doctor);
+		
+		FileReader fr2; //reads data from file
+		try {
+			fr2 = new FileReader("dbach.txt"); // temporary fix, every patient will call on this file...or at least until a list of doctors is created to link each doctor to a textfile.
+		
+		BufferedReader br2 = new BufferedReader(fr2);
+		name = br2.readLine();
+	
+			id = br2.readLine(); //sets lines to variables
+			email = br2.readLine();
+			phone = br2.readLine();
+			address = br2.readLine();
+			state = br2.readLine();
+			zip = br2.readLine();
+		
+		//people.printList();
+		fr2.close();
+		
+		} catch (Throwable e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		patientContactPanelOfficePhoneInput.setText(phone);
+		patientContactPanelOfficeStreetInput.setText(address);
+		patientContactPanelOfficeStateInput.setText(state);
+		patientContactPanelOfficeZipInput.setText(zip);
+	}
 
 	public patientPane()
 	{

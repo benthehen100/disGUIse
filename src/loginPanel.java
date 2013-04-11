@@ -18,7 +18,6 @@ import javax.swing.JPasswordField;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-
 public class loginPanel extends JPanel {
 	private JTextField uNameInput=new JTextField(10);
 	private JPasswordField passInput = new JPasswordField(10);
@@ -138,14 +137,26 @@ public class loginPanel extends JPanel {
 					{
 						if(password.equals(temp.password))
 						{
+							disGuiseFrame.Username = user;
 							System.out.println("User match!");
 							user = temp.username;
+							String name= user + ".txt"; // generate text file name based on username;
+							System.out.println(name);
 							if(temp.type.equalsIgnoreCase("nurse"))
+							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.NURSE);
+								disGuiseFrame.nurse.refreshPane(name); // refreshes panel based on inputted text file name;
+							}
 							else if(temp.type.equalsIgnoreCase("doctor"))
+							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.DOCTOR);
+								disGuiseFrame.doctor.refreshPanel(name);
+							}
 							else if(temp.type.equalsIgnoreCase("patient"))
+							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
+								disGuiseFrame.patient.refreshPanel(name);
+							}
 						}
 						else
 						{

@@ -57,12 +57,11 @@ public class nursePane extends JTabbedPane {
 		private JTextField nurseContactPanelOfficeStreetInput;
 		private String name, id, doctor, doctorID, email, phone, street, state, zip;
 		
-		public nursePane()
+		public void refreshPane(String username)
 		{
-			
 			FileReader fr;
 			try {
-				fr = new FileReader("aawad.txt");
+				fr = new FileReader(username);
 			
 			BufferedReader br = new BufferedReader(fr);
 			name = br.readLine();
@@ -83,6 +82,24 @@ public class nursePane extends JTabbedPane {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			nurseContactPanelNameInput.setText(name);
+			nurseContactPanelIdInput.setText(id);
+			nurseContactPanelDoctorInput.setText(doctor);
+			nurseContactPanelDoctorIdInput.setText(doctorID);
+			nurseContactPanelEmailInput.setText(email);
+			nurseContactPanelOfficePhoneInput.setText(phone);
+			nurseContactPanelOfficeZipInput.setText(zip);
+			nurseContactPanelOfficeStateInput.setText(state);
+			nurseContactPanelOfficeStreetInput.setText(street);
+			
+			
+			
+		}
+		
+		public nursePane()
+		{
+			
+			
 			
 			setTabPlacement(JTabbedPane.LEFT);
 			nurseContactPanel = new JPanel();
@@ -108,32 +125,32 @@ public class nursePane extends JTabbedPane {
 			nurseContactPanelNameInput = new JTextField();
 			nurseContactPanelNameInput.setEditable(false);
 			nurseContactPanelNameInput.setColumns(10);
-			nurseContactPanelNameInput.setText(name);
+			nurseContactPanelNameInput.setText("N/A");
 			
 			nurseContactPanelIdInput = new JTextField();
 			nurseContactPanelIdInput.setEditable(false);
 			nurseContactPanelIdInput.setColumns(10);
-			nurseContactPanelIdInput.setText(id);
+			nurseContactPanelIdInput.setText("N/A");
 			
 			nurseContactPanelDoctorInput = new JTextField();
 			nurseContactPanelDoctorInput.setEditable(false);
 			nurseContactPanelDoctorInput.setColumns(10);
-			nurseContactPanelDoctorInput.setText(doctor);
+			nurseContactPanelDoctorInput.setText("N/A");
 			
 			nurseContactPanelDoctorIdInput = new JTextField();
 			nurseContactPanelDoctorIdInput.setEditable(false);
 			nurseContactPanelDoctorIdInput.setColumns(10);
-			nurseContactPanelDoctorIdInput.setText(doctorID);
+			nurseContactPanelDoctorIdInput.setText("N/A");
 			
 			nurseContactPanelEmailInput = new JTextField();
 			nurseContactPanelEmailInput.setEditable(false);
 			nurseContactPanelEmailInput.setColumns(10);
-			nurseContactPanelEmailInput.setText(email);
+			nurseContactPanelEmailInput.setText("N/A");
 			
 			nurseContactPanelOfficePhoneInput = new JTextField();
 			nurseContactPanelOfficePhoneInput.setEditable(false);
 			nurseContactPanelOfficePhoneInput.setColumns(10);
-			nurseContactPanelOfficePhoneInput.setText(phone);
+			nurseContactPanelOfficePhoneInput.setText("N/A");
 			
 			label = new JLabel("Office Address:");
 			label.setHorizontalAlignment(SwingConstants.CENTER);

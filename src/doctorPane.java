@@ -54,32 +54,11 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 		private JLabel label_2;
 		private JLabel label_3;
 		private JTextField doctorContactPanelOfficePhoneInput;
-		private String name, id, email, phone, address, state, zip;
+		private String name, id, email, phone, address, state, zip, insurance, doctor;
 		
 		public doctorPane() //doctorpane class
 		{
-			
-			FileReader fr; //reads data from file
-			try {
-				fr = new FileReader("dbach.txt");
-			
-			BufferedReader br = new BufferedReader(fr);
-			name = br.readLine();
-		
-				id = br.readLine(); //sets lines to variables
-				email = br.readLine();
-				phone = br.readLine();
-				address = br.readLine();
-				state = br.readLine();
-				zip = br.readLine();
-			
-			//people.printList();
-			fr.close();
-			
-			} catch (Throwable e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+
 			
 			setTabPlacement(JTabbedPane.LEFT); //sets the tabs to the left of pane
 			
@@ -108,37 +87,37 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			doctorContactPanelDoctorInput.setBounds(122, 76, 400, 20);
 			doctorContactPanelDoctorInput.setEditable(false);
 			doctorContactPanelDoctorInput.setColumns(10);
-			doctorContactPanelDoctorInput.setText(name); //sets the text for to the name in database
+			doctorContactPanelDoctorInput.setText("N/A"); //sets the text for to the name in database
 			
 			doctorContactpanelIDInput = new JTextField();
 			doctorContactpanelIDInput.setBounds(122, 114, 400, 20);
 			doctorContactpanelIDInput.setEditable(false);
 			doctorContactpanelIDInput.setColumns(10);
-			doctorContactpanelIDInput.setText(id);	//sets the text for to the ID in database
+			doctorContactpanelIDInput.setText("N/A");	//sets the text for to the ID in database
 			
 			doctorContactPanelEmailInput = new JTextField();
 			doctorContactPanelEmailInput.setBounds(122, 146, 400, 20);
 			doctorContactPanelEmailInput.setEditable(false);
 			doctorContactPanelEmailInput.setColumns(10);
-			doctorContactPanelEmailInput.setText(email);	//sets the text for to the email in database
+			doctorContactPanelEmailInput.setText("N/A");	//sets the text for to the email in database
 			
 			doctorContactPanelZipInput = new JTextField();
 			doctorContactPanelZipInput.setBounds(122, 348, 400, 20);
 			doctorContactPanelZipInput.setEditable(false);
 			doctorContactPanelZipInput.setColumns(10);
-			doctorContactPanelZipInput.setText(zip);	//sets the text for to the zip in database
+			doctorContactPanelZipInput.setText("N/A");	//sets the text for to the zip in database
 			
 			doctorContactPanelStateInput = new JTextField();
 			doctorContactPanelStateInput.setBounds(122, 322, 400, 20);
 			doctorContactPanelStateInput.setEditable(false);
 			doctorContactPanelStateInput.setColumns(10);
-			doctorContactPanelStateInput.setText(state);	//sets the text for to the state in database
+			doctorContactPanelStateInput.setText("N/A");	//sets the text for to the state in database
 			
 			doctorContactPanelStreetInput = new JTextField();
 			doctorContactPanelStreetInput.setBounds(122, 296, 400, 20);
 			doctorContactPanelStreetInput.setEditable(false);
 			doctorContactPanelStreetInput.setColumns(10);
-			doctorContactPanelStreetInput.setText(address);	//sets the text for to the address in database
+			doctorContactPanelStreetInput.setText("N/A");	//sets the text for to the address in database
 			
 			label = new JLabel("Office Address:"); //creates new labels for address
 			label.setBounds(34, 271, 118, 14);
@@ -155,7 +134,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			doctorContactPanelOfficePhoneInput.setBounds(122, 226, 400, 20);
 			doctorContactPanelOfficePhoneInput.setEditable(false);
 			doctorContactPanelOfficePhoneInput.setColumns(10);
-			doctorContactPanelOfficePhoneInput.setText(phone);
+			doctorContactPanelOfficePhoneInput.setText("N/A");
 			
 			doctorContactPanel.setLayout(null); //sets layout to absolute
 			doctorContactPanel.add(doctorContactBanner); //adds components
@@ -299,6 +278,42 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			
 			doctorPaneEvents();//calls events method
 		}
+
+		public void refreshPanel(String file)
+		{
+			
+				FileReader fr; //reads data from file
+				try {
+					fr = new FileReader(file);
+				
+				BufferedReader br = new BufferedReader(fr);
+				name = br.readLine();
+			
+					id = br.readLine(); //sets lines to variables
+					email = br.readLine();
+					phone = br.readLine();
+					address = br.readLine();
+					state = br.readLine();
+					zip = br.readLine();
+				
+				//people.printList();
+				fr.close();
+				
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				doctorContactPanelStreetInput.setText(address);
+				doctorContactPanelStateInput.setText(state);
+				doctorContactPanelOfficePhoneInput.setText(phone);
+				doctorContactpanelIDInput.setText(id);
+				doctorContactPanelEmailInput.setText(email);
+				doctorContactPanelDoctorInput.setText(name);
+				doctorContactPanelZipInput.setText(zip);
+				
+		}
+		
 		private void doctorPaneEvents()
 		{
 			doctorAddPatient.addActionListener(new ActionListener() { //when add pateint is selcted

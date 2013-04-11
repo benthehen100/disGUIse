@@ -6,7 +6,6 @@ import javax.swing.*;
 
 //
 
-
 public class disGUIse //main class
 {
 	public static void main(String[] args) //creates main frame and packs
@@ -18,15 +17,20 @@ public class disGUIse //main class
 		mainFrame.show(); //shows frame
 	}
 }
+
 class disGuiseFrame extends JFrame //class extends jframe
 {
+	static public String Username;
+	
 	final static String LOGINSCREEN="login";  //parameters
 	final static String PATIENT="patientPanel";
 	final static String NURSE="nursePanel"; //made static
 	final static String DOCTOR="doctorPanel";
 	static JPanel contentPane; //made static
-	String username;
-	
+	static public doctorPane doctor=new doctorPane(); //creates new object of type doctorPane
+	static public nursePane nurse=new nursePane(); //creates new object of type nursePane *universal
+	static public patientPane patient=new patientPane(); //creats new patientpane *universal
+
 	public disGuiseFrame() //frame class
 	{
 		String userName;
@@ -56,13 +60,10 @@ class disGuiseFrame extends JFrame //class extends jframe
 		//contentPane.add(login,LOGINSCREEN);
 		
 	
-		nursePane nurse=new nursePane(); //creates new object of type nursePane
 		contentPane.add(nurse,NURSE); //add nurse to contentPane
 		
-		doctorPane doctor=new doctorPane(); //creates new object of type doctorPane
 		contentPane.add(doctor,DOCTOR); //adds it to Contentpane
 		
-		patientPane patient=new patientPane(); //creats new patientpane
 		contentPane.add(patient,PATIENT);//adds it to contentPane
 	} 
 }
