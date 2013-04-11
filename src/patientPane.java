@@ -118,7 +118,7 @@ public class patientPane extends JTabbedPane
 		FileReader fr2; //reads data from file
 		try {
 			fr2 = new FileReader("dbach.txt"); // temporary fix, every patient will call on this file...or at least until a list of doctors is created to link each doctor to a text file.
-	//	
+		
 		BufferedReader br2 = new BufferedReader(fr2);
 		name = br2.readLine();
 	

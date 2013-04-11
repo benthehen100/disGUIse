@@ -17,7 +17,7 @@ public class disGUIse //main class
 		mainFrame.show(); //shows frame
 	}
 }
-//
+
 class disGuiseFrame extends JFrame //class extends jframe
 {
 	static public String Username;
