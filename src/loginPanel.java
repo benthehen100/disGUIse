@@ -134,7 +134,7 @@ public class loginPanel extends JPanel {
 					System.out.println(temp.username);
 					System.out.println(username);
 					if(username.equalsIgnoreCase(temp.username))
-					{
+					{//
 						if(password.equals(temp.password))
 						{
 							disGuiseFrame.Username = user;
