@@ -193,34 +193,28 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 									.addContainerGap(54, Short.MAX_VALUE))
 					);
 			
+			
+			
 			doctorPatientList = new JTable(); //cretes a new table
 			doctorPatientList.setModel(new DefaultTableModel( // creates empty table
 					new Object[][] {
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
 					},
+					
 					new String[] {
 							"Patient ID:", "Patient First:", "Patient Last:", "Nurse ID:", "Last Checkup:" //table columns
 					}
 					));
+			
+			DefaultTableModel model = (DefaultTableModel) doctorPatientList.getModel();
+			createPatientList list1 = new createPatientList();
+			patientLinkedList temp = list1.head;
+			while( temp != null)
+			{
+				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),temp.getLastCheckUp()});
+				temp = temp.getNext();
+			}
+			
+
 			doctorPatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
 			doctorPatientList.getColumnModel().getColumn(1).setPreferredWidth(80);
 			doctorPatientList.getColumnModel().getColumn(2).setPreferredWidth(80);
