@@ -329,31 +329,22 @@ public class nursePane extends JTabbedPane {
 			nursePatientList = new JTable();
 			nursePatientList.setModel(new DefaultTableModel(
 					new Object[][] {
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
-							{null, null, null, null, null},
 					},
 					new String[] {
 							"Patient ID:", "First Name:", "Last Name:", "Doctor ID:", "Last Checkup:"
 					}
 					));
+			
+			
+			DefaultTableModel model = (DefaultTableModel) nursePatientList.getModel();
+			createPatientList list1 = new createPatientList();
+			patientLinkedList temp = list1.head;
+			while( temp != null)
+			{
+				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),temp.getLastCheckUp()});
+				temp = temp.getNext();
+			}
+			
 			nursePatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
 			nursePatientList.getColumnModel().getColumn(1).setPreferredWidth(80);
 			nursePatientList.getColumnModel().getColumn(2).setPreferredWidth(80);
