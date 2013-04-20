@@ -57,6 +57,8 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 		private String name, id, email, phone, address, state, zip, insurance, doctor;
 		private JTextField doctorContactPanelCityInput;
 		private JLabel lblCity;
+		private JButton btnDoctorEditInformation;
+		private JButton btnDoctorAcceptnewInfo;
 		
 		public doctorPane() //doctorpane class
 		{
@@ -128,54 +130,67 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			doctorContactPanelOfficePhoneInput.setText("N/A");
 			
 			lblCity = new JLabel("City:");
+			
+			btnDoctorEditInformation = new JButton("Edit Information");
+			
+			btnDoctorAcceptnewInfo = new JButton("Accept");
+			
 			GroupLayout gl_doctorContactPanel = new GroupLayout(doctorContactPanel);
 			gl_doctorContactPanel.setHorizontalGroup(
-				gl_doctorContactPanel.createParallelGroup(Alignment.LEADING)
+				gl_doctorContactPanel.createParallelGroup(Alignment.TRAILING)
 					.addGroup(gl_doctorContactPanel.createSequentialGroup()
+						.addContainerGap(34, Short.MAX_VALUE)
 						.addGroup(gl_doctorContactPanel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_doctorContactPanel.createSequentialGroup()
 								.addGroup(gl_doctorContactPanel.createParallelGroup(Alignment.LEADING)
 									.addGroup(gl_doctorContactPanel.createSequentialGroup()
-										.addGap(34)
-										.addComponent(doctorContactDoctorLbl, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_doctorContactPanel.createParallelGroup(Alignment.LEADING)
+											.addGroup(gl_doctorContactPanel.createSequentialGroup()
+												.addGap(34)
+												.addComponent(doctorContactDoctorLbl, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
+											.addGroup(gl_doctorContactPanel.createSequentialGroup()
+												.addGap(34)
+												.addComponent(doctorContactDoctorIdLbl, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
+											.addGroup(gl_doctorContactPanel.createSequentialGroup()
+												.addGap(34)
+												.addComponent(doctorContactPhoneLbl, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
+											.addGroup(gl_doctorContactPanel.createSequentialGroup()
+												.addGap(65)
+												.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+											.addGroup(gl_doctorContactPanel.createSequentialGroup()
+												.addGap(65)
+												.addComponent(lblCity, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+											.addGroup(gl_doctorContactPanel.createSequentialGroup()
+												.addGap(65)
+												.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+											.addGroup(gl_doctorContactPanel.createSequentialGroup()
+												.addGap(65)
+												.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+										.addGap(10)
+										.addGroup(gl_doctorContactPanel.createParallelGroup(Alignment.LEADING)
+											.addComponent(doctorContactPanelDoctorInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addComponent(doctorContactpanelIDInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addComponent(doctorContactPanelOfficePhoneInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addComponent(doctorContactPanelStreetInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addComponent(doctorContactPanelCityInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addComponent(doctorContactPanelStateInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addComponent(doctorContactPanelZipInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addComponent(doctorContactPanelEmailInput, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)))
 									.addGroup(gl_doctorContactPanel.createSequentialGroup()
 										.addGap(34)
-										.addComponent(doctorContactDoctorIdLbl, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
+										.addComponent(doctorContactEmailLbl, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
 									.addGroup(gl_doctorContactPanel.createSequentialGroup()
 										.addGap(34)
-										.addComponent(doctorContactPhoneLbl, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
+										.addComponent(label, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE))
 									.addGroup(gl_doctorContactPanel.createSequentialGroup()
-										.addGap(65)
-										.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
-									.addGroup(gl_doctorContactPanel.createSequentialGroup()
-										.addGap(65)
-										.addComponent(lblCity, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
-									.addGroup(gl_doctorContactPanel.createSequentialGroup()
-										.addGap(65)
-										.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-									.addGroup(gl_doctorContactPanel.createSequentialGroup()
-										.addGap(65)
-										.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
-								.addGap(10)
-								.addGroup(gl_doctorContactPanel.createParallelGroup(Alignment.LEADING)
-									.addComponent(doctorContactPanelDoctorInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorContactpanelIDInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorContactPanelOfficePhoneInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorContactPanelStreetInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorContactPanelCityInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorContactPanelStateInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorContactPanelZipInput, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-									.addComponent(doctorContactPanelEmailInput, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)))
-							.addGroup(gl_doctorContactPanel.createSequentialGroup()
-								.addGap(34)
-								.addComponent(doctorContactEmailLbl, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_doctorContactPanel.createSequentialGroup()
-								.addGap(34)
-								.addComponent(label, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_doctorContactPanel.createSequentialGroup()
-								.addGap(89)
-								.addComponent(doctorContactBanner, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE)))
-						.addGap(153))
+										.addGap(89)
+										.addComponent(doctorContactBanner, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE)))
+								.addGap(153))
+							.addGroup(Alignment.TRAILING, gl_doctorContactPanel.createSequentialGroup()
+								.addComponent(btnDoctorEditInformation)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnDoctorAcceptnewInfo, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+								.addGap(36))))
 			);
 			gl_doctorContactPanel.setVerticalGroup(
 				gl_doctorContactPanel.createParallelGroup(Alignment.LEADING)
@@ -231,7 +246,11 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 							.addGroup(gl_doctorContactPanel.createSequentialGroup()
 								.addGap(146)
 								.addComponent(doctorContactPanelEmailInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap(61, Short.MAX_VALUE))
+						.addPreferredGap(ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+						.addGroup(gl_doctorContactPanel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnDoctorEditInformation)
+							.addComponent(btnDoctorAcceptnewInfo))
+						.addGap(21))
 			);
 			doctorContactPanel.setLayout(gl_doctorContactPanel);
 
@@ -412,6 +431,22 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 		
 		private void doctorPaneEvents()
 		{
+			btnDoctorEditInformation.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					doctorContactPanelEmailInput.setEditable(true);
+					doctorContactPanelOfficePhoneInput.setEditable(true);
+				}
+			});
+			btnDoctorAcceptnewInfo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					//updates file
+					doctorContactPanelEmailInput.setEditable(false);
+					doctorContactPanelOfficePhoneInput.setEditable(false);
+				}
+			});
+			
 			doctorAddPatient.addActionListener(new ActionListener() { //when add pateint is selcted
 				public void actionPerformed(ActionEvent arg0) 
 				{
