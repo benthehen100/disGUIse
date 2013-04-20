@@ -96,6 +96,8 @@ public class nursePane extends JTabbedPane {
 			
 		}
 		
+	
+		
 		public nursePane()
 		{
 			
@@ -400,6 +402,28 @@ public class nursePane extends JTabbedPane {
 			nurseAccountPanel.setLayout(gl_nurseAccountPanel);
 			nursePaneEvents();
 		}
+		
+		public void refreshTable()
+		{
+			
+			DefaultTableModel model = (DefaultTableModel) nursePatientList.getModel();
+			createPatientList list1 = new createPatientList();
+			int row = model.getRowCount()-1; // get the number of rows already in the table
+			System.out.println("number of row is: " + row);
+			while(row >= 0)
+			{
+				model.removeRow(row);
+				System.out.println(row);
+				row--;
+			}
+			patientLinkedList temp = list1.head;
+			while( temp != null)
+			{
+				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),temp.getLastCheckUp()});
+				temp = temp.getNext();
+			}
+		}
+		
 		private void nursePaneEvents()
 		{
 			nurseAddPatient.addActionListener(new ActionListener() {
@@ -418,10 +442,14 @@ public class nursePane extends JTabbedPane {
 				{
 					//when the nurse opens a patients profile
 					popUp p2=new popUp();
-					selectedPatientPane spp=new selectedPatientPane();
-					p2.getContentPane().add(spp);
+					selectedPatientPane spp=new selectedPatientPane(); //calls selected patient
+					System.out.println("patient: " + nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0));
+					String fileName = nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0)+ ".txt";
+					spp.refreshPanel(fileName);
+					p2.getContentPane().add(spp); //adds the selectedPateintPane to a popup window
 					p2.pack();
-					p2.show();
+					System.out.println(fileName);
+					p2.show();;
 				}
 			});
 			nurseChangePassword.addActionListener(new ActionListener() {

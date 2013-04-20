@@ -5,6 +5,10 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public class addPatientPanel extends JPanel { //this panel is the called when a new patient is created
@@ -276,8 +280,83 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				// Pop up message after clicking submit
 				JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit"); //ask user for confirmation
 				
-				createPatientList list1 = new createPatientList();
+				createPatientList list1 = new createPatientList(); //creates a linked-list of the patients In the file already
+				try {
+		 
+					File file = new File("patientList.txt");
+		 
+					// if file doesnt exists, then create it
+					if (!file.exists()) {
+						file.createNewFile();
+					}
+		 
+					FileWriter fw = new FileWriter(file.getAbsoluteFile());
+					BufferedWriter bw = new BufferedWriter(fw);
+					patientLinkedList temp;
+					temp = list1.head;
+					
+					while(temp != null)
+					{
+						bw.write(temp.getId() + "\n");
+						bw.write(temp.getNurseId() + "\n");
+						bw.write(temp.getFirstName() + "\n");
+						bw.write(temp.getLastName() + "\n");
+						bw.write("None" + "\n");
+						temp = temp.getNext();
+					}
+					
+					bw.write(pPatientID + "\n");
+					bw.write(pFirst + "\n");
+					bw.write(pLast + "\n");
+					bw.write(pNurseID + "\n");
+					bw.write("None" + "\n");
+					bw.close();
+		 
+					System.out.println("Done");
+		 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				
+				String filename = pPatientID +".txt";
+				try {
+					 
+					File file = new File(filename);
+		 
+					// if file doesnt exists, then create it
+					if (!file.exists()) {
+						file.createNewFile();
+					}
+		 
+					FileWriter fw = new FileWriter(file.getAbsoluteFile());
+					BufferedWriter bw = new BufferedWriter(fw);
+
+					
+
+					
+					
+					bw.write(pFirst + "\n");
+					bw.write(pLast + "\n");
+					bw.write(pPatientID + "\n");
+					bw.write(pStreet + "\n");
+					bw.write(pCity + "\n");
+					bw.write(pState + "\n");
+					bw.write(pZip + "\n");
+					bw.write(pNurseID + "\n");
+					bw.write(pDoctorID + "\n");
+					bw.write(pInsurance + "\n");
+					bw.write(pEmail + "\n");
+					bw.write(pPhone + "\n");
+					bw.close();
+		 
+					System.out.println("Done");
+		 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+				disGuiseFrame.doctor.refreshTable();
+				disGuiseFrame.nurse.refreshTable();
 			}
 		});
 		//

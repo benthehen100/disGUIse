@@ -308,6 +308,27 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				
 		}
 		
+		public void refreshTable()
+		{
+			
+			DefaultTableModel model = (DefaultTableModel) doctorPatientList.getModel();
+			createPatientList list1 = new createPatientList();
+			int row = model.getRowCount()-1; // get the number of rows already in the table
+			System.out.println("number of row is: " + row);
+			while(row >= 0)
+			{
+				model.removeRow(row);
+				System.out.println(row);
+				row--;
+			}
+			patientLinkedList temp = list1.head;
+			while( temp != null)
+			{
+				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),temp.getLastCheckUp()});
+				temp = temp.getNext();
+			}
+		}
+		
 		private void doctorPaneEvents()
 		{
 			doctorAddPatient.addActionListener(new ActionListener() { //when add pateint is selcted
