@@ -275,6 +275,9 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				
 				// Pop up message after clicking submit
 				JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit"); //ask user for confirmation
+				
+				createPatientList list1 = new createPatientList();
+				
 			}
 		});
 		//

@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class selectedPatientPane extends JTabbedPane {
 	private JTextField patientInformationPanelNameInput;
@@ -448,5 +450,51 @@ public class selectedPatientPane extends JTabbedPane {
 				p1.show();
 			}
 		});
+	}
+	public void refreshPanel(String file)
+	{
+		String fName, lName, id, phone, email, street, state, zip, insurance,doctor, nurse, doctor2,city;
+		
+		FileReader fr; //reads data from file
+		
+		try {
+			fr = new FileReader(file);
+		
+		BufferedReader br = new BufferedReader(fr);
+		fName = br.readLine();
+		lName = br.readLine();
+			id = br.readLine(); //sets lines to variables
+			street = br.readLine();
+			city = br.readLine();
+			state = br.readLine();
+			zip = br.readLine();
+			nurse = br.readLine();
+			doctor = br.readLine();
+			insurance = br.readLine();
+			email = br.readLine();
+			phone = br.readLine();
+			
+			patientInformationPanelNameInput.setText(fName+ " " + lName);
+			patientInformationPanelIdInput.setText(id);
+			patientInformationPanelPatientPhoneInput.setText(phone);
+			patientInformationPanelEmailInput.setText(email);
+			patientInformationPanelStreetInput.setText(street);
+			patientInformationPanelStateInput.setText(state);
+			patientInformationPanelZipInput.setText(zip);
+			patientInformationPanelInsuranceInput.setText(insurance);
+			patientInformationPanelInsurancePhoneInpu.setText("239-481-4823");
+		//people.printList();
+		fr.close();
+		
+		} catch (Throwable e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+
+
+;
+		
+	
 	}
 }
