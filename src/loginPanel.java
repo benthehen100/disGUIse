@@ -176,8 +176,8 @@ public class loginPanel extends JPanel {
 			{
 				// Opens new box when 'Forgot Password?' is selected
 				popUp p1=new popUp();
-				changePassword cp = new changePassword();
-				p1.getContentPane().add(cp);
+				passwordReset pr = new passwordReset();
+				p1.getContentPane().add(pr);
 				p1.pack();
 				p1.show();
 			}
