@@ -56,6 +56,8 @@ public class nursePane extends JTabbedPane {
 		private JTextField nurseContactPanelOfficeStateInput;
 		private JTextField nurseContactPanelOfficeStreetInput;
 		private String name, id, doctor, doctorID, email, phone, street, state, zip;
+		private JLabel lblCity;
+		private JTextField nurseContacPanelOfficeCityInput;
 		
 		public void refreshPane(String username)
 		{
@@ -158,9 +160,7 @@ public class nursePane extends JTabbedPane {
 			label.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			label_1 = new JLabel("Street:");
-			
 			label_2 = new JLabel("State:");
-			
 			label_3 = new JLabel("Zip:");
 			
 			nurseContactPanelOfficeZipInput = new JTextField();
@@ -174,6 +174,13 @@ public class nursePane extends JTabbedPane {
 			nurseContactPanelOfficeStreetInput = new JTextField();
 			nurseContactPanelOfficeStreetInput.setEditable(false);
 			nurseContactPanelOfficeStreetInput.setColumns(10);
+			
+			lblCity = new JLabel("City:");
+			
+			nurseContacPanelOfficeCityInput = new JTextField();
+			nurseContacPanelOfficeCityInput.setEditable(false);
+			nurseContacPanelOfficeCityInput.setColumns(10);
+			
 			GroupLayout gl_nurseContactPanel = new GroupLayout(nurseContactPanel);
 			gl_nurseContactPanel.setHorizontalGroup(
 				gl_nurseContactPanel.createParallelGroup(Alignment.LEADING)
@@ -219,14 +226,19 @@ public class nursePane extends JTabbedPane {
 						.addGap(13)
 						.addComponent(nurseContactPanelOfficeStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_nurseContactPanel.createSequentialGroup()
-						.addGap(45)
+						.addGap(41)
+						.addComponent(lblCity, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+						.addGap(23)
+						.addComponent(nurseContacPanelOfficeCityInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_nurseContactPanel.createSequentialGroup()
+						.addGap(41)
 						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-						.addGap(19)
+						.addGap(23)
 						.addComponent(nurseContactPanelOfficeStateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_nurseContactPanel.createSequentialGroup()
-						.addGap(51)
+						.addGap(41)
 						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-						.addGap(13)
+						.addGap(23)
 						.addComponent(nurseContactPanelOfficeZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 			);
 			gl_nurseContactPanel.setVerticalGroup(
@@ -276,7 +288,13 @@ public class nursePane extends JTabbedPane {
 								.addGap(6)
 								.addComponent(label_1))
 							.addComponent(nurseContactPanelOfficeStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGap(6)
+						.addGap(11)
+						.addGroup(gl_nurseContactPanel.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_nurseContactPanel.createSequentialGroup()
+								.addGap(6)
+								.addComponent(lblCity))
+							.addComponent(nurseContacPanelOfficeCityInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGap(11)
 						.addGroup(gl_nurseContactPanel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_nurseContactPanel.createSequentialGroup()
 								.addGap(6)
@@ -333,7 +351,7 @@ public class nursePane extends JTabbedPane {
 					new Object[][] {
 					},
 					new String[] {
-							"Patient ID:", "First Name:", "Last Name:", "Doctor ID:", "Last Checkup:"
+							"Patient ID:", "First Name:", "Last Name:", "Doctor Name:", "Last Checkup:"
 					}
 					));
 			

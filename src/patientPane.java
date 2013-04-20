@@ -75,6 +75,12 @@ public class patientPane extends JTabbedPane
 	private JLabel label_10;
 	private JLabel label_11;
 	String name, id, email, phone, address, state, zip, insurance, doctor, doctorFile;
+	private JTextField patientContactPanelOfficeInput;
+	private JLabel lblCity_1;
+	private JTextField patientContactPanelCityInput;
+	private JLabel lblCity;
+	private JLabel lblLastName;
+	private JTextField patientContactPanelLastNameInput;
 	
 	public void refreshPanel(String file)
 	{
@@ -161,7 +167,7 @@ public class patientPane extends JTabbedPane
 				patientContactBanner.setForeground(new Color(0, 0, 128));
 				patientContactBanner.setText("\tWelcome\r\n  disGUIse Well-Check Clinic");
 				
-						patientContactNameLbl = new JLabel("Name:");
+						patientContactNameLbl = new JLabel("First Name:");
 						patientContactIdLbl = new JLabel("Patient ID:");
 						patientContactPhoneLbl = new JLabel("Telephone:");
 						patientContactEmailLbl = new JLabel("Email Address:");
@@ -241,74 +247,93 @@ public class patientPane extends JTabbedPane
 						label_10 = new JLabel("State:");
 						
 						label_11 = new JLabel("Street:");
+						
+						patientContactPanelOfficeInput = new JTextField();
+						patientContactPanelOfficeInput.setEditable(false);
+						patientContactPanelOfficeInput.setColumns(10);
+						
+						lblCity_1 = new JLabel("City:");
+						
+						patientContactPanelCityInput = new JTextField();
+						patientContactPanelCityInput.setEditable(false);
+						patientContactPanelCityInput.setColumns(10);
+						
+						lblCity = new JLabel("City:");
+						
+						lblLastName = new JLabel("Last Name:");
+						
+						patientContactPanelLastNameInput = new JTextField();
+						patientContactPanelLastNameInput.setEditable(false);
+						patientContactPanelLastNameInput.setColumns(10);
 						GroupLayout gl_patientContactPanel = new GroupLayout(patientContactPanel);
 						gl_patientContactPanel.setHorizontalGroup(
 							gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_patientContactPanel.createSequentialGroup()
 									.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
+											.addGap(51)
 											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(61)
-													.addComponent(label_6))
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(55)
-													.addComponent(label_7))
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(51)
-													.addComponent(label_8))
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(10)
-													.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
-														.addComponent(patientContactNameLbl)
-														.addComponent(patientContactIdLbl)
-														.addComponent(patientContactPhoneLbl)
-														.addComponent(patientContactEmailLbl))))
+												.addComponent(label_6)
+												.addComponent(label_7)
+												.addComponent(lblCity, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+												.addComponent(label_8))
 											.addGap(10)
 											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
-												.addComponent(patientContactPanelNameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelPatientPhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelEmailInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 												.addComponent(patientContactPanelStateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+												.addComponent(patientContactPanelCityInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+											.addGap(106)
 											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(116)
-													.addComponent(label_9))
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(110)
-													.addComponent(label_10))
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(106)
-													.addComponent(label_11))
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(79)
-													.addComponent(patientContactInsuranceLbl))
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(90)
-													.addComponent(patientContactDoctorLbl))
-												.addGroup(gl_patientContactPanel.createSequentialGroup()
-													.addGap(48)
-													.addComponent(patientContactOffPhoneLbl)))
+												.addComponent(label_9)
+												.addComponent(label_10)
+												.addComponent(lblCity_1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+												.addComponent(label_11))
 											.addGap(4)
 											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
-												.addComponent(patientContactPanelInsuranceInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelDoctorInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelOfficePhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelOfficeStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelOfficeZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 												.addComponent(patientContactPanelOfficeStateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(patientContactPanelOfficeZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+												.addComponent(patientContactPanelOfficeInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelOfficeStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+										.addGroup(gl_patientContactPanel.createSequentialGroup()
+											.addGap(100)
+											.addComponent(patientContactBanner, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE))
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
 											.addGap(20)
 											.addComponent(patientContactAddressLbl)
 											.addGap(193)
 											.addComponent(patientContactOffAddLbl))
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
-											.addGap(100)
-											.addComponent(patientContactBanner, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)))
-									.addGap(114))
+											.addGap(10)
+											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
+												.addComponent(patientContactNameLbl, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblLastName, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactIdLbl)
+												.addComponent(patientContactPhoneLbl)
+												.addComponent(patientContactEmailLbl))
+											.addGap(14)
+											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
+												.addComponent(patientContactPanelNameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelLastNameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelPatientPhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelEmailInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
+												.addGroup(gl_patientContactPanel.createSequentialGroup()
+													.addGap(79)
+													.addComponent(patientContactInsuranceLbl))
+												.addGroup(gl_patientContactPanel.createSequentialGroup()
+													.addGap(89)
+													.addComponent(patientContactDoctorLbl))
+												.addGroup(gl_patientContactPanel.createSequentialGroup()
+													.addGap(47)
+													.addComponent(patientContactOffPhoneLbl)))
+											.addGap(10)
+											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
+												.addComponent(patientContactPanelOfficePhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelDoctorInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(patientContactPanelInsuranceInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+									.addGap(98))
 						);
 						gl_patientContactPanel.setVerticalGroup(
 							gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
@@ -325,31 +350,37 @@ public class patientPane extends JTabbedPane
 											.addGap(3)
 											.addComponent(patientContactInsuranceLbl))
 										.addComponent(patientContactPanelInsuranceInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(6)
+									.addGap(8)
 									.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
-											.addGap(8)
-											.addComponent(patientContactIdLbl))
+											.addGap(3)
+											.addComponent(lblLastName))
+										.addComponent(patientContactPanelLastNameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
-											.addGap(5)
-											.addComponent(patientContactPanelIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+											.addGap(6)
+											.addComponent(patientContactDoctorLbl))
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
 											.addGap(3)
-											.addComponent(patientContactDoctorLbl))
-										.addComponent(patientContactPanelDoctorInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(11)
+											.addComponent(patientContactPanelDoctorInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+									.addGap(13)
+									.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_patientContactPanel.createSequentialGroup()
+											.addGap(3)
+											.addComponent(patientContactIdLbl))
+										.addComponent(patientContactPanelIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_patientContactPanel.createSequentialGroup()
+											.addGap(8)
+											.addComponent(patientContactOffPhoneLbl))
+										.addGroup(gl_patientContactPanel.createSequentialGroup()
+											.addGap(5)
+											.addComponent(patientContactPanelOfficePhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+									.addGap(6)
 									.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
 											.addGap(3)
 											.addComponent(patientContactPhoneLbl))
-										.addComponent(patientContactPanelPatientPhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_patientContactPanel.createSequentialGroup()
-											.addGap(5)
-											.addComponent(patientContactOffPhoneLbl))
-										.addGroup(gl_patientContactPanel.createSequentialGroup()
-											.addGap(2)
-											.addComponent(patientContactPanelOfficePhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-									.addGap(9)
+										.addComponent(patientContactPanelPatientPhoneInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addGap(11)
 									.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
 											.addGap(3)
@@ -372,6 +403,16 @@ public class patientPane extends JTabbedPane
 											.addComponent(label_11))
 										.addComponent(patientContactPanelOfficeStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addGap(6)
+									.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_patientContactPanel.createSequentialGroup()
+											.addGap(3)
+											.addComponent(lblCity))
+										.addComponent(patientContactPanelCityInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_patientContactPanel.createSequentialGroup()
+											.addGap(6)
+											.addComponent(lblCity_1))
+										.addComponent(patientContactPanelOfficeInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addGap(8)
 									.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_patientContactPanel.createSequentialGroup()
 											.addGap(3)
