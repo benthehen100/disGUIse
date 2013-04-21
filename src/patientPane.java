@@ -20,7 +20,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 
 public class patientPane extends JTabbedPane
@@ -83,18 +85,19 @@ public class patientPane extends JTabbedPane
 	private JTextField patientContactPanelLastNameInput;
 	private JButton btnPatientEditInformation;
 	private JButton btnPatientAcceptInfo;
+	private String user;
 	
 	public void refreshPanel(String file)
 	{
-		
+		user=file;
 		FileReader fr; //reads data from file
 		
 		try {
 			fr = new FileReader(file);
 		
 		BufferedReader br = new BufferedReader(fr);
-		fName = br.readLine();
-		lName = br.readLine();
+			fName = br.readLine();
+			lName = br.readLine();
 			id = br.readLine(); //sets lines to variables
 			street = br.readLine();
 			city = br.readLine();
@@ -753,6 +756,60 @@ public class patientPane extends JTabbedPane
 				patientContactPanelCityInput.setEditable(false);
 				patientContactPanelStateInput.setEditable(false);
 				patientContactPanelZipInput.setEditable(false);
+				
+				try
+				{
+				File file=new File(user);
+				BufferedReader br=new BufferedReader(new FileReader(file));
+				
+				
+				String newPhone=patientContactPanelPatientPhoneInput.getText();
+				String newEmail=patientContactPanelEmailInput.getText();
+				String newStreet=patientContactPanelStreetInput.getText();
+				String newCity=patientContactPanelCityInput.getText();
+				String newState=patientContactPanelStateInput.getText();
+				String newZip=patientContactPanelZipInput.getText();
+				
+				fName = br.readLine();
+				lName = br.readLine();
+				id = br.readLine(); //sets lines to variables
+				street = br.readLine();
+				city = br.readLine();
+				state = br.readLine();
+				zip = br.readLine();
+				nurse = br.readLine();
+				doctor = br.readLine();
+				insurance = br.readLine();
+				email = br.readLine();
+				phone = br.readLine();
+				
+				
+				phone=newPhone;
+				email=newEmail;
+				street=newStreet;
+				city=newCity;
+				state=newState;
+				zip=newZip;
+				
+				FileWriter fr=new FileWriter(file);
+				fr.write(fName+"\n");
+				fr.write(lName+"\n");
+				fr.write(id+"\n");
+				fr.write(street+"\n");
+				fr.write(city+"\n");
+				fr.write(state+"\n");
+				fr.write(zip+"\n");
+				fr.write(nurse+"\n");
+				fr.write(doctor+"\n");
+				fr.write(insurance+"\n");
+				fr.write(email+"\n");
+				fr.write(phone+"\n");
+				
+				fr.close();
+				
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}	
 			}
 		});
 		
