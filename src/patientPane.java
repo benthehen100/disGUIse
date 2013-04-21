@@ -759,31 +759,31 @@ public class patientPane extends JTabbedPane
 		patientChangePassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				popUp p3=new popUp();
+				//popUp p3=new popUp();
 				changePassword cp=new changePassword();
-				p3.getContentPane().add(cp);
-				p3.pack();
-				p3.show();
+				//p3.getContentPane().add(cp);
+				//p3.pack();
+				//p3.show();
 			}
 		});
 		patientRecoverPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				popUp p4=new popUp();
+				//popUp p4=new popUp();
 				passwordReset pr=new passwordReset();
-				p4.getContentPane().add(pr);
-				p4.pack();
-				p4.show();
+				//p4.getContentPane().add(pr);
+				//p4.pack();
+				//p4.show();
 			}
 		});
 		patientManageSecurityQuestions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				popUp p5=new popUp();
+				//popUp p5=new popUp();
 				securityQuestion sq=new securityQuestion();
-				p5.getContentPane().add(sq);
-				p5.pack();
-				p5.show();
+				//p5.getContentPane().add(sq);
+				//p5.pack();
+				//p5.show();
 			}
 		});
 	}

@@ -9,6 +9,7 @@ public class passwordReset extends JPanel {
 	private JTextField answerResetPassword;
 	private JButton submitResetPassword;
 	private JButton cancelResetPassword;
+	private popUp p4;
 	
 	public passwordReset() {
 
@@ -65,6 +66,11 @@ public class passwordReset extends JPanel {
 		);
 		setLayout(groupLayout);
 		passwordResetEvents();
+		
+		p4=new popUp();
+		p4.getContentPane().add(this); //adds it to popUpwindow
+		p4.pack();
+		p4.show();
 	}
 	private void passwordResetEvents()
 	{
@@ -79,6 +85,7 @@ public class passwordReset extends JPanel {
 			public void actionPerformed(ActionEvent e)
 			{
 				//cancel button
+				p4.dispose();
 			}
 		});
 	}

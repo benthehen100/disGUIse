@@ -17,6 +17,7 @@ public class changePassword extends JPanel {// changepassword Panel
 	private JTextField newPasswordInput;
 	private JButton changePasswordSubmit;
 	private JButton changePasswordCancel;
+	private popUp p3;
 
 	public changePassword() {
 		
@@ -90,6 +91,11 @@ public class changePassword extends JPanel {// changepassword Panel
 		setLayout(groupLayout); //sets the layout for this class to grouplayout
 		
 		changePasswordEvents(); //action events
+		
+		p3=new popUp();
+		p3.getContentPane().add(this); //addes it to popup window
+		p3.pack();
+		p3.show();
 	}
 	private void changePasswordEvents()
 	{
@@ -104,6 +110,7 @@ public class changePassword extends JPanel {// changepassword Panel
 			public void actionPerformed(ActionEvent e)
 			{
 				//cancel button effects
+				p3.dispose();
 			}
 		});
 	}

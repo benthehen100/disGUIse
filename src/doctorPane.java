@@ -490,11 +490,8 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				public void actionPerformed(ActionEvent arg0) 
 				{
 					//when the doctor selects add patient
-					popUp p1=new popUp(); //creates new pop
 					addPatientPanel ap=new addPatientPanel(); //creates new add patient panel
-					p1.getContentPane().add(ap);  //adds addpateientPanel to popup window
-					p1.pack();
-					p1.show();
+					
 				}
 			});
 			doctorSelectPatient.addActionListener(new ActionListener() {
@@ -516,31 +513,31 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			doctorChangePassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					popUp p3=new popUp();
+					//popUp p3=new popUp();
 					changePassword cp=new changePassword(); //calls creatpasswrd panel
-					p3.getContentPane().add(cp); //addes it to popup window
-					p3.pack();
-					p3.show();
+					//p3.getContentPane().add(cp); //addes it to popup window
+					//p3.pack();
+					//p3.show();
 				}
 			});
 			doctorRecoverPassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					popUp p4=new popUp();
+					//popUp p4=new popUp();
 					passwordReset pr=new passwordReset(); //calls resetpassword Panel
-					p4.getContentPane().add(pr); //adds it to popUpwindow
-					p4.pack();
-					p4.show();
+					//p4.getContentPane().add(pr); //adds it to popUpwindow
+					//p4.pack();
+					//p4.show();
 				}
 			});
 			doctorManageSecurityQuestions.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					popUp p5=new popUp();
+					//popUp p5=new popUp();
 					securityQuestion sq=new securityQuestion(); //calls security question Panel
-					p5.getContentPane().add(sq); //calls secuity question Panel
-					p5.pack();
-					p5.show();
+					//p5.getContentPane().add(sq); //calls secuity question Panel
+					//p5.pack();
+					//p5.show();
 				}
 			});
 

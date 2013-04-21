@@ -33,6 +33,7 @@ public class selectedPatientPane extends JTabbedPane {
 	private JButton prescriptionsPanelAddPrescriptions;
 	private JTextField patientInformationPanelCityInput;
 	private JTextField patientInformationPanelLastNameInput;
+	private popUp p2;
 
 	public selectedPatientPane() {
 
@@ -465,6 +466,7 @@ public class selectedPatientPane extends JTabbedPane {
 		scrollPane_1.setViewportView(SelectedPatientPresciptionsTable);
 		prescriptionsPanel.setLayout(gl_prescriptionsPanel);
 		selectedPatientEvents();
+		
 	}
 	private void selectedPatientEvents()
 	{

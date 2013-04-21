@@ -16,6 +16,7 @@ public class securityQuestion extends JPanel {
 	private JTextField secuityQuestionInput;
 	private JButton securityQuestionSubmit;
 	private JButton securityQuestionCancel;
+	private popUp p5;
 	
 	public securityQuestion() {
 		
@@ -83,6 +84,11 @@ public class securityQuestion extends JPanel {
 		);
 		setLayout(groupLayout);
 		securityQuestionEvents();
+		
+		p5=new popUp();
+		p5.getContentPane().add(this); //calls secuity question Panel
+		p5.pack();
+		p5.show();
 	}	
 		private void securityQuestionEvents()
 		{
@@ -97,6 +103,7 @@ public class securityQuestion extends JPanel {
 				public void actionPerformed(ActionEvent e) 
 				{
 					//cancel button
+					p5.dispose();
 				}
 			});
 		}

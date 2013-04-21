@@ -32,6 +32,7 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 	private JTextField addPatientPhoneInput;
 	private JButton addPatientSubmit;
 	private JButton addPatientCancel;
+	private popUp p;
 	
 	public addPatientPanel() {
 		
@@ -256,7 +257,12 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 		);
 		setLayout(groupLayout);
 		//
+		
 		addPatientEvents(); //calls the events that are done in this panel
+		p=new popUp();
+		p.getContentPane().add(this);
+		p.pack();
+		p.show();
 	}
 	private void addPatientEvents()
 	{
@@ -281,6 +287,23 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				String pPassword = addPatientPasswordInput.getText(); // Patient password
 				String pDoctorID = addPatientDoctorNameInput.getText(); // Doctor ID (of assigned doctor)
 				String pNurseID = addPatientNurseNameInput.getText(); // Nurse ID (of assigned nurse)
+				
+				if(pPatientID.length()!=0 &&
+				   pFirst.length()!=0 &&
+				   pLast.length()!=0 &&
+				   pStreet.length()!=0 &&
+				   pCity.length()!=0 &&
+				   pZip.length()!=0 &&
+				   pPhone.length()!=0 &&
+				   pEmail.length()!=0 &&
+				   pDOB.length()!=0 &&
+				   pInsurance.length()!=0 &&
+				   pUsername.length()!=0 &&
+				   pPassword.length()!=0 &&
+				   pDoctorID.length()!=0 &&
+				   pNurseID.length()!=0)
+				{
+				
 				
 				// Pop up message after clicking submit
 				JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit"); //ask user for confirmation
@@ -448,13 +471,20 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				
 				disGuiseFrame.doctor.refreshTable();
 				disGuiseFrame.nurse.refreshTable();
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(addPatientSubmit, "Please Fill All Fields");
+				}
 			}
+			
 		});
 		//
 		addPatientCancel.addActionListener(new ActionListener() { //what happens when user cancels
 			public void actionPerformed(ActionEvent e) 
 			{
 				//cancel button
+				p.dispose();
 			}
 		});
 	}
