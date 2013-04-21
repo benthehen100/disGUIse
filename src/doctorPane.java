@@ -4,7 +4,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -54,11 +56,12 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 		private JLabel label_2;
 		private JLabel label_3;
 		private JTextField doctorContactPanelOfficePhoneInput;
-		private String name, id, email, phone, address, state, zip, insurance, doctor;
+		private String name, id, email, phone, street,city, state, zip, insurance, doctor;
 		private JTextField doctorContactPanelCityInput;
 		private JLabel lblCity;
 		private JButton btnDoctorEditInformation;
 		private JButton btnDoctorAcceptnewInfo;
+		private String user;
 		
 		public doctorPane() //doctorpane class
 		{
@@ -375,18 +378,17 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 
 		public void refreshPanel(String file)
 		{
-			
+				user=file;
 				FileReader fr; //reads data from file
 				try {
 					fr = new FileReader(file);
 				
 				BufferedReader br = new BufferedReader(fr);
-				name = br.readLine();
-			
+					name = br.readLine();
 					id = br.readLine(); //sets lines to variables
 					email = br.readLine();
 					phone = br.readLine();
-					address = br.readLine();
+					street = br.readLine();
 					state = br.readLine();
 					zip = br.readLine();
 				
@@ -398,7 +400,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					e1.printStackTrace();
 				}
 				
-				doctorContactPanelStreetInput.setText(address);
+				doctorContactPanelStreetInput.setText(street);
 				doctorContactPanelStateInput.setText(state);
 				doctorContactPanelOfficePhoneInput.setText(phone);
 				doctorContactpanelIDInput.setText(id);
@@ -444,6 +446,41 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					//updates file
 					doctorContactPanelEmailInput.setEditable(false);
 					doctorContactPanelOfficePhoneInput.setEditable(false);
+					
+					try
+					{
+					File file=new File(user);
+					BufferedReader br=new BufferedReader(new FileReader(file));
+					
+					String newEmail=doctorContactPanelEmailInput.getText();
+					String newPhone=doctorContactPanelOfficePhoneInput.getText();
+					
+					name = br.readLine();
+					id = br.readLine();
+					email = br.readLine();
+					phone = br.readLine();
+					street = br.readLine();
+					state = br.readLine();
+					zip = br.readLine();
+					
+					email=newEmail;
+					phone=newPhone;
+					
+					FileWriter fr=new FileWriter(file);
+					fr.write(name+"\n");
+					
+					fr.write(id+"\n");
+					fr.write(email+"\n");
+					fr.write(phone+"\n");
+					fr.write(street+"\n");
+					//fr.write(city+"\n");
+					fr.write(state+"\n");
+					fr.write(zip+"\n");
+					fr.close();
+					
+					}catch (Throwable e1) {
+						e1.printStackTrace();
+					}	
 				}
 			});
 			

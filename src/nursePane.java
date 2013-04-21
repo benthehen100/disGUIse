@@ -3,7 +3,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -55,14 +59,16 @@ public class nursePane extends JTabbedPane {
 		private JTextField nurseContactPanelOfficeZipInput;
 		private JTextField nurseContactPanelOfficeStateInput;
 		private JTextField nurseContactPanelOfficeStreetInput;
-		private String name, id, doctor, doctorID, email, phone, street, state, zip;
+		private String name, id, doctor, doctorID, email, phone, street,city, state, zip;
 		private JLabel lblCity;
 		private JTextField nurseContacPanelOfficeCityInput;
 		private JButton btnNurseEditInformation;
 		private JButton btnNurseAcceptInfor;
+		private String user;
 		
 		public void refreshPane(String username)
 		{
+			user=username;
 			FileReader fr;
 			try {
 				fr = new FileReader(username);
@@ -95,8 +101,6 @@ public class nursePane extends JTabbedPane {
 			nurseContactPanelOfficeZipInput.setText(zip);
 			nurseContactPanelOfficeStateInput.setText(state);
 			nurseContactPanelOfficeStreetInput.setText(street);
-			
-			
 			
 		}
 		
@@ -471,6 +475,7 @@ public class nursePane extends JTabbedPane {
 				{
 					nurseContactPanelEmailInput.setEditable(true);
 					nurseContactPanelOfficePhoneInput.setEditable(true);
+					
 				}
 			});
 			btnNurseAcceptInfor.addActionListener(new ActionListener() {
@@ -479,6 +484,46 @@ public class nursePane extends JTabbedPane {
 					//updates file
 					nurseContactPanelEmailInput.setEditable(false);
 					nurseContactPanelOfficePhoneInput.setEditable(false);
+					
+					String newEmail=nurseContactPanelEmailInput.getText();
+					String newPhone=nurseContactPanelOfficePhoneInput.getText();
+					
+					try
+					{
+					File file=new File(user);
+					BufferedReader br=new BufferedReader(new FileReader(file));
+					
+					name = br.readLine();
+					id = br.readLine();
+					doctor = br.readLine();
+					doctorID = br.readLine();
+					email = br.readLine();
+					phone = br.readLine();
+					street = br.readLine();
+					//city=br.readLine();
+					state = br.readLine();
+					zip = br.readLine();
+					
+					email=newEmail;
+					phone=newPhone;
+					
+					FileWriter fr=new FileWriter(file);
+					fr.write(name+"\n");
+					
+					fr.write(id+"\n");
+					fr.write(doctor+"\n");
+					fr.write(doctorID+"\n");
+					fr.write(email+"\n");
+					fr.write(phone+"\n");
+					fr.write(street+"\n");
+					//fr.write(city+"\n");
+					fr.write(state+"\n");
+					fr.write(zip+"\n");
+					fr.close();
+					
+					}catch (Throwable e1) {
+						e1.printStackTrace();
+					}	
 				}
 			});
 			
