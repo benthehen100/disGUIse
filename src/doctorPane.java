@@ -56,7 +56,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 		private JLabel label_2;
 		private JLabel label_3;
 		private JTextField doctorContactPanelOfficePhoneInput;
-		private String name, id, email, phone, street,city, state, zip, insurance, doctor;
+		private String name,  id, email, phone, street,city, state, zip, insurance, doctor;
 		private JTextField doctorContactPanelCityInput;
 		private JLabel lblCity;
 		private JButton btnDoctorEditInformation;
@@ -389,6 +389,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					email = br.readLine();
 					phone = br.readLine();
 					street = br.readLine();
+					city = br.readLine();
 					state = br.readLine();
 					zip = br.readLine();
 				
@@ -399,7 +400,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+				doctorContactPanelCityInput.setText(city);
 				doctorContactPanelStreetInput.setText(street);
 				doctorContactPanelStateInput.setText(state);
 				doctorContactPanelOfficePhoneInput.setText(phone);

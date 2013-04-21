@@ -82,6 +82,7 @@ public class nursePane extends JTabbedPane {
 				email = br.readLine();
 				phone = br.readLine();
 				street = br.readLine();
+				city = br.readLine();
 				state = br.readLine();
 				zip = br.readLine();
 			
@@ -101,6 +102,7 @@ public class nursePane extends JTabbedPane {
 			nurseContactPanelOfficeZipInput.setText(zip);
 			nurseContactPanelOfficeStateInput.setText(state);
 			nurseContactPanelOfficeStreetInput.setText(street);
+			nurseContacPanelOfficeCityInput.setText(city);
 			
 		}
 		

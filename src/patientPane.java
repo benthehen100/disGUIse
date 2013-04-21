@@ -133,7 +133,6 @@ public class patientPane extends JTabbedPane
 		
 		BufferedReader br2 = new BufferedReader(fr2);
 		fName = br2.readLine();
-		lName = br2.readLine();
 	
 			id = br2.readLine(); //sets lines to variables
 			email = br2.readLine();
