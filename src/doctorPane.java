@@ -461,6 +461,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					email = br.readLine();
 					phone = br.readLine();
 					street = br.readLine();
+					city=br.readLine();
 					state = br.readLine();
 					zip = br.readLine();
 					
@@ -474,7 +475,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					fr.write(email+"\n");
 					fr.write(phone+"\n");
 					fr.write(street+"\n");
-					//fr.write(city+"\n");
+					fr.write(city+"\n");
 					fr.write(state+"\n");
 					fr.write(zip+"\n");
 					fr.close();
