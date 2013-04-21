@@ -74,7 +74,7 @@ public class patientPane extends JTabbedPane
 	private JLabel label_9;
 	private JLabel label_10;
 	private JLabel label_11;
-	String name, id, email, phone, address, state, zip, insurance, doctor, doctorFile;
+	String fName, id, email, phone, street, state, zip, insurance, doctor, nurse, doctorFile, lName, city;
 	private JTextField patientContactPanelOfficeInput;
 	private JLabel lblCity_1;
 	private JTextField patientContactPanelCityInput;
@@ -93,16 +93,18 @@ public class patientPane extends JTabbedPane
 			fr = new FileReader(file);
 		
 		BufferedReader br = new BufferedReader(fr);
-		name = br.readLine();
-	
+		fName = br.readLine();
+		lName = br.readLine();
 			id = br.readLine(); //sets lines to variables
-			phone = br.readLine();
-			email = br.readLine();
-			address = br.readLine();
+			street = br.readLine();
+			city = br.readLine();
 			state = br.readLine();
 			zip = br.readLine();
-			insurance = br.readLine();
+			nurse = br.readLine();
 			doctor = br.readLine();
+			insurance = br.readLine();
+			email = br.readLine();
+			phone = br.readLine();
 		
 		//people.printList();
 		fr.close();
@@ -113,12 +115,14 @@ public class patientPane extends JTabbedPane
 		}
 		
 		doctorFile = doctor + ".txt";
-		patientContactPanelNameInput.setText(name);
+		patientContactPanelNameInput.setText(fName);
+		patientContactPanelLastNameInput.setText(lName);
 		patientContactPanelIdInput.setText(id);
 		patientContactPanelPatientPhoneInput.setText(phone);
 		patientContactPanelEmailInput.setText(email);
-		patientContactPanelStreetInput.setText(address);
+		patientContactPanelStreetInput.setText(street);
 		patientContactPanelStateInput.setText(state);
+		patientContactPanelCityInput.setText(city);
 		patientContactPanelZipInput.setText(zip);
 		patientContactPanelInsuranceInput.setText(insurance);
 		patientContactPanelDoctorInput.setText(doctor);
@@ -128,12 +132,14 @@ public class patientPane extends JTabbedPane
 			fr2 = new FileReader("dbach.txt"); // temporary fix, every patient will call on this file...or at least until a list of doctors is created to link each doctor to a text file.
 		
 		BufferedReader br2 = new BufferedReader(fr2);
-		name = br2.readLine();
+		fName = br2.readLine();
+		lName = br2.readLine();
 	
 			id = br2.readLine(); //sets lines to variables
 			email = br2.readLine();
 			phone = br2.readLine();
-			address = br2.readLine();
+			street = br2.readLine();
+			city = br2.readLine();
 			state = br2.readLine();
 			zip = br2.readLine();
 		
@@ -144,9 +150,9 @@ public class patientPane extends JTabbedPane
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+		patientContactPanelOfficeInput.setText(city);
 		patientContactPanelOfficePhoneInput.setText(phone);
-		patientContactPanelOfficeStreetInput.setText(address);
+		patientContactPanelOfficeStreetInput.setText(street);
 		patientContactPanelOfficeStateInput.setText(state);
 		patientContactPanelOfficeZipInput.setText(zip);
 	}

@@ -129,6 +129,7 @@ public class loginPanel extends JPanel {
 				}
 				
 				temp = people.head;
+				String id = "1.txt"; //temporary
 				while(temp != null)
 				{
 					System.out.println(temp.username);
@@ -155,7 +156,7 @@ public class loginPanel extends JPanel {
 							else if(temp.type.equalsIgnoreCase("patient"))
 							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
-								disGuiseFrame.patient.refreshPanel(name);
+								disGuiseFrame.patient.refreshPanel(id); 
 							}
 						}
 						else

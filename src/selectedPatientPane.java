@@ -510,7 +510,10 @@ public class selectedPatientPane extends JTabbedPane {
 			email = br.readLine();
 			phone = br.readLine();
 			
-			patientInformationPanelNameInput.setText(fName+ " " + lName);
+			patientInformationPanelNameInput.setText(fName);
+			patientInformationPanelLastNameInput.setText(lName);
+			patientInformationPanelCityInput.setText(city);
+			
 			patientInformationPanelIdInput.setText(id);
 			patientInformationPanelPatientPhoneInput.setText(phone);
 			patientInformationPanelEmailInput.setText(email);
