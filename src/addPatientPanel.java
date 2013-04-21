@@ -5,8 +5,10 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -358,6 +360,92 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 					e.printStackTrace();
 				}
 
+				
+				linkList people = new linkList();
+				Link temp2;
+				FileReader fr;
+				try {
+					fr = new FileReader("LoginCred.txt");
+				
+				BufferedReader br = new BufferedReader(fr);
+				String a,b,c,d,e2,f; //e is already used by action listener, so I used e2
+				while((a = br.readLine()) != null)
+				{
+					b = br.readLine();
+					c = br.readLine();
+					d = br.readLine();
+					e2 = br.readLine();
+					f = br.readLine();
+					
+					System.out.println("a = " + a);
+					System.out.println("b = " + b);
+					System.out.println("c = " + c);
+					System.out.println("d = " + d);
+					System.out.println("e2 = " + e2);
+					System.out.println("f = " + f);
+					
+					people.insert(a, b, c, d , e2, f);
+				}
+				//people.printList();
+				fr.close();
+				
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				try {
+					
+					temp2 = people.head;
+					File file = new File("LoginCred.txt");
+		 
+					// if file doesnt exists, then create it
+					if (!file.exists()) {
+						file.createNewFile();
+					}
+		 
+					FileWriter fw3 = new FileWriter(file.getAbsoluteFile());
+					BufferedWriter bw3 = new BufferedWriter(fw3);
+					patientLinkedList temp;
+					temp = list1.head;
+					
+					while(temp2 != null)
+					{
+						bw3.write(temp2.username);
+						bw3.newLine();
+						bw3.write(temp2.password);
+						bw3.newLine();
+						bw3.write(temp2.type);
+						bw3.newLine();
+						bw3.write(temp2.id);
+						bw3.newLine();
+						bw3.write(temp2.recovery);
+						bw3.newLine();
+						bw3.write(temp2.answer);
+						bw3.newLine();
+						temp2 = temp2.next;
+					}
+					
+					bw3.write(pUsername);
+					bw3.newLine();
+					bw3.write(pPassword);
+					bw3.newLine();
+					bw3.write("patient");
+					bw3.newLine();
+					bw3.write(pPatientID);
+					bw3.newLine();
+					bw3.write("Not set");
+					bw3.newLine();
+					bw3.write("N/A");
+					bw3.close();
+		 
+					System.out.println("Done");
+		 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				
 				disGuiseFrame.doctor.refreshTable();
 				disGuiseFrame.nurse.refreshTable();
 			}

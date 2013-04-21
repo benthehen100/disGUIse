@@ -1,12 +1,36 @@
 dbach
 123456
-Doctor
-aawad
-123456
-Nurse
-shanson
-123456
-Patient
+doctor
+100
+N/A
+N/A
 migi
 123
-Doctor
+doctor
+200
+N/A
+N/A
+aawad
+123456
+nurse
+300
+N/A
+N/A
+shanson
+123456
+patient
+1
+Not set
+N/A
+jbond
+123
+patient
+007
+Not set
+N/A
+fineass
+123
+patient
+006
+Not set
+N/A

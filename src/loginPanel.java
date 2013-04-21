@@ -110,15 +110,23 @@ public class loginPanel extends JPanel {
 					fr = new FileReader("LoginCred.txt");
 				
 				BufferedReader br = new BufferedReader(fr);
-				String a,b,c;
+				String a,b,c,d,e2,f; //e is already used by action listener, so I used e2
 				while((a = br.readLine()) != null)
 				{
 					b = br.readLine();
 					c = br.readLine();
+					d = br.readLine();
+					e2 = br.readLine();
+					f = br.readLine();
+					
 					System.out.println("a = " + a);
 					System.out.println("b = " + b);
 					System.out.println("c = " + c);
-					people.insert(a, b, c);
+					System.out.println("d = " + d);
+					System.out.println("e2 = " + e2);
+					System.out.println("f = " + f);
+					
+					people.insert(a, b, c, d , e2, f);
 				}
 				//people.printList();
 				fr.close();
@@ -128,8 +136,8 @@ public class loginPanel extends JPanel {
 					e1.printStackTrace();
 				}
 				
+				String idFile;//used for storing patient's file
 				temp = people.head;
-				String id = "1.txt"; //temporary
 				while(temp != null)
 				{
 					System.out.println(temp.username);
@@ -156,7 +164,8 @@ public class loginPanel extends JPanel {
 							else if(temp.type.equalsIgnoreCase("patient"))
 							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
-								disGuiseFrame.patient.refreshPanel(id); 
+								idFile = temp.id + ".txt";
+								disGuiseFrame.patient.refreshPanel(idFile); 
 							}
 						}
 						else
