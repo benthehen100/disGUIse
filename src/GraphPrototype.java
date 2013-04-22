@@ -55,6 +55,13 @@ public class GraphPrototype{
         }
     }
  
+    
+    public void updateBloodPressure(int[] a)
+    {
+    	bldpressure = a;
+    }
+    
+    
      private int getMax() {                                         //determines max to see how high to make graph
         int val_max = 0;
         for(int i = 0; i < bldpressure.length; i++) {
@@ -62,6 +69,7 @@ public class GraphPrototype{
                 val_max = bldpressure[i];
         }
         return val_max;
-    } 
+    }
+     
  
 }

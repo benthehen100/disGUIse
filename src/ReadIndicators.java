@@ -2,15 +2,27 @@ import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
 import javax.swing.*;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
  
 	
 	
 public class ReadIndicators {
 	
-	 
+	public static int[] convertIntegers(ArrayList<Integer> integers) // this shit converts ArrayList to an int[]
+	{
+	    int[] ret = new int[integers.size()];
+	    Iterator<Integer> iterator = integers.iterator();
+	    for (int i = 0; i < ret.length; i++)
+	    {
+	        ret[i] = iterator.next().intValue();
+	    }
+	    return ret;
+	}
+	
 	public static void main(String[] args) {
  
 		ArrayList<Integer> data = new ArrayList<Integer>();             //So the arrayList data gets all the integers in the file,
@@ -61,7 +73,16 @@ public class ReadIndicators {
 			System.out.println(weight.get(i));
 		}
 		
+		System.out.println(weight);
 		
+        JFrame Frame = new JFrame();
+        Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GraphED graph1 = new GraphED();
+        graph1.updateBloodPressure(convertIntegers(weight)); //converts weight to an int[], which can then be used updatebloodPressure graph1.
+        Frame.getContentPane().add(graph1); //plots graph1
+        Frame.setSize(500,500); 
+        Frame.setVisible(true);
+        
 		}
 	}
 
