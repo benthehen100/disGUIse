@@ -56,6 +56,7 @@ public class patientPane extends JTabbedPane
 	private JTextField HealthRecordsPanelUpdateIndicatorsPanelPressureInput1;
 	private JTextField HealthRecordsPanelUpdateIndicatorsPanelPressureInput2;
 	private JTextField HealthRecordsPanelUpdateIndicatorsPanelWeightInput;
+	private JTextField HealthRecordsPanelUpdateIndicatorsPanelDateInput;
 	private JTextField textField_4;
 	private JTextField patientContactPanelNameInput;
 	private JTextField patientContactPanelIdInput;
@@ -85,6 +86,7 @@ public class patientPane extends JTabbedPane
 	private JTextField patientContactPanelLastNameInput;
 	private JButton btnPatientEditInformation;
 	private JButton btnPatientAcceptInfo;
+	private JButton HealthRecordsPanelUpdateIndicatorsPanelSubmit;
 	private String user;
 	
 	public void refreshPanel(String file)
@@ -535,7 +537,7 @@ public class patientPane extends JTabbedPane
 		patientUpdateIndicatorsPanel = new JPanel();
 		patientRecordsPane.addTab("Update Indicators", null, patientUpdateIndicatorsPanel, null);
 		
-		JButton HealthRecordsPanelUpdateIndicatorsPanelSubmit = new JButton("Submit");
+		HealthRecordsPanelUpdateIndicatorsPanelSubmit = new JButton("Submit");
 		JLabel label = new JLabel("mg/dL");
 		HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput = new JTextField(5);
 		JLabel label_1 = new JLabel("Blood Glucose");
@@ -546,6 +548,8 @@ public class patientPane extends JTabbedPane
 		JLabel label_4 = new JLabel("lbs");
 		HealthRecordsPanelUpdateIndicatorsPanelWeightInput = new JTextField(5);
 		JLabel label_5 = new JLabel("Weight:");
+		HealthRecordsPanelUpdateIndicatorsPanelDateInput = new JTextField(5);
+		JLabel label_date = new JLabel("Date:");
 		textField_4 = new JTextField(10);
 		textField_4.setText("Update the textboxes with your Health Indicators, Submit to save.");
 		textField_4.setEditable(false);
