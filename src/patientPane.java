@@ -88,6 +88,7 @@ public class patientPane extends JTabbedPane
 	private JButton btnPatientAcceptInfo;
 	private JButton HealthRecordsPanelUpdateIndicatorsPanelSubmit;
 	private String user;
+	private JTextField updateIndicatorsPanelDateInput;
 	
 	public void refreshPanel(String file)
 	{
@@ -560,43 +561,50 @@ public class patientPane extends JTabbedPane
 		textArea.setForeground(new Color(0, 0, 102));
 		textArea.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		textArea.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		
+		JLabel lblDate = new JLabel("Date");
+		
+		updateIndicatorsPanelDateInput = new JTextField(5);
+		
+		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
 		GroupLayout gl_patientUpdateIndicatorsPanel = new GroupLayout(patientUpdateIndicatorsPanel);
 		gl_patientUpdateIndicatorsPanel.setHorizontalGroup(
 			gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
+					.addGap(12)
 					.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
-							.addGap(12)
 							.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblDate, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 								.addComponent(label_5)
 								.addComponent(label_2)
 								.addComponent(label_1))
 							.addGap(10)
 							.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(updateIndicatorsPanelDateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelWeightInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelPressureInput1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
-									.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-										.addComponent(HealthRecordsPanelUpdateIndicatorsPanelWeightInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addGap(4)
-									.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-										.addComponent(label_4)
-										.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
-											.addComponent(label)
-											.addGap(18)
-											.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
-								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelPressureInput1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
-							.addGap(12)
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
-							.addGap(12)
-							.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
-							.addGap(172)
-							.addComponent(HealthRecordsPanelUpdateIndicatorsPanelPressureInput2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(label_3)))
-					.addGap(4))
+									.addComponent(lblXxxxxxxx, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
+									.addGap(4)
+									.addComponent(label_4))
+								.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
+									.addGap(33)
+									.addComponent(HealthRecordsPanelUpdateIndicatorsPanelPressureInput2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(10)
+									.addComponent(label_3))
+								.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
+									.addGap(4)
+									.addComponent(label)
+									.addGap(18)
+									.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
+						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE))
+					.addGap(58))
 		);
 		gl_patientUpdateIndicatorsPanel.setVerticalGroup(
 			gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
@@ -605,7 +613,16 @@ public class patientPane extends JTabbedPane
 					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
 					.addGap(6)
 					.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+					.addGap(11)
+					.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblDate))
+						.addComponent(updateIndicatorsPanelDateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblXxxxxxxx)))
+					.addGap(22)
 					.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
 							.addGap(3)
@@ -632,10 +649,10 @@ public class patientPane extends JTabbedPane
 						.addComponent(HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
 							.addGap(3)
-							.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit)
-								.addComponent(label))))
-					.addGap(23))
+							.addComponent(label))
+						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit))))
 		);
 		patientUpdateIndicatorsPanel.setLayout(gl_patientUpdateIndicatorsPanel);
 

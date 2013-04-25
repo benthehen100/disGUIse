@@ -34,6 +34,7 @@ public class selectedPatientPane extends JTabbedPane {
 	private JTextField patientInformationPanelCityInput;
 	private JTextField patientInformationPanelLastNameInput;
 	private popUp p2;
+	private JTextField updateIndicatorsPanelDateInput;
 
 	public selectedPatientPane() {
 
@@ -308,63 +309,69 @@ public class selectedPatientPane extends JTabbedPane {
 
 		updateIndicatorsPanelSubmit = new JButton("Submit");
 		
-
+		JLabel lblDate = new JLabel("Date:");
+		
+		updateIndicatorsPanelDateInput = new JTextField(5);
+		
+		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
 		GroupLayout gl_updateIndicatorsPanel = new GroupLayout(updateIndicatorsPanel);
 		gl_updateIndicatorsPanel.setHorizontalGroup(
 			gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-					.addGap(33)
 					.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-							.addComponent(label_6, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-							.addGap(43))
-						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-							.addComponent(label_8, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-							.addGap(10))
-						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-							.addComponent(label_10, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-							.addGap(15)))
-					.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(updateIndicatorsPanelWeightInput, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-						.addComponent(updateIndicatorsPanelPressureInput1, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-						.addComponent(updateIndicatorsPanelGlucoseInput, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
-					.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-							.addGap(4)
-							.addComponent(label_7, GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
-							.addGap(290))
 						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
 							.addGap(33)
-							.addComponent(updateIndicatorsPanelPressureInput2, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+							.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblDate, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_10, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
 							.addGap(10)
-							.addComponent(label_9, GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
-							.addGap(200))
+							.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(updateIndicatorsPanelDateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(updateIndicatorsPanelWeightInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(updateIndicatorsPanelPressureInput1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(updateIndicatorsPanelGlucoseInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(4)
+							.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_11, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblXxxxxxxx, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-							.addGap(40)
-							.addComponent(label_11, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-							.addGap(238)))
-					.addGap(52))
-				.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-					.addGap(166)
-					.addComponent(updateIndicatorsPanelSubmit, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-					.addGap(238))
-				.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-					.addGap(33)
-					.addComponent(updateIndicatorsPanelPrompt, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
-					.addGap(101))
-				.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-					.addGap(33)
-					.addComponent(updateIndicatorsPanelBanner, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE)
-					.addGap(52))
+							.addGap(166)
+							.addComponent(updateIndicatorsPanelSubmit, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
+							.addGap(33)
+							.addComponent(updateIndicatorsPanelPrompt, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
+							.addGap(33)
+							.addComponent(updateIndicatorsPanelBanner, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
+							.addGap(216)
+							.addComponent(updateIndicatorsPanelPressureInput2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(label_9, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
+					.addGap(98))
 		);
 		gl_updateIndicatorsPanel.setVerticalGroup(
 			gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-					.addContainerGap()
+					.addGap(11)
 					.addComponent(updateIndicatorsPanelBanner, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
 					.addGap(6)
 					.addComponent(updateIndicatorsPanelPrompt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+					.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
+							.addGap(22)
+							.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
+									.addGap(3)
+									.addComponent(lblDate))
+								.addComponent(updateIndicatorsPanelDateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
+							.addGap(25)
+							.addComponent(lblXxxxxxxx)))
+					.addGap(15)
 					.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
 							.addGap(3)
@@ -393,8 +400,7 @@ public class selectedPatientPane extends JTabbedPane {
 							.addGap(3)
 							.addComponent(label_11)))
 					.addGap(6)
-					.addComponent(updateIndicatorsPanelSubmit)
-					.addContainerGap(98, Short.MAX_VALUE))
+					.addComponent(updateIndicatorsPanelSubmit))
 		);
 		updateIndicatorsPanel.setLayout(gl_updateIndicatorsPanel);
 
