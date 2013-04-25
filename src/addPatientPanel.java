@@ -302,19 +302,29 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 					
 					while(temp != null)
 					{
-						bw.write(temp.getId() + "\n");
-						bw.write(temp.getNurseId() + "\n");
-						bw.write(temp.getFirstName() + "\n");
-						bw.write(temp.getLastName() + "\n");
-						bw.write("None" + "\n");
+						bw.write(temp.getId());
+						bw.newLine();
+						bw.write(temp.getFirstName());
+						bw.newLine();
+						bw.write(temp.getLastName());
+						bw.newLine();
+						bw.write(temp.getNurseId());
+						bw.newLine();
+						bw.write("None");
+						bw.newLine();
 						temp = temp.getNext();
 					}
 					
-					bw.write(pPatientID + "\n");
-					bw.write(pFirst + "\n");
-					bw.write(pLast + "\n");
-					bw.write(pNurseID + "\n");
-					bw.write("None" + "\n");
+					bw.write(pPatientID);
+					bw.newLine();
+					bw.write(pFirst);
+					bw.newLine();
+					bw.write(pLast);
+					bw.newLine();
+					bw.write(pNurseID);
+					bw.newLine();
+					bw.write("None");
+					bw.newLine();
 					bw.close();
 		 
 					System.out.println("Done");
