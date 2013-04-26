@@ -102,7 +102,81 @@ public class changePassword extends JPanel {// changepassword Panel
 		changePasswordSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
+				String oldPassword, newPassword, newPasswordConfirm;
+				oldPassword = oldPasswordInput.getText();
+				newPassword = newPasswordInput.getText();
+				newPasswordConfirm = confirmPasswordInput.getText();
+				
+				linkList people = new linkList();
+				Link temp;
+				FileReader fr;
+				if (newPassword.equals(newPasswordConfirm))
+				{
+				try {
+					fr = new FileReader("LoginCred.txt");
+					
+				BufferedReader br = new BufferedReader(fr);
+				String a, b, c, d, e2, f;
+				while((a = br.readLine()) != null)
+				{
+					b = br.readLine();
+					c = br.readLine();
+					d = br.readLine();
+					e2 = br.readLine();
+					f = br.readLine();
+					
+					System.out.println("a = " + a);
+					System.out.println("b = " + b);
+					System.out.println("c = " + c);
+					System.out.println("d = " + d);
+					System.out.println("e2 = " + e2);
+					System.out.println("f = " + f);
+					
+					people.insert(a, b, c, d , e2, f);
+				}
+				fr.close();
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}
+				temp = people.head;
+				while (temp != null)
+				{
+					System.out.println(temp.password);
+					if(disGuiseFrame.Username.equalsIgnoreCase(temp.username))
+					{
+						if(oldPassword.equals(temp.password))
+						{
+							System.out.println("User Match!");
+							temp.password = newPassword;
+							JOptionPane.showMessageDialog(null, "Password Changed", "Password Change Status", JOptionPane.OK_OPTION);
+						}
+					}
+					temp = temp.next;
+				}
+				temp = people.head;
+				try {
+					
+				FileWriter wr = new FileWriter("LoginCred.txt");
+					while (temp != null)
+					{
+						wr.write(temp.username + "\n");
+						wr.write(temp.password + "\n");
+						wr.write(temp.type + "\n");
+						wr.write(temp.id + "\n");
+						wr.write(temp.recovery + "\n");
+						wr.write(temp.answer + "\n");
+						temp = temp.next;
+					}
+					wr.close();
 				//submit button effects
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "New Password and Password Confirm do not match.", "Error Message", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		//
