@@ -66,6 +66,14 @@ class disGuiseFrame extends JFrame //class extends jframe
 		
 		contentPane.add(patient,PATIENT);//adds it to contentPane
 	} 
+	public static void setUsername(String uName)
+	{
+		disGuiseFrame.Username = uName;
+	}
+	public static String getUsername()
+	{
+		return disGuiseFrame.Username;
+	}
 }
 
 class disGUIseMenuBar extends JMenuBar  //class for JMenuBar
