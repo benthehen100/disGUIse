@@ -1,0 +1,12 @@
+Read
+Smith
+002
+123 E Fake Rd
+Phoenix
+AZ
+85281
+M. Nurse
+W. Doctor
+Blue Cross Blue Shield
+rsmith@example.com
+4805551234

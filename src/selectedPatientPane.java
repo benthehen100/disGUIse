@@ -10,7 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 public class selectedPatientPane extends JTabbedPane {
 	private JTextField patientInformationPanelNameInput;
@@ -35,6 +37,8 @@ public class selectedPatientPane extends JTabbedPane {
 	private JTextField patientInformationPanelLastNameInput;
 	private popUp p2;
 	private JTextField updateIndicatorsPanelDateInput;
+	String patientFileName, patientFile;
+	String weightInput, dateInput, pressureInput1, pressureInput2, glucoseInput;
 
 	public selectedPatientPane() {
 
@@ -511,7 +515,64 @@ public class selectedPatientPane extends JTabbedPane {
 		updateIndicatorsPanelSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				//submit update indicators
+				// Updates patient indicators when 'Submit' is clicked
+				
+				String patientIndicatorFile; // Establishes variable for patient file
+				
+				System.out.println("Current patient: " + patientFile); // console test
+				
+				// Fields are not editable after clicking the 'Submit' button
+				updateIndicatorsPanelDateInput.setEditable(false);
+				updateIndicatorsPanelGlucoseInput.setEditable(false);
+				updateIndicatorsPanelPressureInput1.setEditable(false);
+				updateIndicatorsPanelPressureInput2.setEditable(false);
+				updateIndicatorsPanelWeightInput.setEditable(false);
+				
+				// Defines patientIndicatorFile
+				patientIndicatorFile = patientFile + "indicators.txt";
+				
+				System.out.println("Current file: " + patientIndicatorFile); // console test
+				
+				try
+				{
+				File file1 = new File(patientIndicatorFile);
+				
+				// Creates new indicator file if one is not present already
+				if (!file1.exists()) {
+					file1.createNewFile();
+				}
+				
+				BufferedReader br_ind = new BufferedReader(new FileReader(file1));
+				
+				// Reads information from text fields
+				String newDateInput = updateIndicatorsPanelDateInput.getText();
+				String newWeightInput = updateIndicatorsPanelWeightInput.getText();
+				String newPressureInput1 = updateIndicatorsPanelPressureInput1.getText();
+				String newPressureInput2 = updateIndicatorsPanelPressureInput2.getText();
+				String newGlucoseInput = updateIndicatorsPanelGlucoseInput.getText();
+				
+				// Sets text field information to variables
+				dateInput = newDateInput;
+				weightInput = newWeightInput;
+				pressureInput1 = newPressureInput1;
+				pressureInput2 = newPressureInput2;
+				glucoseInput = newGlucoseInput;
+				
+				// Appends new indicators to end of old file
+				FileWriter fw_ind=new FileWriter(patientIndicatorFile, true);
+				fw_ind.write(dateInput + "\n");
+				fw_ind.write(weightInput + "\n");
+				fw_ind.write(pressureInput1 + "\n");
+				fw_ind.write(pressureInput2 + "\n");
+				fw_ind.write(glucoseInput + "\n");
+
+				fw_ind.flush();
+				fw_ind.close();
+				br_ind.close();
+				
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		//
@@ -530,6 +591,10 @@ public class selectedPatientPane extends JTabbedPane {
 	public void refreshPanel(String file)
 	{
 		String fName, lName, id, phone, email, street, state, zip, insurance,doctor, nurse, doctor2,city;
+		
+		patientFileName = file;
+		patientFile = patientFileName.replaceAll(".txt", "");
+		System.out.println("Current patient: " + patientFileName); // console test
 		
 		FileReader fr; //reads data from file
 		

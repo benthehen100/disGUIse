@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -56,7 +57,6 @@ public class patientPane extends JTabbedPane
 	private JTextField HealthRecordsPanelUpdateIndicatorsPanelPressureInput1;
 	private JTextField HealthRecordsPanelUpdateIndicatorsPanelPressureInput2;
 	private JTextField HealthRecordsPanelUpdateIndicatorsPanelWeightInput;
-	private JTextField HealthRecordsPanelUpdateIndicatorsPanelDateInput;
 	private JTextField textField_4;
 	private JTextField patientContactPanelNameInput;
 	private JTextField patientContactPanelIdInput;
@@ -78,6 +78,7 @@ public class patientPane extends JTabbedPane
 	private JLabel label_10;
 	private JLabel label_11;
 	String fName, id, email, phone, street, state, zip, insurance, doctor, nurse, doctorFile, lName, city;
+	String weightInput, dateInput, pressureInput1, pressureInput2, glucoseInput;
 	private JTextField patientContactPanelOfficeInput;
 	private JLabel lblCity_1;
 	private JTextField patientContactPanelCityInput;
@@ -87,12 +88,13 @@ public class patientPane extends JTabbedPane
 	private JButton btnPatientEditInformation;
 	private JButton btnPatientAcceptInfo;
 	private JButton HealthRecordsPanelUpdateIndicatorsPanelSubmit;
-	private String user;
+	private String user, userText;
 	private JTextField updateIndicatorsPanelDateInput;
 	
 	public void refreshPanel(String file)
 	{
-		user=file;
+		userText = file;
+		user = userText.replaceAll(".txt", "");
 		FileReader fr; //reads data from file
 		
 		try {
@@ -548,9 +550,7 @@ public class patientPane extends JTabbedPane
 		JLabel label_3 = new JLabel("DIA");
 		JLabel label_4 = new JLabel("lbs");
 		HealthRecordsPanelUpdateIndicatorsPanelWeightInput = new JTextField(5);
-		JLabel label_5 = new JLabel("Weight:");
-		HealthRecordsPanelUpdateIndicatorsPanelDateInput = new JTextField(5);
-		JLabel label_date = new JLabel("Date:");
+		JLabel label_5 = new JLabel("Weight");
 		textField_4 = new JTextField(10);
 		textField_4.setText("Update the textboxes with your Health Indicators, Submit to save.");
 		textField_4.setEditable(false);
@@ -756,6 +756,69 @@ public class patientPane extends JTabbedPane
 	}
 	private void patientPaneEvents()
 	{
+		HealthRecordsPanelUpdateIndicatorsPanelSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				// Updates patient indicators when 'Submit' is clicked
+				
+				String patientIndicatorFile; // Establishes variable for patient file
+				
+				System.out.println("Current patient: " + user); // console test
+				
+				// Fields are not editable after clicking the 'Submit' button
+				updateIndicatorsPanelDateInput.setEditable(false);
+				HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput.setEditable(false);
+				HealthRecordsPanelUpdateIndicatorsPanelPressureInput1.setEditable(false);
+				HealthRecordsPanelUpdateIndicatorsPanelPressureInput2.setEditable(false);
+				HealthRecordsPanelUpdateIndicatorsPanelWeightInput.setEditable(false);
+				
+				// Defines patientIndicatorFile
+				patientIndicatorFile = user + "indicators.txt";
+				
+				System.out.println("Current file: " + patientIndicatorFile); // console test
+				
+				try
+				{
+				File file1 = new File(patientIndicatorFile);
+				
+				// Creates new indicator file if one is not present already
+				if (!file1.exists()) {
+					file1.createNewFile();
+				}
+				
+				BufferedReader br_ind = new BufferedReader(new FileReader(file1));
+				
+				// Reads information from text fields
+				String newDateInput = updateIndicatorsPanelDateInput.getText();
+				String newWeightInput = HealthRecordsPanelUpdateIndicatorsPanelWeightInput.getText();
+				String newPressureInput1 = HealthRecordsPanelUpdateIndicatorsPanelPressureInput1.getText();
+				String newPressureInput2 = HealthRecordsPanelUpdateIndicatorsPanelPressureInput2.getText();
+				String newGlucoseInput = HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput.getText();
+				
+				// Sets text field information to variables
+				dateInput = newDateInput;
+				weightInput = newWeightInput;
+				pressureInput1 = newPressureInput1;
+				pressureInput2 = newPressureInput2;
+				glucoseInput = newGlucoseInput;
+				
+				// Appends new indicators to end of old file
+				FileWriter fw_ind=new FileWriter(patientIndicatorFile, true);
+				fw_ind.write(dateInput + "\n");
+				fw_ind.write(weightInput + "\n");
+				fw_ind.write(pressureInput1 + "\n");
+				fw_ind.write(pressureInput2 + "\n");
+				fw_ind.write(glucoseInput + "\n");
+
+				fw_ind.flush();
+				fw_ind.close();
+				br_ind.close();
+				
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnPatientEditInformation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
