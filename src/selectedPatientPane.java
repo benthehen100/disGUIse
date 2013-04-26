@@ -581,7 +581,8 @@ public class selectedPatientPane extends JTabbedPane {
 			{
 				//add Patient button
 				popUp p1=new popUp();
-				addPrescription prescript=new addPrescription();
+				System.out.println("Patient file to be passed: " + patientFile); // console test
+				addPrescription prescript=new addPrescription(patientFile);
 				p1.getContentPane().add(prescript);
 				p1.pack();
 				p1.show();

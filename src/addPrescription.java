@@ -10,25 +10,35 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 
 public class addPrescription extends JPanel { //creates addprescription jPanel
 	private JTextField addPrescriptionDateInput;
 	private JTextField addPresciptionPrescriptionInput;
+	private JTextArea addPrescriptionCommentInput;
 	private JButton addPresciptionSubmit;
 	private JButton addPrescriptionCancel;
+	String patientFile;
+	String dateInput, prescriptionInput, commentInput;
 	
-	public addPrescription() { //main calss
+	public addPrescription(String patientFileID) { //main class
+		
+		patientFile = patientFileID;
+		System.out.println("Patient file passed through: " + patientFile); // console test
 		
 		addPrescriptionDateInput = new JTextField(10); //creates textfields
 		addPresciptionPrescriptionInput = new JTextField(10);
 		
-		JTextArea addPresciptionsCommentInput = new JTextArea(); //textarea for comments
+		addPrescriptionCommentInput = new JTextArea(); //textarea for comments
 		JLabel addPrescriptionPrescriptionLbl = new JLabel("Prescription: ");
 		JLabel addPrescriptionDateLbl = new JLabel("Date: ");
 		
 		JLabel lblComments = new JLabel("Comments: "); //creates labels
-		lblComments.setLabelFor(addPresciptionsCommentInput);
+		lblComments.setLabelFor(addPrescriptionCommentInput);
 		
 		addPresciptionSubmit = new JButton("Submit");
 		addPrescriptionCancel = new JButton("Cancel");
@@ -59,7 +69,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 								.addComponent(addPresciptionSubmit)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(addPrescriptionCancel))
-							.addComponent(addPresciptionsCommentInput, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(addPrescriptionCommentInput, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(31, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -80,7 +90,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 							.addGap(18)
 							.addComponent(addPresciptionPrescriptionInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(addPresciptionsCommentInput, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(addPrescriptionCommentInput, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(addPresciptionSubmit)
@@ -96,7 +106,56 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 		addPresciptionSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				//submit button effects
+				// Updates patient prescriptions when 'Submit' is clicked
+				
+				String patientPrescriptionFile; // Establishes variable for patient file
+				
+				System.out.println("Current patient: " + patientFile); // console test
+				
+				// Fields are not editable after clicking the 'Submit' button
+				addPrescriptionDateInput.setEditable(false);
+				addPresciptionPrescriptionInput.setEditable(false);
+				addPrescriptionCommentInput.setEditable(false);
+				
+				// Defines patientIndicatorFile
+				patientPrescriptionFile = patientFile + "prescriptions.txt";
+				
+				System.out.println("Current file: " + patientPrescriptionFile); // console test
+				
+				try
+				{
+				File file2 = new File(patientPrescriptionFile);
+				
+				// Creates new indicator file if one is not present already
+				if (!file2.exists()) {
+					file2.createNewFile();
+				}
+				
+				BufferedReader br_pre = new BufferedReader(new FileReader(file2));
+				
+				// Reads information from text fields
+				String newDateInput = addPrescriptionDateInput.getText();
+				String newPrescriptionInput = addPresciptionPrescriptionInput.getText();
+				String newCommentInput = addPrescriptionCommentInput.getText();
+				
+				// Sets text field information to variables
+				dateInput = newDateInput;
+				prescriptionInput = newPrescriptionInput;
+				commentInput = newCommentInput;
+				
+				// Appends new prescriptions to end of old file
+				FileWriter fw_pre=new FileWriter(patientPrescriptionFile, true);
+				fw_pre.write(dateInput + "\n");
+				fw_pre.write(prescriptionInput + "\n");
+				fw_pre.write(commentInput + "\n");
+
+				fw_pre.flush();
+				fw_pre.close();
+				br_pre.close();
+				
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		//

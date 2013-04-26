@@ -4,3 +4,10 @@
 - Removed old login function that wasn't being used.
 - Added pop up error message to loginPanel when username or password is incorrect.
 ----------- Commit
+
+4/26/2013
+- Update Indicators is functional in patientPane
+- Update Indicators is functional in selectedPatientPane
+- Added new patient 'Read Smith' to text files
+----------- Commit
+- Add prescriptions is functional in addPrescription
