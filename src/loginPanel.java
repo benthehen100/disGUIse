@@ -146,7 +146,7 @@ public class loginPanel extends JPanel {
 					{
 						if(password.equals(temp.password))
 						{
-							disGuiseFrame.Username = user;
+							disGuiseFrame.setUsername(temp.username);
 							System.out.println("User match!");
 							user = temp.username;
 							String name= user + ".txt"; // generate text file name based on username;
