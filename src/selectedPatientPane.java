@@ -256,26 +256,6 @@ public class selectedPatientPane extends JTabbedPane {
 		SelectedPatientPatientHealthRecordsTable = new JTable();
 		SelectedPatientPatientHealthRecordsTable.setModel(new DefaultTableModel(
 				new Object[][] {
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
 				},
 				new String[] {
 						"Date", "Weight", "Blood Pressure", "Blood Glucose"
@@ -589,6 +569,40 @@ public class selectedPatientPane extends JTabbedPane {
 			}
 		});
 	}
+	public void refreshIndicatorTable(String file)
+	{
+		DefaultTableModel model = (DefaultTableModel) SelectedPatientPatientHealthRecordsTable.getModel();
+		String date, weight, blood1, blood2, glucose;
+		
+		String fileName = file + "indicators.txt";
+		FileReader fr; //reads data from file
+		
+
+		try {
+			fr = new FileReader(fileName);
+		
+			BufferedReader br = new BufferedReader(fr);
+
+			
+			while( (date = br.readLine()) != null)
+			{
+				weight = br.readLine(); //sets lines to variables
+				blood1 = br.readLine();
+				blood2 = br.readLine();
+				glucose= br.readLine();
+				model.addRow(new Object[]{date, weight, blood1 + "/" + blood2,glucose});
+			}
+				
+			
+		fr.close();
+		
+		} catch (Throwable e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	
 	public void refreshPanel(String file)
 	{
 		String fName, lName, id, phone, email, street, state, zip, insurance,doctor, nurse, doctor2,city;

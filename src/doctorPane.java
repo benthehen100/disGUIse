@@ -501,8 +501,9 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					popUp p2=new popUp();
 					selectedPatientPane spp=new selectedPatientPane(); //calls selected patient
 					System.out.println("patient: " + doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(), 0));
-					String fileName = doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(), 0)+ ".txt";
+					String fileName = doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(), 0)+ ".txt"; // returns the patient .txt file;
 					spp.refreshPanel(fileName);
+					spp.refreshIndicatorTable((String)doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(), 0));
 					p2.getContentPane().add(spp); //adds the selectedPateintPane to a popup window
 					p2.pack();
 					System.out.println(fileName);
