@@ -458,26 +458,6 @@ public class selectedPatientPane extends JTabbedPane {
 		SelectedPatientPresciptionsTable = new JTable();
 		SelectedPatientPresciptionsTable.setModel(new DefaultTableModel(
 				new Object[][] {
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
 				},
 				new String[] {
 						"Date", "Prescription", "Comments"
@@ -569,9 +549,44 @@ public class selectedPatientPane extends JTabbedPane {
 			}
 		});
 	}
+	public void refreshPrescriptionTable(String file)
+	{
+		DefaultTableModel model = (DefaultTableModel) SelectedPatientPresciptionsTable.getModel();
+		String date, drug, comment;
+		
+		String fileName = file + "prescriptions.txt";
+		FileReader fr; //reads data from file
+		
+
+		try {
+			fr = new FileReader(fileName);
+		
+			BufferedReader br = new BufferedReader(fr);
+
+			
+			while( (date = br.readLine()) != null)
+			{
+				drug = br.readLine(); //sets lines to variables
+				comment = br.readLine();
+				model.addRow(new Object[]{date, drug, comment});
+			}
+				
+			
+		fr.close();
+		
+		} catch (Throwable e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 	public void refreshIndicatorTable(String file)
 	{
-		DefaultTableModel model = (DefaultTableModel) SelectedPatientPatientHealthRecordsTable.getModel();
+		DefaultTableModel model = (DefaultTableModel) SelectedPatientPatientHealthRecordsTable.getModel(); //clears the table, before table is repopulated;
+		for(int i = 0; i < model.getRowCount(); i++)
+		{
+			model.removeRow(i);
+		}
 		String date, weight, blood1, blood2, glucose;
 		
 		String fileName = file + "indicators.txt";

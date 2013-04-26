@@ -545,6 +545,8 @@ public class nursePane extends JTabbedPane {
 					System.out.println("patient: " + nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0));
 					String fileName = nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0)+ ".txt";
 					spp.refreshPanel(fileName);
+					spp.refreshIndicatorTable((String)nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0));
+					spp.refreshPrescriptionTable((String)nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0));
 					p2.getContentPane().add(spp); //adds the selectedPateintPane to a popup window
 					p2.pack();
 					System.out.println(fileName);
