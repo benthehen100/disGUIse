@@ -165,7 +165,9 @@ public class loginPanel extends JPanel {
 							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
 								idFile = temp.id + ".txt";
-								disGuiseFrame.patient.refreshPanel(idFile); 
+								disGuiseFrame.patient.refreshPanel(idFile);
+								disGuiseFrame.patient.refreshIndicatorTable(temp.id);
+								disGuiseFrame.patient.refreshPrescriptionTable(temp.id);
 							}
 						}
 						else

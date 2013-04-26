@@ -490,26 +490,6 @@ public class patientPane extends JTabbedPane
 		patientsHealthRecordsTable = new JTable();
 		patientsHealthRecordsTable.setModel(new DefaultTableModel(
 				new Object[][] {
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
-						{null, null, null, null},
 				},
 				new String[] {
 						"Date:", "Weight:", "Blood Pressure:", "Glucose:"
@@ -679,31 +659,7 @@ public class patientPane extends JTabbedPane
 		patientsPrescriptionsTable = new JTable();
 		patientsPrescriptionsTable.setModel(new DefaultTableModel(
 				new Object[][] {
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
-						{null, null, null},
+						
 				},
 				new String[] {
 						"Date:", "Prescription", "Comments"
@@ -927,6 +883,73 @@ public class patientPane extends JTabbedPane
 				//p5.show();
 			}
 		});
+	}
+	
+	public void refreshPrescriptionTable(String file)
+	{
+		DefaultTableModel model = (DefaultTableModel) patientsPrescriptionsTable.getModel();
+		String date, drug, comment;
+		
+		String fileName = file + "prescriptions.txt";
+		FileReader fr; //reads data from file
+		
+
+		try {
+			fr = new FileReader(fileName);
+		
+			BufferedReader br = new BufferedReader(fr);
+
+			
+			while( (date = br.readLine()) != null)
+			{
+				drug = br.readLine(); //sets lines to variables
+				comment = br.readLine();
+				model.addRow(new Object[]{date, drug, comment});
+			}
+				
+			
+		fr.close();
+		
+		} catch (Throwable e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	public void refreshIndicatorTable(String file)
+	{
+		DefaultTableModel model = (DefaultTableModel) patientsHealthRecordsTable.getModel(); //clears the table, before table is repopulated;
+		for(int i = 0; i < model.getRowCount(); i++)
+		{
+			model.removeRow(i);
+		}
+		String date, weight, blood1, blood2, glucose;
+		
+		String fileName = file + "indicators.txt";
+		FileReader fr; //reads data from file
+		
+
+		try {
+			fr = new FileReader(fileName);
+		
+			BufferedReader br = new BufferedReader(fr);
+
+			
+			while( (date = br.readLine()) != null)
+			{
+				weight = br.readLine(); //sets lines to variables
+				blood1 = br.readLine();
+				blood2 = br.readLine();
+				glucose= br.readLine();
+				model.addRow(new Object[]{date, weight, blood1 + "/" + blood2,glucose});
+			}
+				
+			
+		fr.close();
+		
+		} catch (Throwable e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 }
 
