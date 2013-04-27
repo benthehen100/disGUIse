@@ -4,20 +4,75 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+
 
 public class passwordReset extends JPanel {
 	private JTextField answerResetPassword;
 	private JButton submitResetPassword;
 	private JButton cancelResetPassword;
 	private popUp p4;
+	public static String username;
+	String question;
 	
-	public passwordReset() {
+	
+	public static void setUsername(String s)
+	{
+		username = s;
+	}
+	public static String getUsername()
+	{
+		return username;
+	}
+	public passwordReset(String userName) {
 
 		answerResetPassword = new JTextField();
 		answerResetPassword.setColumns(10);
-
+		setUsername(userName);
+		linkList people = new linkList();
+		Link temp;
+		FileReader fr;
+		
+		
+		try {
+		fr = new FileReader("LoginCred.txt");	
+		BufferedReader br = new BufferedReader(fr);
+		String a, b, c, d, e2, f;
+		while((a = br.readLine()) != null)
+		{
+			b = br.readLine();
+			c = br.readLine();
+			d = br.readLine();
+			e2 = br.readLine();
+			f = br.readLine();
+			
+			System.out.println("a = " + a);
+			System.out.println("b = " + b);
+			System.out.println("c = " + c);
+			System.out.println("d = " + d);
+			System.out.println("e2 = " + e2);
+			System.out.println("f = " + f);
+			
+			people.insert(a, b, c, d , e2, f);
+		}
+		fr.close();
+		}catch (Throwable e1) {
+			e1.printStackTrace();
+		}
+		temp = people.head;
+		while (temp != null && !(userName.equalsIgnoreCase(temp.username)))
+		{
+				temp = temp.next;
+		}
+		if (temp == null)
+			System.out.println("User Not Found.");
+		else
+			question = temp.recovery;
 		JLabel promptResetPassword = new JLabel("To reset your password, answer the following security question");
-		JLabel questionResetPassword = new JLabel("This is where the security question will be placed?");
+		JLabel questionResetPassword = new JLabel(question);
 		questionResetPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		
 		submitResetPassword = new JButton("Submit");
@@ -77,7 +132,71 @@ public class passwordReset extends JPanel {
 		submitResetPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				//submit button
+				linkList people = new linkList();
+				Link temp;
+				FileReader fr;
+				String answer = answerResetPassword.getText(), username = getUsername();
+	
+				try {
+				fr = new FileReader("LoginCred.txt");	
+				BufferedReader br = new BufferedReader(fr);
+				String a, b, c, d, e2, f;
+				while((a = br.readLine()) != null)
+				{
+					b = br.readLine();
+					c = br.readLine();
+					d = br.readLine();
+					e2 = br.readLine();
+					f = br.readLine();
+					
+					System.out.println("a = " + a);
+					System.out.println("b = " + b);
+					System.out.println("c = " + c);
+					System.out.println("d = " + d);
+					System.out.println("e2 = " + e2);
+					System.out.println("f = " + f);
+					
+					people.insert(a, b, c, d , e2, f);
+				}
+				fr.close();
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}
+				temp = people.head;
+				String tempUsername = temp.username;
+				while (!tempUsername.equalsIgnoreCase(username))
+				{
+					temp = temp.next;
+					tempUsername = temp.username;
+				}
+				if (answer.equalsIgnoreCase(temp.answer))	{
+					System.out.println("Answer Match, Change Password");
+					//temp.password = PASSWORDTEXTBOX, ALso check that password box is filled
+					try {
+						temp = people.head;
+				FileWriter wr = new FileWriter("LoginCred.txt");
+					while (temp != null)
+					{
+						wr.write(temp.username + "\n");
+						wr.write(temp.password + "\n");
+						wr.write(temp.type + "\n");
+						wr.write(temp.id + "\n");
+						wr.write(temp.recovery + "\n");
+						wr.write(temp.answer + "\n");
+						temp = temp.next;
+					}
+					wr.close();
+				//submit button effects
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}	
+					JOptionPane.showMessageDialog(null, "Password Changed", "Password Change Status", JOptionPane.OK_OPTION);
+				}
+				else	{
+					JOptionPane.showMessageDialog(null, "Wrong answer to Security Question, Sorry.", "Error Message", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				
 			}
 		});
 		//
