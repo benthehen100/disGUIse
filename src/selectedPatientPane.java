@@ -557,12 +557,10 @@ public class selectedPatientPane extends JTabbedPane {
 			public void actionPerformed(ActionEvent e) 
 			{
 				//add Patient button
-				popUp p1=new popUp();
+				
 				System.out.println("Patient file to be passed: " + patientFile); // console test
 				addPrescription prescript=new addPrescription(patientFile);
-				p1.getContentPane().add(prescript);
-				p1.pack();
-				p1.show();
+				
 			}
 		});
 	}

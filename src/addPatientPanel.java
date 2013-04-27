@@ -521,7 +521,8 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 			public void actionPerformed(ActionEvent e) 
 			{
 				//cancel button
-				p.setVisible(false);
+				p.dispose();
+				//p.setVisible(false);
 			}
 		});
 	}

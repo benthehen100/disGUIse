@@ -28,6 +28,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 	private JButton addPrescriptionCancel;
 	String patientFile;
 	String dateInput, prescriptionInput, commentInput;
+	private popUp p1;
 	
 	public addPrescription(String patientFileID) { //main class
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -109,6 +110,10 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 		setLayout(groupLayout); //sets layout of this panel to grouplayout
 		
 		addPrescriptionEvents(); //calls the events
+		p1=new popUp();
+		p1.getContentPane().add(this);
+		p1.pack();
+		p1.show();
 	}
 	private void addPrescriptionEvents()
 	{
@@ -173,7 +178,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 		addPrescriptionCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-
+				p1.dispose();
 			}
 		});
 		

@@ -376,12 +376,16 @@ public class nursePane extends JTabbedPane {
 
 			nursePatientList = new JTable();
 			nursePatientList.setModel(new DefaultTableModel(
-					new Object[][] {
-					},
-					new String[] {
-							"Patient ID:", "First Name:", "Last Name:", "Doctor Name:", "Last Checkup:"
-					}
-					));
+				new Object[][] {
+				},
+				new String[] {
+					"Patient ID:", "First Name:", "Last Name:", "Doctor Name:"
+				}
+			));
+			nursePatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
+			nursePatientList.getColumnModel().getColumn(1).setPreferredWidth(80);
+			nursePatientList.getColumnModel().getColumn(2).setPreferredWidth(80);
+			nursePatientList.getColumnModel().getColumn(3).setPreferredWidth(80);
 			
 			
 			DefaultTableModel model = (DefaultTableModel) nursePatientList.getModel();
@@ -392,12 +396,6 @@ public class nursePane extends JTabbedPane {
 				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),temp.getLastCheckUp()});
 				temp = temp.getNext();
 			}
-			
-			nursePatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
-			nursePatientList.getColumnModel().getColumn(1).setPreferredWidth(80);
-			nursePatientList.getColumnModel().getColumn(2).setPreferredWidth(80);
-			nursePatientList.getColumnModel().getColumn(3).setPreferredWidth(80);
-			nursePatientList.getColumnModel().getColumn(4).setPreferredWidth(80);
 			nurseScrollPane.setViewportView(nursePatientList);
 			nursePatientsPanel.setLayout(gl_nursePatientsPanel);
 

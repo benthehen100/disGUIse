@@ -136,7 +136,6 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			lblCity = new JLabel("City:");
 			
 			btnDoctorEditInformation = new JButton("Edit Information");
-			
 			btnDoctorAcceptnewInfo = new JButton("Accept");
 			
 			GroupLayout gl_doctorContactPanel = new GroupLayout(doctorContactPanel);
@@ -272,14 +271,17 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			
 			
 			doctorPatientList = new JTable(); //cretes a new table
-			doctorPatientList.setModel(new DefaultTableModel( // creates empty table
-					new Object[][] {
-					},
-					
-					new String[] {
-							"Patient ID:", "Patient First:", "Patient Last:", "Nurse Name:", "Last Checkup:" //table columns
-					}
-					));
+			doctorPatientList.setModel(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Patient ID:", "Patient First:", "Patient Last:", "Nurse Name:"
+				}
+			));
+			doctorPatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
+			doctorPatientList.getColumnModel().getColumn(1).setPreferredWidth(80);
+			doctorPatientList.getColumnModel().getColumn(2).setPreferredWidth(80);
+			doctorPatientList.getColumnModel().getColumn(3).setPreferredWidth(80);
 			
 			DefaultTableModel model = (DefaultTableModel) doctorPatientList.getModel();
 			createPatientList list1 = new createPatientList();
@@ -289,13 +291,6 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),temp.getLastCheckUp()});
 				temp = temp.getNext();
 			}
-			
-
-			doctorPatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
-			doctorPatientList.getColumnModel().getColumn(1).setPreferredWidth(80);
-			doctorPatientList.getColumnModel().getColumn(2).setPreferredWidth(80);
-			doctorPatientList.getColumnModel().getColumn(3).setPreferredWidth(80);
-			doctorPatientList.getColumnModel().getColumn(4).setPreferredWidth(80);
 			doctorScrollPane.setViewportView(doctorPatientList);
 			
 			addNurseButton = new JButton("Add Nurse");
@@ -303,20 +298,21 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			gl_doctorPatientsPanel.setHorizontalGroup(
 				gl_doctorPatientsPanel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_doctorPatientsPanel.createSequentialGroup()
-						.addGap(10)
-						.addComponent(doctorScrollPane, GroupLayout.PREFERRED_SIZE, 403, GroupLayout.PREFERRED_SIZE))
-					.addGroup(gl_doctorPatientsPanel.createSequentialGroup()
 						.addGap(20)
 						.addComponent(addNurseButton, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
 						.addGap(70)
 						.addComponent(doctorAddPatient)
 						.addGap(10)
 						.addComponent(doctorSelectPatient, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_doctorPatientsPanel.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(doctorScrollPane, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+						.addContainerGap())
 			);
 			gl_doctorPatientsPanel.setVerticalGroup(
 				gl_doctorPatientsPanel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_doctorPatientsPanel.createSequentialGroup()
-						.addGap(11)
+						.addContainerGap()
 						.addComponent(doctorScrollPane, GroupLayout.PREFERRED_SIZE, 333, GroupLayout.PREFERRED_SIZE)
 						.addGap(7)
 						.addGroup(gl_doctorPatientsPanel.createParallelGroup(Alignment.LEADING)
