@@ -550,6 +550,8 @@ public class selectedPatientPane extends JTabbedPane {
 				}
 				
 				refreshIndicatorTable(patientID);
+				disGuiseFrame.doctor.refreshTable();
+				disGuiseFrame.nurse.refreshTable();
 			}
 		});
 		//

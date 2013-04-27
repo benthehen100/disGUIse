@@ -468,8 +468,9 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					BufferedReader br = new BufferedReader(fr);
 
 					
-					while( (date = br.readLine()) != null)
+					while( (weight = br.readLine()) != null)
 					{
+						date = weight;
 						weight = br.readLine(); //sets lines to variables
 						blood1 = br.readLine();
 						blood2 = br.readLine();

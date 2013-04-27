@@ -393,7 +393,37 @@ public class nursePane extends JTabbedPane {
 			patientLinkedList temp = list1.head;
 			while( temp != null)
 			{
-				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),temp.getLastCheckUp()});
+				String date, weight, blood1, blood2, glucose;
+				date = "N/A";
+				
+				String fileName = temp.getId() + "indicators.txt";
+				FileReader fr; //reads data from file
+				
+
+				try {
+					fr = new FileReader(fileName);
+				
+					BufferedReader br = new BufferedReader(fr);
+
+					
+					while( (weight = br.readLine()) != null)
+					{
+						date = weight;
+						weight = br.readLine(); //sets lines to variables
+						blood1 = br.readLine();
+						blood2 = br.readLine();
+						glucose= br.readLine();
+					}
+						
+					
+				fr.close();
+				
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),date});
 				temp = temp.getNext();
 			}
 			nurseScrollPane.setViewportView(nursePatientList);
@@ -463,7 +493,37 @@ public class nursePane extends JTabbedPane {
 			patientLinkedList temp = list1.head;
 			while( temp != null)
 			{
-				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),temp.getLastCheckUp()});
+				String date, weight, blood1, blood2, glucose;
+				date = "N/A";
+				
+				String fileName = temp.getId() + "indicators.txt";
+				FileReader fr; //reads data from file
+				
+
+				try {
+					fr = new FileReader(fileName);
+				
+					BufferedReader br = new BufferedReader(fr);
+
+					
+					while( (weight = br.readLine()) != null)
+					{
+						date = weight;
+						weight = br.readLine(); //sets lines to variables
+						blood1 = br.readLine();
+						blood2 = br.readLine();
+						glucose= br.readLine();
+					}
+						
+					
+				fr.close();
+				
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),date});
 				temp = temp.getNext();
 			}
 		}
