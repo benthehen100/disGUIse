@@ -322,13 +322,14 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 						file.createNewFile();
 					}
 		 
-					FileWriter fw = new FileWriter(file.getAbsoluteFile());
-					BufferedWriter bw = new BufferedWriter(fw);
+					FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
+					/*BufferedWriter bw = new BufferedWriter(fw);
 					patientLinkedList temp;
 					temp = list1.head;
 					
 					while(temp != null)
 					{
+					
 						bw.write(temp.getId() + "\n");
 						bw.write(temp.getFirstName() + "\n");
 						bw.write(temp.getLastName() + "\n");
@@ -336,13 +337,13 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 						bw.write("None" + "\n");
 						temp = temp.getNext();
 					}
-					
-					bw.write(pPatientID + "\n");
-					bw.write(pFirst + "\n");
-					bw.write(pLast + "\n");
-					bw.write(pNurseID + "\n");
-					bw.write("None" + "\n");
-					bw.close();
+					*/
+					fw.write(pPatientID + "\n");
+					fw.write(pFirst + "\n");
+					fw.write(pLast + "\n");
+					fw.write(pNurseID + "\n");
+					fw.write("None" + "\n");
+					fw.close();
 		 
 					System.out.println("Done");
 		 
