@@ -566,6 +566,12 @@ public class selectedPatientPane extends JTabbedPane {
 			}
 		});
 	}
+	
+	public void setButton()
+	{
+		prescriptionsPanelAddPrescriptions.setEnabled(false); //turns off addprescription button
+	}
+	
 	public void refreshPrescriptionTable(String file)
 	{
 		DefaultTableModel model = (DefaultTableModel) SelectedPatientPresciptionsTable.getModel();
