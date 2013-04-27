@@ -592,7 +592,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				public void actionPerformed(ActionEvent e) 
 				{
 					//popUp p4=new popUp();
-					passwordReset pr=new passwordReset(); //calls resetpassword Panel
+					passwordReset pr=new passwordReset(disGuiseFrame.Username); //calls resetpassword Panel
 					//p4.getContentPane().add(pr); //adds it to popUpwindow
 					//p4.pack();
 					//p4.show();
