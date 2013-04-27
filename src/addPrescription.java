@@ -1,3 +1,4 @@
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -164,13 +165,14 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 				}catch (Throwable e1) {
 					e1.printStackTrace();
 				}
+				
+				
 			}
 		});
 		//
 		addPrescriptionCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				//cancel button effects
 
 			}
 		});

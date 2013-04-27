@@ -504,12 +504,16 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				
 				disGuiseFrame.doctor.refreshTable();
 				disGuiseFrame.nurse.refreshTable();
+				p.setVisible(false);
 				}
 				else
 				{
 					JOptionPane.showMessageDialog(addPatientSubmit, "Please Fill All Fields");
 				}
+				
 			}
+			
+			
 			
 		});
 		//
@@ -517,7 +521,7 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 			public void actionPerformed(ActionEvent e) 
 			{
 				//cancel button
-				p.dispose();
+				p.setVisible(false);
 			}
 		});
 	}
