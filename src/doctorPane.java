@@ -275,7 +275,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				new Object[][] {
 				},
 				new String[] {
-					"Patient ID:", "Patient First:", "Patient Last:", "Nurse Name:"
+					"Patient ID:", "Patient First:", "Patient Last:", "Nurse Name:", "Last Visit:"
 				}
 			));
 			doctorPatientList.getColumnModel().getColumn(0).setPreferredWidth(80);

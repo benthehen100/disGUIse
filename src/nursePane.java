@@ -379,7 +379,7 @@ public class nursePane extends JTabbedPane {
 				new Object[][] {
 				},
 				new String[] {
-					"Patient ID:", "First Name:", "Last Name:", "Doctor Name:"
+					"Patient ID:", "First Name:", "Last Name:", "Doctor Name:", "Last Visit:"
 				}
 			));
 			nursePatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
