@@ -626,7 +626,7 @@ public class nursePane extends JTabbedPane {
 				public void actionPerformed(ActionEvent e)
 				{
 					//popUp p4=new popUp();
-					passwordReset pr=new passwordReset();
+					passwordReset pr=new passwordReset(disGuiseFrame.Username);
 					//p4.getContentPane().add(pr);
 					//p4.pack();
 					//p4.show();
