@@ -33,9 +33,11 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 	private JButton addPatientSubmit;
 	private JButton addPatientCancel;
 	private popUp p;
+	private String id; 
 	
 	public addPatientPanel() {
-		
+	
+		createPatientList list = new createPatientList();
 		addPatientFirstInput = new JTextField(10);
 		addPatientLastInput = new JTextField(10);
 		addPatientPatientIDInput = new JTextField(10);

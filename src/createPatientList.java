@@ -8,11 +8,13 @@ public class createPatientList
 	private String id;
 	private String nurseId; 
 	private String lastCheckUp;
+	private int numPatient; //number of patients;
 	public patientLinkedList head;
 	
 
 	public createPatientList()
 	{
+		numPatient = 0;
 		FileReader fr; //reads data from file
 		try {
 			fr = new FileReader("patientList.txt");
@@ -21,9 +23,9 @@ public class createPatientList
 			patientLinkedList temp;
 			System.out.println("id: " + id);
 			head = null;
-			
 			while( (id = br.readLine()) != null)
 			{
+				numPatient++;
 				first = br.readLine(); //sets lines to variables
 				last = br.readLine();
 				nurseId = br.readLine();
@@ -31,7 +33,8 @@ public class createPatientList
 				temp = head;
 				head = new patientLinkedList(id, first, last, nurseId, lastCheckUp);
 				head.setNext(temp);
-				System.out.println("id: " + id);
+				//System.out.println("id: " + id);
+				System.out.println("numberOfPatientInList" + numPatient);
 			}
 				
 			
@@ -43,5 +46,10 @@ public class createPatientList
 		}
 		
 
+	}
+	
+	public int returnID()
+	{
+		return numPatient;
 	}
 	}

@@ -77,7 +77,7 @@ public class patientPane extends JTabbedPane
 	private JLabel label_9;
 	private JLabel label_10;
 	private JLabel label_11;
-	String fName, id, email, phone, street, state, zip, insurance, doctor, nurse, doctorFile, lName, city;
+	private String fName, id, email, phone, street, state, zip, insurance, doctor, nurse, doctorFile, lName, city, patientid;
 	String weightInput, dateInput, pressureInput1, pressureInput2, glucoseInput;
 	private JTextField patientContactPanelOfficeInput;
 	private JLabel lblCity_1;
@@ -103,7 +103,7 @@ public class patientPane extends JTabbedPane
 		BufferedReader br = new BufferedReader(fr);
 		fName = br.readLine();
 		lName = br.readLine();
-			id = br.readLine(); //sets lines to variables
+			patientid = br.readLine(); //sets lines to variables
 			street = br.readLine();
 			city = br.readLine();
 			state = br.readLine();
@@ -773,6 +773,7 @@ public class patientPane extends JTabbedPane
 				}catch (Throwable e1) {
 					e1.printStackTrace();
 				}
+				refreshIndicatorTable(patientid);
 			}
 		});
 		btnPatientEditInformation.addActionListener(new ActionListener() {
