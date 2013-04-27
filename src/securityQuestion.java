@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -9,11 +10,14 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 
 public class securityQuestion extends JPanel {
 	private JTextField securityQuestionAnswer;
-	private JTextField secuityQuestionInput;
+	private JTextField securityQuestionInput;
 	private JButton securityQuestionSubmit;
 	private JButton securityQuestionCancel;
 	private popUp p5;
@@ -21,7 +25,7 @@ public class securityQuestion extends JPanel {
 	public securityQuestion() {
 		
 		securityQuestionAnswer = new JTextField(10);
-		secuityQuestionInput = new JTextField(10);
+		securityQuestionInput = new JTextField(10);
 		
 		
 		JLabel lblWhatWouldYou = new JLabel("What would you like your security Question to be? ");
@@ -45,7 +49,7 @@ public class securityQuestion extends JPanel {
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGap(83)
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(secuityQuestionInput, Alignment.LEADING)
+									.addComponent(securityQuestionInput, Alignment.LEADING)
 									.addComponent(securityQuestionAnswer, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)))
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGap(9)
@@ -70,7 +74,7 @@ public class securityQuestion extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(secuityQuestionInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(securityQuestionInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(securityQuestionAnswer, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
@@ -95,7 +99,77 @@ public class securityQuestion extends JPanel {
 			securityQuestionSubmit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					//submit button
+					String securityQuestion, securityAnswer;
+					securityQuestion = securityQuestionInput.getText();
+					securityAnswer = securityQuestionAnswer.getText();
+					
+					linkList people = new linkList();
+					Link temp;
+					FileReader fr;
+					if (securityQuestion.length() != 0 && securityAnswer.length() != 0)
+					{
+					try {
+						fr = new FileReader("LoginCred.txt");
+						
+					BufferedReader br = new BufferedReader(fr);
+					String a, b, c, d, e2, f;
+					while((a = br.readLine()) != null)
+					{
+						b = br.readLine();
+						c = br.readLine();
+						d = br.readLine();
+						e2 = br.readLine();
+						f = br.readLine();
+						
+						System.out.println("a = " + a);
+						System.out.println("b = " + b);
+						System.out.println("c = " + c);
+						System.out.println("d = " + d);
+						System.out.println("e2 = " + e2);
+						System.out.println("f = " + f);
+						
+						people.insert(a, b, c, d , e2, f);
+					}
+					fr.close();
+					}catch (Throwable e1) {
+						e1.printStackTrace();
+					}
+					temp = people.head;
+					while (temp != null)
+					{
+						if(disGuiseFrame.Username.equalsIgnoreCase(temp.username))
+						{
+							System.out.println("User Match!");
+							temp.recovery = securityQuestion;
+							temp.answer = securityAnswer;
+							JOptionPane.showMessageDialog(null, "Security Question and Answer changed", "Security Change Status", JOptionPane.OK_OPTION);
+						}
+						temp = temp.next;
+					}
+					temp = people.head;
+					try {
+						
+					FileWriter wr = new FileWriter("LoginCred.txt");
+						while (temp != null)
+						{
+							wr.write(temp.username + "\n");
+							wr.write(temp.password + "\n");
+							wr.write(temp.type + "\n");
+							wr.write(temp.id + "\n");
+							wr.write(temp.recovery + "\n");
+							wr.write(temp.answer + "\n");
+							temp = temp.next;
+						}
+						wr.close();
+					//submit button effects
+					}catch (Throwable e1) {
+						e1.printStackTrace();
+					}
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Please enter all fields.", "Error Message", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			});
 			//
