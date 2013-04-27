@@ -37,7 +37,7 @@ public class selectedPatientPane extends JTabbedPane {
 	private JTextField patientInformationPanelLastNameInput;
 	private popUp p2;
 	private JTextField updateIndicatorsPanelDateInput;
-	String patientFileName, patientFile;
+	String patientFileName, patientFile, patientID;
 	String weightInput, dateInput, pressureInput1, pressureInput2, glucoseInput;
 
 	public selectedPatientPane() {
@@ -479,6 +479,7 @@ public class selectedPatientPane extends JTabbedPane {
 				
 				String patientIndicatorFile; // Establishes variable for patient file
 				
+				
 				System.out.println("Current patient: " + patientFile); // console test
 				
 				// Fields are not editable after clicking the 'Submit' button
@@ -533,6 +534,8 @@ public class selectedPatientPane extends JTabbedPane {
 				}catch (Throwable e1) {
 					e1.printStackTrace();
 				}
+				
+				refreshIndicatorTable(patientID);
 			}
 		});
 		//

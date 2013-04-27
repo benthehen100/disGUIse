@@ -468,6 +468,33 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 					e.printStackTrace();
 				}
 				
+				filename = pPatientID +"indicators.txt"; //creates indicators file for patient
+				try {
+					 
+					File file = new File(filename);
+		 
+
+					if (!file.exists()) {
+						file.createNewFile();
+					}
+		 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filename = pPatientID +"prescriptions.txt"; //creates indicators file for patient
+				try {
+					 
+					File file = new File(filename);
+		 
+
+					if (!file.exists()) {
+						file.createNewFile();
+					}
+		 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				
 				disGuiseFrame.doctor.refreshTable();
 				disGuiseFrame.nurse.refreshTable();
