@@ -33,14 +33,17 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 	private JButton addPatientSubmit;
 	private JButton addPatientCancel;
 	private popUp p;
-	private String id; 
+	private String pPatientID;
 	
 	public addPatientPanel() {
 	
 		createPatientList list = new createPatientList();
+		pPatientID = Integer.toString(list.returnID());
 		addPatientFirstInput = new JTextField(10);
 		addPatientLastInput = new JTextField(10);
 		addPatientPatientIDInput = new JTextField(10);
+		addPatientPatientIDInput.setText(pPatientID);
+		addPatientPatientIDInput.setEditable(false);
 		addPatientUsernameInput = new JTextField(10);
 		addPatientPasswordInput = new JTextField(10);
 		addPatientStreetInput = new JTextField(10);
@@ -274,7 +277,6 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				//submit button
 				
 				// Saves the text in the field to a corresponding string
-				String pPatientID = addPatientPatientIDInput.getText(); // Patient ID
 				String pFirst = addPatientFirstInput.getText(); // Patient's first name
 				String pLast = addPatientLastInput.getText(); // Patient's last name
 				String pStreet = addPatientStreetInput.getText(); // Patient's street (address)

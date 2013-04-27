@@ -13,6 +13,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class selectedPatientPane extends JTabbedPane {
 	private JTextField patientInformationPanelNameInput;
@@ -42,6 +45,10 @@ public class selectedPatientPane extends JTabbedPane {
 
 	public selectedPatientPane() {
 
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		String dateString = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
+		
 		JPanel PatientInformationPanel = new JPanel();
 		addTab("Patient Information", null, PatientInformationPanel, null);
 
@@ -296,6 +303,9 @@ public class selectedPatientPane extends JTabbedPane {
 		JLabel lblDate = new JLabel("Date:");
 		
 		updateIndicatorsPanelDateInput = new JTextField(5);
+		updateIndicatorsPanelDateInput.setEditable(false);
+		updateIndicatorsPanelDateInput.setText(dateString);
+		
 		
 		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
 		GroupLayout gl_updateIndicatorsPanel = new GroupLayout(updateIndicatorsPanel);
@@ -475,6 +485,9 @@ public class selectedPatientPane extends JTabbedPane {
 		updateIndicatorsPanelSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				Date date = new Date();
+				String dateString = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900); //years after 1900
 				// Updates patient indicators when 'Submit' is clicked
 				
 				String patientIndicatorFile; // Establishes variable for patient file
@@ -487,6 +500,7 @@ public class selectedPatientPane extends JTabbedPane {
 				updateIndicatorsPanelGlucoseInput.setEditable(false);
 				updateIndicatorsPanelPressureInput1.setEditable(false);
 				updateIndicatorsPanelPressureInput2.setEditable(false);
+				updateIndicatorsPanelWeightInput.setEditable(false);
 				updateIndicatorsPanelWeightInput.setEditable(false);
 				
 				// Defines patientIndicatorFile
@@ -506,7 +520,7 @@ public class selectedPatientPane extends JTabbedPane {
 				BufferedReader br_ind = new BufferedReader(new FileReader(file1));
 				
 				// Reads information from text fields
-				String newDateInput = updateIndicatorsPanelDateInput.getText();
+				String newDateInput = dateString;
 				String newWeightInput = updateIndicatorsPanelWeightInput.getText();
 				String newPressureInput1 = updateIndicatorsPanelPressureInput1.getText();
 				String newPressureInput2 = updateIndicatorsPanelPressureInput2.getText();

@@ -1,20 +1,5 @@
-002
-Read
-Smith
-M. Nurse
-None
-007
-James
-Bond
-bad ass
-None
-006
-angelina
-Jolie
-Fine ass
-None
-010
-Chuck
-Norris
-fist!!!
+0
+Sean
+Hanson
+Aawad
 None

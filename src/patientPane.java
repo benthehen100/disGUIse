@@ -24,6 +24,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class patientPane extends JTabbedPane
@@ -93,6 +96,9 @@ public class patientPane extends JTabbedPane
 	
 	public void refreshPanel(String file)
 	{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		String dateInput = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
 		userText = file;
 		user = userText.replaceAll(".txt", "");
 		FileReader fr; //reads data from file
@@ -166,7 +172,9 @@ public class patientPane extends JTabbedPane
 
 	public patientPane()
 	{
-		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		String dateInput = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
 		setTabPlacement(LEFT);
 		patientRecordsPane = new JTabbedPane(JTabbedPane.TOP);
 		patientAccountPanel = new JPanel();
@@ -545,6 +553,8 @@ public class patientPane extends JTabbedPane
 		JLabel lblDate = new JLabel("Date");
 		
 		updateIndicatorsPanelDateInput = new JTextField(5);
+		updateIndicatorsPanelDateInput.setText(dateInput);
+		updateIndicatorsPanelDateInput.setEditable(false);
 		
 		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
 		GroupLayout gl_patientUpdateIndicatorsPanel = new GroupLayout(patientUpdateIndicatorsPanel);

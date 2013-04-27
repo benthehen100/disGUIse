@@ -14,6 +14,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class addPrescription extends JPanel { //creates addprescription jPanel
@@ -26,11 +29,16 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 	String dateInput, prescriptionInput, commentInput;
 	
 	public addPrescription(String patientFileID) { //main class
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		String dateInput = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
 		
 		patientFile = patientFileID;
 		System.out.println("Patient file passed through: " + patientFile); // console test
 		
 		addPrescriptionDateInput = new JTextField(10); //creates textfields
+		addPrescriptionDateInput.setText(dateInput);
+		addPrescriptionDateInput.setEditable(false);
 		addPresciptionPrescriptionInput = new JTextField(10);
 		
 		addPrescriptionCommentInput = new JTextArea(); //textarea for comments

@@ -19,30 +19,6 @@ N/A
 shanson
 123456
 patient
-1
+0
 Not set
-N/A
-jbond
-123
-patient
-007
-Not set
-N/A
-fineass
-123
-patient
-006
-Not set
-N/A
-rsmith
-123456
-patient
-002
-Not set
-N/A
-cnorris
-123
-patient
-010
-Not set 
 N/A
