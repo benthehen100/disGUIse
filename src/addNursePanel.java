@@ -287,20 +287,21 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 							file.createNewFile();
 						}
 			 
-						FileWriter fw3 = new FileWriter(file.getAbsoluteFile());
+						FileWriter fw3 = new FileWriter(file.getAbsoluteFile(),true);
 						BufferedWriter bw3 = new BufferedWriter(fw3);
 						
-						bw3.append(nUsername);
 						bw3.newLine();
-						bw3.append(nPassword);
+						bw3.write(nUsername);
 						bw3.newLine();
-						bw3.append("patient");
+						bw3.write(nPassword);
 						bw3.newLine();
-						bw3.append(nNurseID);
+						bw3.write("nurse");
 						bw3.newLine();
-						bw3.append("Not set");
+						bw3.write(nNurseID);
 						bw3.newLine();
-						bw3.append("N/A");
+						bw3.write("Not set");
+						bw3.newLine();
+						bw3.write("N/A");
 						bw3.close();
 			 
 						System.out.println("Done");
@@ -313,7 +314,7 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 				{
 					JOptionPane.showMessageDialog(addNursePanelSubmit, "Please Fill All Fields");
 				}
-			
+			p.dispose();
 			}
 		});
 		addNursePanelCancel.addActionListener(new ActionListener() { //buttonListnere for cancel
