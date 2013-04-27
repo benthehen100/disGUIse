@@ -513,6 +513,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					
 				}
 			});
+			//
 			doctorChangePassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{

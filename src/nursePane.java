@@ -52,7 +52,7 @@ public class nursePane extends JTabbedPane {
 		private JTextField nurseContactPanelDoctorIdInput;
 		private JTextField nurseContactPanelEmailInput;
 		private JTextField nurseContactPanelOfficePhoneInput;
-		private JLabel label;
+		private JLabel label;//
 		private JLabel label_1;
 		private JLabel label_2;
 		private JLabel label_3;

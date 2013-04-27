@@ -170,6 +170,7 @@ public class loginPanel extends JPanel {
 								disGuiseFrame.patient.refreshPrescriptionTable(temp.id);
 							}
 						}
+						//
 						else
 						{
 							System.out.println("Incorrect Username/Password");

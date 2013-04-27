@@ -495,6 +495,7 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				//
 				
 				disGuiseFrame.doctor.refreshTable();
 				disGuiseFrame.nurse.refreshTable();
