@@ -188,11 +188,19 @@ public class loginPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				// Opens new box when 'Forgot Password?' is selected
-				popUp p1=new popUp();
-				passwordReset pr = new passwordReset();
-				p1.getContentPane().add(pr);
-				p1.pack();
-				p1.show();
+				String username = uNameInput.getText();
+				if (username.length() == 0)
+				{
+					JOptionPane.showMessageDialog(null, "Please enter your username.", "Error Message", JOptionPane.ERROR_MESSAGE);
+				}
+				else
+				{
+					popUp p1=new popUp();
+					passwordReset pr = new passwordReset(username);
+					p1.getContentPane().add(pr);
+					p1.pack();
+					p1.show();
+				}
 			}
 		});
 		
