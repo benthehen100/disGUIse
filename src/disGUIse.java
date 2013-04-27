@@ -118,6 +118,18 @@ class disGUIseMenuBar extends JMenuBar  //class for JMenuBar
 				System.exit(0);
 		}}
 		);
+		mntmAboutDisguise.addActionListener(new ActionListener(){ //when user chooses file->exit
+			public void actionPerformed(ActionEvent e) { //closes program
+				popUp p=new popUp();
+				JTextArea temp=new JTextArea();
+				temp.setText("Welcome to disGUIse Well-Check Clinic"+"\n Stiving forward to helping those in Need. Easy to use interface" +
+						"to check your health over time. Keep in touch with your Doctor and see prescriptions as well as Visual indicators");
+				p.add(temp);
+				p.pack();
+				p.show();
+				
+		}}
+		);
 	}
 }  
 
