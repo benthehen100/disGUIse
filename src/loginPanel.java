@@ -189,9 +189,44 @@ public class loginPanel extends JPanel {
 			{
 				// Opens new box when 'Forgot Password?' is selected
 				String username = uNameInput.getText();
-				if (username.length() == 0)
+				linkList people = new linkList();
+				Link temp;
+				FileReader fr;
+				
+				
+				try {
+				fr = new FileReader("LoginCred.txt");	
+				BufferedReader br = new BufferedReader(fr);
+				String a, b, c, d, e2, f;
+				while((a = br.readLine()) != null)
 				{
-					JOptionPane.showMessageDialog(null, "Please enter your username.", "Error Message", JOptionPane.ERROR_MESSAGE);
+					b = br.readLine();
+					c = br.readLine();
+					d = br.readLine();
+					e2 = br.readLine();
+					f = br.readLine();
+					
+					System.out.println("a = " + a);
+					System.out.println("b = " + b);
+					System.out.println("c = " + c);
+					System.out.println("d = " + d);
+					System.out.println("e2 = " + e2);
+					System.out.println("f = " + f);
+					
+					people.insert(a, b, c, d , e2, f);
+				}
+				fr.close();
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}
+				temp = people.head;
+				while (temp != null && !(username.equalsIgnoreCase(temp.username)))
+				{
+						temp = temp.next;
+				}
+				if (temp == null)
+				{
+					JOptionPane.showMessageDialog(null, "Please enter a real user.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				}
 				else
 				{
