@@ -143,6 +143,7 @@ public class securityQuestion extends JPanel {
 							temp.recovery = securityQuestion;
 							temp.answer = securityAnswer;
 							JOptionPane.showMessageDialog(null, "Security Question and Answer changed", "Security Change Status", JOptionPane.OK_OPTION);
+							p5.dispose();
 						}
 						temp = temp.next;
 					}

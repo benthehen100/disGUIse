@@ -13,21 +13,22 @@ import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import javax.swing.JPasswordField;
 
 
 public class changePassword extends JPanel {// changepassword Panel
-	private JTextField confirmPasswordInput;
+	private JPasswordField confirmPasswordInput;
 	private JTextField oldPasswordInput;
-	private JTextField newPasswordInput;
+	private JPasswordField newPasswordInput;
 	private JButton changePasswordSubmit;
 	private JButton changePasswordCancel;
 	private popUp p3;
 
 	public changePassword() {
 		
-		confirmPasswordInput = new JTextField(10); //creates textfields and sets size to 10
+		confirmPasswordInput = new JPasswordField(10); //creates textfields and sets size to 10
 		oldPasswordInput = new JTextField(10); //textfields are for inputs
-		newPasswordInput = new JTextField(10);
+		newPasswordInput = new JPasswordField(10);
 		
 		
 		JLabel oldPasswordLbl = new JLabel("Old Password: "); //creates labels
@@ -153,6 +154,7 @@ public class changePassword extends JPanel {// changepassword Panel
 							System.out.println("User Match!");
 							temp.password = newPassword;
 							JOptionPane.showMessageDialog(null, "Password Changed", "Password Change Status", JOptionPane.OK_OPTION);
+							p3.dispose();
 						}
 						else
 						{
