@@ -132,7 +132,7 @@ public class patientPane extends JTabbedPane
 		doctorFile = doctor + ".txt";
 		patientContactPanelNameInput.setText(fName);
 		patientContactPanelLastNameInput.setText(lName);
-		patientContactPanelIdInput.setText(id);
+		patientContactPanelIdInput.setText(patientid);
 		patientContactPanelPatientPhoneInput.setText(phone);
 		patientContactPanelEmailInput.setText(email);
 		patientContactPanelStreetInput.setText(street);
