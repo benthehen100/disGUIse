@@ -64,10 +64,10 @@ public class grapher {
 			for(int i =0; i<data.size(); i=i+5)               //this seperates all the data into their
 			{                                                 //respective int and string arraylists.
 				date.add(data.get(i));     
-				weight.add(Integer.parseInt(data.get(i+1)));
-				syspressure.add(Integer.parseInt(data.get(i+2)));
-				diapressure.add(Integer.parseInt(data.get(i+3)));
-				bldsugar.add(Integer.parseInt(data.get(i+4)));
+				weight.add((int)(Double.parseDouble(data.get(i+1))));
+				syspressure.add((int)(Double.parseDouble(data.get(i+2))));
+				diapressure.add((int)(Double.parseDouble(data.get(i+3))));
+				bldsugar.add((int)(Double.parseDouble(data.get(i+3))));
 			}
 			
 			int datalength = date.size();					//creates an integer carrying number of data points

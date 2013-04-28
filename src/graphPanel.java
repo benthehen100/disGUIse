@@ -185,11 +185,9 @@ public class graphPanel extends JPanel{
 			double xcoor1 = borderdist + i*xScale;                                  //set x coordinate first point
 	        double ycoor1 = height - borderdist - yScale*weight[i];
 	        Graph.fill(new Ellipse2D.Double(xcoor1-2,ycoor1-2,4,4));
-	        //draws dots
-	        if (i>0)
-	        {
+	            //draws dots
 	        	Graph.drawString(""+weight[i]+"", (float)xcoor1, (float)ycoor1);
-	        }//this puts the values next to the dots
+	           //this puts the values next to the dots
 		}
 		
 
@@ -215,7 +213,7 @@ public class graphPanel extends JPanel{
 			double xcoor1 = borderdist + i*xScale;                                  
 	        double ycoor1 = height - borderdist - yScale*syspress[i];
 	        Graph.fill(new Ellipse2D.Double(xcoor1-2,ycoor1-2,4,4));
-	        if (i>0)
+	        
 	        	Graph.drawString(""+syspress[i]+"", (float)xcoor1, (float)ycoor1);
 		}
 		
@@ -239,7 +237,7 @@ public class graphPanel extends JPanel{
 			double xcoor1 = borderdist + i*xScale;                                 
 	        double ycoor1 = height - borderdist - yScale*diapress[i];
 	        Graph.fill(new Ellipse2D.Double(xcoor1-2,ycoor1-2,4,4));
-	        if (i>0)
+	        
 	        	Graph.drawString(""+diapress[i]+"", (float)xcoor1, (float)ycoor1);
 		}
 		
@@ -263,7 +261,7 @@ public class graphPanel extends JPanel{
 			double xcoor1 = borderdist + i*xScale;                                  
 	        double ycoor1 = height - borderdist - yScale*bldsugar[i];
 	        Graph.fill(new Ellipse2D.Double(xcoor1-2,ycoor1-2,4,4));
-	        if (i>0)
+	        
 	        	Graph.drawString(""+bldsugar[i]+"", (float)xcoor1, (float)ycoor1);
 		}
 		

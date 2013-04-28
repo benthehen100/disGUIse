@@ -40,6 +40,7 @@ public class selectedPatientPane extends JTabbedPane {
 	private JTable SelectedPatientPresciptionsTable;
 	private JButton updateIndicatorsPanelSubmit;
 	private JButton prescriptionsPanelAddPrescriptions;
+	private JButton btnGraph;
 	private JTextField patientInformationPanelCityInput;
 	private JTextField patientInformationPanelLastNameInput;
 	private popUp p2;
@@ -314,81 +315,8 @@ public class selectedPatientPane extends JTabbedPane {
 		
 		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
 		
-		JButton btnGraph = new JButton("Graph");
-		btnGraph.addActionListener(new ActionListener() {
-			public int[] convertIntegers(ArrayList<Integer> integers) 	//this method converts arrayLists into arrays
-			{
-			    int[] ret = new int[integers.size()];
-			    Iterator<Integer> iterator = integers.iterator();
-			    for (int i = 0; i < ret.length; i++)
-			    {
-			        ret[i] = iterator.next().intValue();
-			    }
-			    return ret;
-			}
-			
-			public String[] convertStrings(ArrayList<String> strings)   //this method converts StringArraylists into array
-			{
-				String[] ret2 = new String[strings.size()];
-				Iterator<String> iterator2 = strings.iterator();
-				for (int i =0; i< ret2.length; i++)
-				{
-					ret2[i] = iterator2.next().toString();
-				}
-				return ret2;
-	 		}
-			
-			public void actionPerformed(ActionEvent e) {
-
-					ArrayList<String> data = new ArrayList<String>(); 				//These are arraylists for all the indicators.
-					ArrayList<String> date = new ArrayList<String>();               //arraylists or vectors have to be used 
-					ArrayList<Integer> weight = new ArrayList<Integer>();           //because of changing values.        
-					ArrayList<Integer> syspressure = new ArrayList<Integer>();
-					ArrayList<Integer> diapressure = new ArrayList<Integer>();
-					ArrayList<Integer> bldsugar = new ArrayList<Integer>();
-					
-					String filename = "dasindicators";
-					String filename2 = patientFile + "indicators.txt";
-					Scanner fileScanner = null;
-					try {
-							fileScanner = new Scanner(new File(filename2));
-					    } 
-					    catch (FileNotFoundException a) 
-					    {
-					    	a.printStackTrace();
-					    }
-					
-					String blank = null;           
-					while (fileScanner.hasNext())  			//this code scans and reads the file. Blank is any line.
-			     	{                                       //If the blank has a string length > 0, then it is 
-						blank = fileScanner.nextLine();     //added to a big string arrayList of data.
-						
-						if (blank.length() > 0)
-			            data.add(blank);
-					}
-					
-					for(int i =0; i<data.size(); i=i+5)               //this seperates all the data into their
-					{                                                 //respective int and string arraylists.
-						date.add(data.get(i));     
-						weight.add(Integer.parseInt(data.get(i+1)));
-						syspressure.add(Integer.parseInt(data.get(i+2)));
-						diapressure.add(Integer.parseInt(data.get(i+3)));
-						bldsugar.add(Integer.parseInt(data.get(i+4)));
-					}
-					
-					int datalength = date.size();
-
-				graphPanel graph = new graphPanel();
-				graph.getDataPoints(datalength);
-			    graph.getAllIndicators(convertStrings(date), convertIntegers(weight), convertIntegers(syspressure), convertIntegers(diapressure), convertIntegers(bldsugar));
-				
-				
-				popUp p3=new popUp();
-				p3.getContentPane().add(graph);
-				p3.setSize(500,500);					//addes it to popup window
-				p3.show();
-			}
-		});
+		btnGraph = new JButton("Graph"); //create graph button
+		
 		GroupLayout gl_updateIndicatorsPanel = new GroupLayout(updateIndicatorsPanel);
 		gl_updateIndicatorsPanel.setHorizontalGroup(
 			gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
@@ -619,6 +547,83 @@ public class selectedPatientPane extends JTabbedPane {
 				
 			}
 		});
+		
+		
+		btnGraph.addActionListener(new ActionListener() {
+			public int[] convertIntegers(ArrayList<Integer> integers) 	//this method converts arrayLists into arrays
+			{
+			    int[] ret = new int[integers.size()];
+			    Iterator<Integer> iterator = integers.iterator();
+			    for (int i = 0; i < ret.length; i++)
+			    {
+			        ret[i] = iterator.next().intValue();
+			    }
+			    return ret;
+			}
+			
+			public String[] convertStrings(ArrayList<String> strings)   //this method converts StringArraylists into array
+			{
+				String[] ret2 = new String[strings.size()];
+				Iterator<String> iterator2 = strings.iterator();
+				for (int i =0; i< ret2.length; i++)
+				{
+					ret2[i] = iterator2.next().toString();
+				}
+				return ret2;
+	 		}
+			
+			public void actionPerformed(ActionEvent e) {
+
+					ArrayList<String> data = new ArrayList<String>(); 				//These are arraylists for all the indicators.
+					ArrayList<String> date = new ArrayList<String>();               //arraylists or vectors have to be used 
+					ArrayList<Integer> weight = new ArrayList<Integer>();           //because of changing values.        
+					ArrayList<Integer> syspressure = new ArrayList<Integer>();
+					ArrayList<Integer> diapressure = new ArrayList<Integer>();
+					ArrayList<Integer> bldsugar = new ArrayList<Integer>();
+					
+					String filename = "dasindicators";
+					String filename2 = patientFile + "indicators.txt";
+					Scanner fileScanner = null;
+					try {
+							fileScanner = new Scanner(new File(filename2));
+					    } 
+					    catch (FileNotFoundException a) 
+					    {
+					    	a.printStackTrace();
+					    }
+					
+					String blank = null;           
+					while (fileScanner.hasNext())  			//this code scans and reads the file. Blank is any line.
+			     	{                                       //If the blank has a string length > 0, then it is 
+						blank = fileScanner.nextLine();     //added to a big string arrayList of data.
+						
+						if (blank.length() > 0)
+			            data.add(blank);
+					}
+					
+					for(int i =0; i<data.size(); i=i+5)               //this seperates all the data into their
+					{                                                 //respective int and string arraylists.
+						date.add(data.get(i));     
+						weight.add((int)(Double.parseDouble(data.get(i+1))));
+						syspressure.add((int)(Double.parseDouble(data.get(i+2))));
+						diapressure.add((int)(Double.parseDouble(data.get(i+3))));
+						bldsugar.add((int)(Double.parseDouble(data.get(i+3))));
+					}
+					
+					int datalength = date.size();
+
+				graphPanel graph = new graphPanel();
+				graph.getDataPoints(datalength);
+			    graph.getAllIndicators(convertStrings(date), convertIntegers(weight), convertIntegers(syspressure), convertIntegers(diapressure), convertIntegers(bldsugar));
+				
+				
+				popUp p3=new popUp();
+				p3.getContentPane().add(graph);
+				p3.setSize(500,500);					//addes it to popup window
+				p3.show();
+			}
+		});
+		
 	}
 	//
 	public void setButton()
