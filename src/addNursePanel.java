@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 
@@ -246,8 +247,12 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 						   nZip.length()!=0 &&
 						   nPhone.length()!=0)
 				{
-					JOptionPane.showConfirmDialog(addNursePanelSubmit, "Are you sure you want to submit");
-					
+					// Pop up message after clicking submit
+					int response=JOptionPane.showConfirmDialog(addNursePanelSubmit, "Are you sure you want to submit"); //ask user for confirmation
+					if(response != JOptionPane.YES_OPTION) //if yes is not chosen then doesnt submit
+					{
+						return;
+					}
 					String filename = nUsername +".txt";
 					try {
 						 

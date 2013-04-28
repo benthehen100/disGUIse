@@ -310,7 +310,11 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				
 				
 				// Pop up message after clicking submit
-				JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit"); //ask user for confirmation
+				int response=JOptionPane.showConfirmDialog(addPatientSubmit, "Are you sure you want to submit");//ask user for confirmation
+				if(response != JOptionPane.YES_OPTION) //if yes is not chosen then doesnt submit
+				{
+					return;
+				}
 				
 				createPatientList list1 = new createPatientList(); //creates a linked-list of the patients In the file already
 				try {
