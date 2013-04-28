@@ -478,7 +478,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 						blood2 = br.readLine();
 						glucose= br.readLine();
 					}
-						
+	//					
 					
 				fr.close();
 				

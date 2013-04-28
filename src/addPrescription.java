@@ -20,7 +20,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+//
 public class addPrescription extends JPanel { //creates addprescription jPanel
 	private JTextField addPrescriptionDateInput;
 	private JTextField addPresciptionPrescriptionInput;

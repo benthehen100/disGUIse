@@ -620,7 +620,7 @@ public class selectedPatientPane extends JTabbedPane {
 			}
 		});
 	}
-	
+	//
 	public void setButton()
 	{
 		prescriptionsPanelAddPrescriptions.setEnabled(false); //turns off addprescription button
