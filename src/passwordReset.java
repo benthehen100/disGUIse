@@ -17,6 +17,7 @@ public class passwordReset extends JPanel {
 	private popUp p4;
 	public static String username;
 	String question;
+	private JTextField passwordOutput;
 	
 	
 	public static void setUsername(String s)
@@ -83,23 +84,32 @@ public class passwordReset extends JPanel {
 		resetPasswordBanner.setForeground(new Color(0, 0, 139));
 		resetPasswordBanner.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
 		
+		passwordOutput = new JTextField();
+		passwordOutput.setColumns(10);
+		
+		JLabel lblYourPasswordIs = new JLabel("Your password is:");
+		lblYourPasswordIs.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(36)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(promptResetPassword)
+						.addComponent(questionResetPassword, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
+						.addComponent(resetPasswordBanner, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(9)
-							.addComponent(answerResetPassword, GroupLayout.PREFERRED_SIZE, 335, GroupLayout.PREFERRED_SIZE))
-						.addComponent(promptResetPassword)
-						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(submitResetPassword)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(cancelResetPassword))
-							.addComponent(questionResetPassword, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE))
-						.addComponent(resetPasswordBanner, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblYourPasswordIs)
+								.addComponent(answerResetPassword, GroupLayout.PREFERRED_SIZE, 335, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+									.addComponent(passwordOutput, GroupLayout.PREFERRED_SIZE, 340, GroupLayout.PREFERRED_SIZE)
+									.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(submitResetPassword)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(cancelResetPassword))))))
 					.addContainerGap(44, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -113,11 +123,15 @@ public class passwordReset extends JPanel {
 					.addComponent(questionResetPassword)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(answerResetPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(18)
+					.addComponent(lblYourPasswordIs)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(passwordOutput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(26)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(submitResetPassword)
 						.addComponent(cancelResetPassword))
-					.addContainerGap(108, Short.MAX_VALUE))
+					.addContainerGap(35, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 		passwordResetEvents();
