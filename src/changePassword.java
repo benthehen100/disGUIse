@@ -154,6 +154,10 @@ public class changePassword extends JPanel {// changepassword Panel
 							temp.password = newPassword;
 							JOptionPane.showMessageDialog(null, "Password Changed", "Password Change Status", JOptionPane.OK_OPTION);
 						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Old password not correct.", "Error Message", JOptionPane.ERROR_MESSAGE);
+						}
 					}
 					temp = temp.next;
 				}
