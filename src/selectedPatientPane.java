@@ -631,6 +631,11 @@ public class selectedPatientPane extends JTabbedPane {
 		DefaultTableModel model = (DefaultTableModel) SelectedPatientPresciptionsTable.getModel();
 		String date, drug, comment;
 		
+		//clears the table, before table is repopulated;
+		for(int i = 0; i < model.getRowCount(); i++)
+		{
+			model.removeRow(i);
+		}
 		String fileName = file + "prescriptions.txt";
 		FileReader fr; //reads data from file
 		

@@ -63,6 +63,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 		private JButton btnDoctorAcceptnewInfo;
 		private String user;
 		private JButton addNurseButton;
+		public selectedPatientPane spp=new selectedPatientPane();
 		
 		public doctorPane() //doctorpane class
 		{
@@ -564,7 +565,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				{
 					//when the doctor clicks on a patient profile
 					popUp p2=new popUp();
-					selectedPatientPane spp=new selectedPatientPane(); //calls selected patient
+					//selectedPatientPane spp=new selectedPatientPane(); //calls selected patient
 					System.out.println("patient: " + doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(), 0));
 					String fileName = doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(), 0)+ ".txt"; // returns the patient .txt file;
 					spp.refreshPanel(fileName);
