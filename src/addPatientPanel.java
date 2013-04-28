@@ -504,7 +504,7 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				
 				disGuiseFrame.doctor.refreshTable();
 				disGuiseFrame.nurse.refreshTable();
-				p.setVisible(false);
+				p.dispose();
 				}
 				else
 				{
