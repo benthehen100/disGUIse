@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -24,7 +25,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 	private JTextField addPrescriptionDateInput;
 	private JTextField addPresciptionPrescriptionInput;
 	private JTextArea addPrescriptionCommentInput;
-	private JButton addPresciptionSubmit;
+	private JButton addPrescriptionSubmit;
 	private JButton addPrescriptionCancel;
 	String patientFile;
 	String dateInput, prescriptionInput, commentInput;
@@ -50,7 +51,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 		JLabel lblComments = new JLabel("Comments: "); //creates labels
 		lblComments.setLabelFor(addPrescriptionCommentInput);
 		
-		addPresciptionSubmit = new JButton("Submit");
+		addPrescriptionSubmit = new JButton("Submit");
 		addPrescriptionCancel = new JButton("Cancel");
 		
 		
@@ -76,7 +77,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 						.addComponent(addPresciptionPrescriptionInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(addPresciptionSubmit)
+								.addComponent(addPrescriptionSubmit)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(addPrescriptionCancel))
 							.addComponent(addPrescriptionCommentInput, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)))
@@ -103,7 +104,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 							.addComponent(addPrescriptionCommentInput, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(addPresciptionSubmit)
+						.addComponent(addPrescriptionSubmit)
 						.addComponent(addPrescriptionCancel))
 					.addContainerGap(33, Short.MAX_VALUE))
 		);
@@ -117,7 +118,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 	}
 	private void addPrescriptionEvents()
 	{
-		addPresciptionSubmit.addActionListener(new ActionListener() {
+		addPrescriptionSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				// Updates patient prescriptions when 'Submit' is clicked
@@ -126,16 +127,20 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 				
 				System.out.println("Current patient: " + patientFile); // console test
 				
-				// Fields are not editable after clicking the 'Submit' button
-				addPrescriptionDateInput.setEditable(false);
-				addPresciptionPrescriptionInput.setEditable(false);
-				addPrescriptionCommentInput.setEditable(false);
+				
+				
+				// Reads information from text fields
+				String newDateInput = addPrescriptionDateInput.getText();
+				String newPrescriptionInput = addPresciptionPrescriptionInput.getText();
+				String newCommentInput = addPrescriptionCommentInput.getText();
 				
 				// Defines patientIndicatorFile
 				patientPrescriptionFile = patientFile + "prescriptions.txt";
 				
 				System.out.println("Current file: " + patientPrescriptionFile); // console test
 				
+				if(newPrescriptionInput.length()!=0 && newCommentInput.length()!=0)
+				{
 				try
 				{
 				File file2 = new File(patientPrescriptionFile);
@@ -147,10 +152,6 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 				
 				BufferedReader br_pre = new BufferedReader(new FileReader(file2));
 				
-				// Reads information from text fields
-				String newDateInput = addPrescriptionDateInput.getText();
-				String newPrescriptionInput = addPresciptionPrescriptionInput.getText();
-				String newCommentInput = addPrescriptionCommentInput.getText();
 				
 				// Sets text field information to variables
 				dateInput = newDateInput;
@@ -170,8 +171,17 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 				}catch (Throwable e1) {
 					e1.printStackTrace();
 				}
-				
-				
+				// Fields are not editable after clicking the 'Submit' button
+				addPrescriptionDateInput.setEditable(false);
+				addPresciptionPrescriptionInput.setEditable(false);
+				addPrescriptionCommentInput.setEditable(false);
+				JOptionPane.showMessageDialog(addPrescriptionSubmit, "Prescription Added");
+				p1.dispose();
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(addPrescriptionSubmit, "Please Fill All Fields");
+				}
 			}
 		});
 		//
