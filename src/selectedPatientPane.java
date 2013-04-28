@@ -348,9 +348,10 @@ public class selectedPatientPane extends JTabbedPane {
 					ArrayList<Integer> bldsugar = new ArrayList<Integer>();
 					
 					String filename = "dasindicators";
+					String filename2 = patientFile + "indicators.txt";
 					Scanner fileScanner = null;
 					try {
-							fileScanner = new Scanner(new File(filename));
+							fileScanner = new Scanner(new File(filename2));
 					    } 
 					    catch (FileNotFoundException a) 
 					    {
