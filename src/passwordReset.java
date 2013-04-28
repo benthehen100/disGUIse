@@ -170,27 +170,8 @@ public class passwordReset extends JPanel {
 					tempUsername = temp.username;
 				}
 				if (answer.equalsIgnoreCase(temp.answer))	{
-					System.out.println("Answer Match, Change Password");
-					//temp.password = PASSWORDTEXTBOX, ALso check that password box is filled
-					try {
-						temp = people.head;
-				FileWriter wr = new FileWriter("LoginCred.txt");
-					while (temp != null)
-					{
-						wr.write(temp.username + "\n");
-						wr.write(temp.password + "\n");
-						wr.write(temp.type + "\n");
-						wr.write(temp.id + "\n");
-						wr.write(temp.recovery + "\n");
-						wr.write(temp.answer + "\n");
-						temp = temp.next;
-					}
-					wr.close();
-				//submit button effects
-				}catch (Throwable e1) {
-					e1.printStackTrace();
-				}	
-					JOptionPane.showMessageDialog(null, "Password Changed", "Password Change Status", JOptionPane.OK_OPTION);
+					System.out.println("Answer Match");
+					JOptionPane.showMessageDialog(null, temp.password, "Your Password", JOptionPane.ERROR_MESSAGE);
 				}
 				else	{
 					JOptionPane.showMessageDialog(null, "Wrong answer to Security Question, Sorry.", "Error Message", JOptionPane.ERROR_MESSAGE);
