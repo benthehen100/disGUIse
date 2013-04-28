@@ -484,39 +484,7 @@ public class selectedPatientPane extends JTabbedPane {
 		);
 		updateIndicatorsPanel.setLayout(gl_updateIndicatorsPanel);
 
-		JPanel visualIndicatorsPanel = new JPanel();
-		addTab("Visual Indicators", null, visualIndicatorsPanel, null);
 		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane_2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-
-		
-		GroupLayout gl_visualIndicatorsPanel = new GroupLayout(visualIndicatorsPanel);
-		gl_visualIndicatorsPanel.setHorizontalGroup(
-				gl_visualIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_visualIndicatorsPanel.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_visualIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_visualIndicatorsPanel.createSequentialGroup()
-										.addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
-										.addContainerGap())
-										.addGroup(Alignment.TRAILING, gl_visualIndicatorsPanel.createSequentialGroup()
-												.addGap(18))))
-				);
-		gl_visualIndicatorsPanel.setVerticalGroup(
-				gl_visualIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_visualIndicatorsPanel.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				);
-		
-		GraphED graph = new GraphED();
-
-		scrollPane_2.setViewportView(graph);
-		visualIndicatorsPanel.setLayout(gl_visualIndicatorsPanel);
 		//selectedPatientEvents();
 		
 		JPanel prescriptionsPanel = new JPanel();

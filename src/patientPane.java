@@ -93,6 +93,7 @@ public class patientPane extends JTabbedPane
 	private JButton HealthRecordsPanelUpdateIndicatorsPanelSubmit;
 	private String user, userText;
 	private JTextField updateIndicatorsPanelDateInput;
+	private JButton HealthRecordsPanelUpdateIndicatorsPanelGraph;
 	
 	public void refreshPanel(String file)
 	{
@@ -557,6 +558,9 @@ public class patientPane extends JTabbedPane
 		updateIndicatorsPanelDateInput.setEditable(false);
 		
 		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
+		
+		HealthRecordsPanelUpdateIndicatorsPanelGraph = new JButton("Graph");
+		
 		GroupLayout gl_patientUpdateIndicatorsPanel = new GroupLayout(patientUpdateIndicatorsPanel);
 		gl_patientUpdateIndicatorsPanel.setHorizontalGroup(
 			gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
@@ -591,7 +595,9 @@ public class patientPane extends JTabbedPane
 									.addGap(4)
 									.addComponent(label)
 									.addGap(18)
-									.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(HealthRecordsPanelUpdateIndicatorsPanelGraph))))
 						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE))
 					.addGap(58))
@@ -642,24 +648,16 @@ public class patientPane extends JTabbedPane
 							.addComponent(label))
 						.addGroup(gl_patientUpdateIndicatorsPanel.createSequentialGroup()
 							.addGap(3)
-							.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit))))
+							.addGroup(gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit)
+								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelGraph)))))
 		);
 		patientUpdateIndicatorsPanel.setLayout(gl_patientUpdateIndicatorsPanel);
 
-		patientVisualIndicatorsPanel = new JPanel();
+		
 		patientPrescriptionsPanel = new JPanel();
 
-		patientRecordsPane.addTab("Visual Indicators", null, patientVisualIndicatorsPanel, null);
-		GroupLayout gl_patientVisualIndicatorsPanel = new GroupLayout(patientVisualIndicatorsPanel);
-		gl_patientVisualIndicatorsPanel.setHorizontalGroup(
-			gl_patientVisualIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 520, Short.MAX_VALUE)
-		);
-		gl_patientVisualIndicatorsPanel.setVerticalGroup(
-			gl_patientVisualIndicatorsPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 417, Short.MAX_VALUE)
-		);
-		patientVisualIndicatorsPanel.setLayout(gl_patientVisualIndicatorsPanel);
+		
 		patientRecordsPane.addTab("Prescriptions", null, patientPrescriptionsPanel, null);
 
 		patientPrescriptionsScrollPane = new JScrollPane();
@@ -867,31 +865,29 @@ public class patientPane extends JTabbedPane
 		patientChangePassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				//popUp p3=new popUp();
 				changePassword cp=new changePassword();
-				//p3.getContentPane().add(cp);
-				//p3.pack();
-				//p3.show();
 			}
 		});
 		patientRecoverPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				//popUp p4=new popUp();
+				
 				passwordReset pr=new passwordReset(disGuiseFrame.Username);
-				//p4.getContentPane().add(pr);
-				//p4.pack();
-				//p4.show();
+				
 			}
 		});
 		patientManageSecurityQuestions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				//popUp p5=new popUp();
+				
 				securityQuestion sq=new securityQuestion();
-				//p5.getContentPane().add(sq);
-				//p5.pack();
-				//p5.show();
+				
+			}
+		});
+		HealthRecordsPanelUpdateIndicatorsPanelGraph.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				
 			}
 		});
 	}
