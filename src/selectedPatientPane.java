@@ -11,14 +11,11 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
 public class selectedPatientPane extends JTabbedPane {
 	private JTextField patientInformationPanelNameInput;
@@ -429,50 +426,10 @@ public class selectedPatientPane extends JTabbedPane {
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				);
-		// the reading method is included onto patient list
-		ArrayList<String> data = new ArrayList<String>(); 				//These are arraylists for all the indicators.
-		ArrayList<String> date2 = new ArrayList<String>();               //arraylists or vectors have to be used 
-		ArrayList<Integer> weight = new ArrayList<Integer>();           //because of changing values.        
-		ArrayList<Integer> syspressure = new ArrayList<Integer>();
-		ArrayList<Integer> diapressure = new ArrayList<Integer>();
-		ArrayList<Integer> bldsugar = new ArrayList<Integer>();
 		
-		String filename = "dasindicators";
-		Scanner fileScanner = null;
-		try {
-				fileScanner = new Scanner(new File(filename));
-		    } 
-		    catch (FileNotFoundException e) 
-		    {
-		    	e.printStackTrace();
-		    }
-		
-		String blank = null;           
-		while (fileScanner.hasNext())  			//this code scans and reads the file. Blank is any line.
-     	{                                       //If the blank has a string length > 0, then it is 
-			blank = fileScanner.nextLine();     //added to a big string arrayList of data.
-			
-			if (blank.length() > 0)
-            data.add(blank);
-		}
-		
-		for(int i =0; i<data.size(); i=i+5)               //this seperates all the data into their
-		{                                                 //respective int and string arraylists.
-			date2.add(data.get(i));     
-			weight.add(Integer.parseInt(data.get(i+1)));
-			syspressure.add(Integer.parseInt(data.get(i+2)));
-			diapressure.add(Integer.parseInt(data.get(i+3)));
-			bldsugar.add(Integer.parseInt(data.get(i+4)));
-		}
-		
-		int datalength = date2.size();					//creates an integer carrying number of data points
-	
-	graphPanel graph = new graphPanel();// graphPanel is a Jpanel
-	graph.getDataPoints(datalength);
-    graph.getAllIndicators(grapher.convertStrings(date2), grapher.convertIntegers(weight), grapher.convertIntegers(syspressure), grapher.convertIntegers(diapressure), grapher.convertIntegers(bldsugar));
+		GraphED graph = new GraphED();
 
-
-		scrollPane_2.setViewportView(graph); //being a jPanel I can then input it into here.
+		scrollPane_2.setViewportView(graph);
 		visualIndicatorsPanel.setLayout(gl_visualIndicatorsPanel);
 		//selectedPatientEvents();
 		
