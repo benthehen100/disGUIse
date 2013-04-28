@@ -11,11 +11,15 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Scanner;
 
 public class selectedPatientPane extends JTabbedPane {
 	private JTextField patientInformationPanelNameInput;
@@ -42,6 +46,7 @@ public class selectedPatientPane extends JTabbedPane {
 	private JTextField updateIndicatorsPanelDateInput;
 	String patientFileName, patientFile, patientID;
 	String weightInput, dateInput, pressureInput1, pressureInput2, glucoseInput;
+	private final Action action = new SwingAction();
 
 	public selectedPatientPane() {
 
@@ -308,6 +313,81 @@ public class selectedPatientPane extends JTabbedPane {
 		
 		
 		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
+		
+		JButton btnGraph = new JButton("Graph");
+		btnGraph.addActionListener(new ActionListener() {
+			public int[] convertIntegers(ArrayList<Integer> integers) 	//this method converts arrayLists into arrays
+			{
+			    int[] ret = new int[integers.size()];
+			    Iterator<Integer> iterator = integers.iterator();
+			    for (int i = 0; i < ret.length; i++)
+			    {
+			        ret[i] = iterator.next().intValue();
+			    }
+			    return ret;
+			}
+			
+			public String[] convertStrings(ArrayList<String> strings)   //this method converts StringArraylists into array
+			{
+				String[] ret2 = new String[strings.size()];
+				Iterator<String> iterator2 = strings.iterator();
+				for (int i =0; i< ret2.length; i++)
+				{
+					ret2[i] = iterator2.next().toString();
+				}
+				return ret2;
+	 		}
+			
+			public void actionPerformed(ActionEvent e) {
+
+					ArrayList<String> data = new ArrayList<String>(); 				//These are arraylists for all the indicators.
+					ArrayList<String> date = new ArrayList<String>();               //arraylists or vectors have to be used 
+					ArrayList<Integer> weight = new ArrayList<Integer>();           //because of changing values.        
+					ArrayList<Integer> syspressure = new ArrayList<Integer>();
+					ArrayList<Integer> diapressure = new ArrayList<Integer>();
+					ArrayList<Integer> bldsugar = new ArrayList<Integer>();
+					
+					String filename = "dasindicators";
+					Scanner fileScanner = null;
+					try {
+							fileScanner = new Scanner(new File(filename));
+					    } 
+					    catch (FileNotFoundException a) 
+					    {
+					    	a.printStackTrace();
+					    }
+					
+					String blank = null;           
+					while (fileScanner.hasNext())  			//this code scans and reads the file. Blank is any line.
+			     	{                                       //If the blank has a string length > 0, then it is 
+						blank = fileScanner.nextLine();     //added to a big string arrayList of data.
+						
+						if (blank.length() > 0)
+			            data.add(blank);
+					}
+					
+					for(int i =0; i<data.size(); i=i+5)               //this seperates all the data into their
+					{                                                 //respective int and string arraylists.
+						date.add(data.get(i));     
+						weight.add(Integer.parseInt(data.get(i+1)));
+						syspressure.add(Integer.parseInt(data.get(i+2)));
+						diapressure.add(Integer.parseInt(data.get(i+3)));
+						bldsugar.add(Integer.parseInt(data.get(i+4)));
+					}
+					
+					int datalength = date.size();
+
+				graphPanel graph = new graphPanel();
+				graph.getDataPoints(datalength);
+			    graph.getAllIndicators(convertStrings(date), convertIntegers(weight), convertIntegers(syspressure), convertIntegers(diapressure), convertIntegers(bldsugar));
+				
+				
+				popUp p3=new popUp();
+				p3.getContentPane().add(graph);
+				p3.setSize(500,500);					//addes it to popup window
+				p3.show();
+			}
+		});
 		GroupLayout gl_updateIndicatorsPanel = new GroupLayout(updateIndicatorsPanel);
 		gl_updateIndicatorsPanel.setHorizontalGroup(
 			gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
@@ -332,19 +412,22 @@ public class selectedPatientPane extends JTabbedPane {
 								.addComponent(label_11, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblXxxxxxxx, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-							.addGap(166)
-							.addComponent(updateIndicatorsPanelSubmit, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
-							.addGap(33)
-							.addComponent(updateIndicatorsPanelPrompt, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
 							.addGap(33)
 							.addComponent(updateIndicatorsPanelBanner, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
 							.addGap(216)
 							.addComponent(updateIndicatorsPanelPressureInput2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(label_9, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(label_9, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING, false)
+							.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
+								.addGap(166)
+								.addComponent(updateIndicatorsPanelSubmit, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnGraph, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_updateIndicatorsPanel.createSequentialGroup()
+								.addGap(33)
+								.addComponent(updateIndicatorsPanelPrompt, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))))
 					.addGap(98))
 		);
 		gl_updateIndicatorsPanel.setVerticalGroup(
@@ -394,7 +477,9 @@ public class selectedPatientPane extends JTabbedPane {
 							.addGap(3)
 							.addComponent(label_11)))
 					.addGap(6)
-					.addComponent(updateIndicatorsPanelSubmit))
+					.addGroup(gl_updateIndicatorsPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(updateIndicatorsPanelSubmit)
+						.addComponent(btnGraph)))
 		);
 		updateIndicatorsPanel.setLayout(gl_updateIndicatorsPanel);
 
@@ -693,5 +778,13 @@ public class selectedPatientPane extends JTabbedPane {
 ;
 		
 	
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
 	}
 }

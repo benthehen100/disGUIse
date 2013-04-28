@@ -20,11 +20,6 @@ public class graphPanel extends JPanel{
 	public int datapoints = 0;				
 	public final int borderdist = 50;			//The borderdist variable essentially anchors everything away
 			                                    //from the edges of the panel
-	public graphPanel()
-	{
-		setBackground(Color.white);
-		
-	}
 	
 	public void getAllIndicators(String[] dates, int[] w, int[] systolic, int[] diastolic, int[] glucose)		
     {
@@ -290,6 +285,7 @@ public class graphPanel extends JPanel{
         }
         return val_max;
     }
+	
 	
 	
 }
