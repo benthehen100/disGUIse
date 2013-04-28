@@ -17,9 +17,8 @@ public class passwordReset extends JPanel {
 	private popUp p4;
 	public static String username;
 	String question;
-	private JTextField passwordOutput;
-	
-	
+
+
 	public static void setUsername(String s)
 	{
 		username = s;
@@ -36,8 +35,8 @@ public class passwordReset extends JPanel {
 		linkList people = new linkList();
 		Link temp;
 		FileReader fr;
-		
-		
+
+
 		try {
 		fr = new FileReader("LoginCred.txt");	
 		BufferedReader br = new BufferedReader(fr);
@@ -49,14 +48,14 @@ public class passwordReset extends JPanel {
 			d = br.readLine();
 			e2 = br.readLine();
 			f = br.readLine();
-			
+
 			System.out.println("a = " + a);
 			System.out.println("b = " + b);
 			System.out.println("c = " + c);
 			System.out.println("d = " + d);
 			System.out.println("e2 = " + e2);
 			System.out.println("f = " + f);
-			
+
 			people.insert(a, b, c, d , e2, f);
 		}
 		fr.close();
@@ -75,41 +74,32 @@ public class passwordReset extends JPanel {
 		JLabel promptResetPassword = new JLabel("To reset your password, answer the following security question");
 		JLabel questionResetPassword = new JLabel(question);
 		questionResetPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		
+
 		submitResetPassword = new JButton("Submit");
 		cancelResetPassword = new JButton("Cancel");
-		
+
 
 		JLabel resetPasswordBanner = new JLabel("disGUIse Password Reset");
 		resetPasswordBanner.setForeground(new Color(0, 0, 139));
 		resetPasswordBanner.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
-		
-		passwordOutput = new JTextField();
-		passwordOutput.setColumns(10);
-		
-		JLabel lblYourPasswordIs = new JLabel("Your password is:");
-		lblYourPasswordIs.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		
+
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(36)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(promptResetPassword)
-						.addComponent(questionResetPassword, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-						.addComponent(resetPasswordBanner, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(9)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblYourPasswordIs)
-								.addComponent(answerResetPassword, GroupLayout.PREFERRED_SIZE, 335, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addComponent(passwordOutput, GroupLayout.PREFERRED_SIZE, 340, GroupLayout.PREFERRED_SIZE)
-									.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(submitResetPassword)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(cancelResetPassword))))))
+							.addComponent(answerResetPassword, GroupLayout.PREFERRED_SIZE, 335, GroupLayout.PREFERRED_SIZE))
+						.addComponent(promptResetPassword)
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(submitResetPassword)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(cancelResetPassword))
+							.addComponent(questionResetPassword, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE))
+						.addComponent(resetPasswordBanner, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(44, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -123,19 +113,15 @@ public class passwordReset extends JPanel {
 					.addComponent(questionResetPassword)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(answerResetPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblYourPasswordIs)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(passwordOutput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(26)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(submitResetPassword)
 						.addComponent(cancelResetPassword))
-					.addContainerGap(35, Short.MAX_VALUE))
+					.addContainerGap(108, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 		passwordResetEvents();
-		
+
 		p4=new popUp();
 		p4.getContentPane().add(this); //adds it to popUpwindow
 		p4.pack();
@@ -150,7 +136,7 @@ public class passwordReset extends JPanel {
 				Link temp;
 				FileReader fr;
 				String answer = answerResetPassword.getText(), username = getUsername();
-	
+
 				try {
 				fr = new FileReader("LoginCred.txt");	
 				BufferedReader br = new BufferedReader(fr);
@@ -162,14 +148,14 @@ public class passwordReset extends JPanel {
 					d = br.readLine();
 					e2 = br.readLine();
 					f = br.readLine();
-					
+
 					System.out.println("a = " + a);
 					System.out.println("b = " + b);
 					System.out.println("c = " + c);
 					System.out.println("d = " + d);
 					System.out.println("e2 = " + e2);
 					System.out.println("f = " + f);
-					
+
 					people.insert(a, b, c, d , e2, f);
 				}
 				fr.close();
@@ -190,8 +176,8 @@ public class passwordReset extends JPanel {
 				else	{
 					JOptionPane.showMessageDialog(null, "Wrong answer to Security Question, Sorry.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				}
-				
-				
+
+
 			}
 		});
 		//
