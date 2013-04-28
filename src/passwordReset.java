@@ -172,6 +172,7 @@ public class passwordReset extends JPanel {
 				if (answer.equalsIgnoreCase(temp.answer))	{
 					System.out.println("Answer Match");
 					JOptionPane.showMessageDialog(null, temp.password, "Your Password", JOptionPane.ERROR_MESSAGE);
+					p4.dispose();
 				}
 				else	{
 					JOptionPane.showMessageDialog(null, "Wrong answer to Security Question, Sorry.", "Error Message", JOptionPane.ERROR_MESSAGE);
