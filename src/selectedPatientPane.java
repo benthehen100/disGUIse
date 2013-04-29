@@ -588,6 +588,7 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 				updateIndicatorsPanelPressureInput2.setEditable(false);
 				updateIndicatorsPanelWeightInput.setEditable(false);
 				updateIndicatorsPanelWeightInput.setEditable(false);
+				updateIndicatorsPanelSubmit.setEnabled(false);
 				
 				// Defines patientIndicatorFile
 				patientIndicatorFile = patientFile + "indicators.txt";
