@@ -831,7 +831,8 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 				
 				try
 				{
-				File file=new File(user);
+				String userFile2=user+".txt";
+				File file=new File(userFile2);
 				BufferedReader br=new BufferedReader(new FileReader(file));
 
 				//gets information from textboxes and stores into strings
