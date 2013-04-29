@@ -22,16 +22,19 @@ import java.util.Date;
 
 //
 public class addPrescription extends JPanel { //creates addprescription jPanel
+	//creates field variables
 	private JTextField addPrescriptionDateInput;
 	private JTextField addPresciptionPrescriptionInput;
 	private JTextArea addPrescriptionCommentInput;
 	private JButton addPrescriptionSubmit;
 	private JButton addPrescriptionCancel;
+	private popUp p1;
 	String patientFile;
 	String dateInput, prescriptionInput, commentInput;
-	private popUp p1;
 	
 	public addPrescription(String patientFileID) { //main class
+		
+		//gets the date of time entered
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		String dateInput = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
@@ -39,22 +42,23 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 		patientFile = patientFileID;
 		System.out.println("Patient file passed through: " + patientFile); // console test
 		
-		addPrescriptionDateInput = new JTextField(10); //creates textfields
+		//creates textfields
+		addPrescriptionDateInput = new JTextField(10);
 		addPrescriptionDateInput.setText(dateInput);
 		addPrescriptionDateInput.setEditable(false);
 		addPresciptionPrescriptionInput = new JTextField(10);
 		
-		addPrescriptionCommentInput = new JTextArea(); //textarea for comments
+		//textarea for comments
+		addPrescriptionCommentInput = new JTextArea(); 
 		JLabel addPrescriptionPrescriptionLbl = new JLabel("Prescription: ");
 		JLabel addPrescriptionDateLbl = new JLabel("Date: ");
-		
 		JLabel lblComments = new JLabel("Comments: "); //creates labels
 		lblComments.setLabelFor(addPrescriptionCommentInput);
-		
+		//creates buttons
 		addPrescriptionSubmit = new JButton("Submit");
 		addPrescriptionCancel = new JButton("Cancel");
 		
-		
+		//Banner add prescription
 		JLabel lblAddPrescription = new JLabel("Add Prescription"); //add priscription banner
 		lblAddPrescription.setForeground(new Color(0, 0, 139));
 		lblAddPrescription.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 24));
@@ -111,10 +115,10 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 		setLayout(groupLayout); //sets layout of this panel to grouplayout
 		
 		addPrescriptionEvents(); //calls the events
-		p1=new popUp();
-		p1.getContentPane().add(this);
-		p1.pack();
-		p1.show();
+		p1=new popUp(); //creates new popup
+		p1.getContentPane().add(this); //adds this panel to popup
+		p1.pack();//packs frame
+		p1.show(); //shows frame
 	}
 	private void addPrescriptionEvents()
 	{
@@ -122,12 +126,8 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				// Updates patient prescriptions when 'Submit' is clicked
-				
 				String patientPrescriptionFile; // Establishes variable for patient file
-				
 				System.out.println("Current patient: " + patientFile); // console test
-				
-				
 				
 				// Reads information from text fields
 				String newDateInput = addPrescriptionDateInput.getText();
@@ -138,8 +138,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 				patientPrescriptionFile = patientFile + "prescriptions.txt";
 				
 				System.out.println("Current file: " + patientPrescriptionFile); // console test
-				
-				if(newPrescriptionInput.length()!=0 && newCommentInput.length()!=0)
+				if(newPrescriptionInput.length()!=0 && newCommentInput.length()!=0) //makes sure all fields are entered
 				{
 				try
 				{
@@ -151,7 +150,6 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 				}
 				
 				BufferedReader br_pre = new BufferedReader(new FileReader(file2));
-				
 				
 				// Sets text field information to variables
 				dateInput = newDateInput;
@@ -175,12 +173,13 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 				addPrescriptionDateInput.setEditable(false);
 				addPresciptionPrescriptionInput.setEditable(false);
 				addPrescriptionCommentInput.setEditable(false);
-				JOptionPane.showMessageDialog(addPrescriptionSubmit, "Prescription Added");
-				disGuiseFrame.doctor.spp.refreshPrescriptionTable(disGuiseFrame.doctor.spp.patientID);
-				p1.dispose();
+				JOptionPane.showMessageDialog(addPrescriptionSubmit, "Prescription Added");//notifies that prscription is added
+				disGuiseFrame.doctor.spp.refreshPrescriptionTable(disGuiseFrame.doctor.spp.patientID); //refreshes prescription table
+				p1.dispose(); //closes frame
 				}
 				else
 				{
+					//prompts user to enter all fields
 					JOptionPane.showMessageDialog(addPrescriptionSubmit, "Please Fill All Fields");
 				}
 			}
@@ -189,7 +188,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 		addPrescriptionCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				p1.dispose();
+				p1.dispose();//closes window
 			}
 		});
 		
