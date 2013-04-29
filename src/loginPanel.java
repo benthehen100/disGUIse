@@ -19,6 +19,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class loginPanel extends JPanel {
+	//field variables
 	private JTextField uNameInput=new JTextField(10);
 	private JPasswordField passInput = new JPasswordField(10);
 	private JButton submitBL=new JButton("Log In");
@@ -27,24 +28,23 @@ public class loginPanel extends JPanel {
 	private JLabel usernameLbl=new JLabel("Username:");
 	public String user;
 	
-	public String returnUser()
+	public String returnUser() //returns the user who is loggin in
 	{
 		return user; 
 	}
 	
 	public loginPanel()
 	{
-		setBackground(Color.white);
+		setBackground(Color.white); //sets the background to white
 		
-		Dimension expectedDimension = new Dimension(250, 150);
-		
-
+	   //sets dimensions
+	   Dimension expectedDimension = new Dimension(250, 150);
        setPreferredSize(expectedDimension);
        setMaximumSize(expectedDimension);
        setMinimumSize(expectedDimension);
        
-       
-		GroupLayout gl_loginPanel = new GroupLayout(this);
+		GroupLayout gl_loginPanel = new GroupLayout(this); //creates new grouplayout
+		//sets the postions fo the components using WindowBuilder
 		gl_loginPanel.setHorizontalGroup(
 			gl_loginPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_loginPanel.createSequentialGroup()
@@ -82,18 +82,14 @@ public class loginPanel extends JPanel {
 						.addComponent(forgotBL))
 					.addContainerGap(31, Short.MAX_VALUE))
 		);
-		setLayout(gl_loginPanel);
-		
-			
-			logInEvents();
-			
-
+		setLayout(gl_loginPanel); //sets the layout of this panel to the above
+		logInEvents();//calls events method
 	}
 	
-
+	//method for the button listeners of this class
 	private void logInEvents()
 	{
-		final CardLayout card=(CardLayout)disGuiseFrame.contentPane.getLayout();
+		final CardLayout card=(CardLayout)disGuiseFrame.contentPane.getLayout(); //gets the layout of the disguiseFrame
 		submitBL.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -144,24 +140,24 @@ public class loginPanel extends JPanel {
 					System.out.println(username);
 					if(username.equalsIgnoreCase(temp.username))
 					{
-						if(password.equals(temp.password))
+						if(password.equals(temp.password)) //if the password is correct
 						{
-							disGuiseFrame.setUsername(temp.username);
+							disGuiseFrame.setUsername(temp.username); //sets the username to the user that is logged in
 							System.out.println("User match!");
 							user = temp.username;
 							String name= user + ".txt"; // generate text file name based on username;
 							System.out.println(name);
-							if(temp.type.equalsIgnoreCase("nurse"))
+							if(temp.type.equalsIgnoreCase("nurse")) //if its a nurse loads nurse screen
 							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.NURSE);
 								disGuiseFrame.nurse.refreshPane(name); // refreshes panel based on inputted text file name;
 							}
-							else if(temp.type.equalsIgnoreCase("doctor"))
+							else if(temp.type.equalsIgnoreCase("doctor")) //if its a doctor loads doctor screen
 							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.DOCTOR);
 								disGuiseFrame.doctor.refreshPanel(name);
 							}
-							else if(temp.type.equalsIgnoreCase("patient"))
+							else if(temp.type.equalsIgnoreCase("patient")) //if its a patient loads patient screen
 							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
 								idFile = temp.id + ".txt";
@@ -173,8 +169,8 @@ public class loginPanel extends JPanel {
 						//
 						else
 						{
-							System.out.println("Incorrect Username/Password");
-							
+							//password and username do not match
+							System.out.println("Incorrect Username/Password"); 
 							JOptionPane.showMessageDialog(null, "Invalid username or password. Try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
 						}
 					}
@@ -184,16 +180,16 @@ public class loginPanel extends JPanel {
 			}
 		});
 		
-		forgotBL.addActionListener(new ActionListener() {
+		forgotBL.addActionListener(new ActionListener() { //if the forgot button is clicked
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				// Opens new box when 'Forgot Password?' is selected
-				String username = uNameInput.getText();
+				String username = uNameInput.getText(); //gets the username enterd
 				linkList people = new linkList();
 				Link temp;
 				FileReader fr;
 				
-				
+				//searches for mathed username from logincred file
 				try {
 				fr = new FileReader("LoginCred.txt");	
 				BufferedReader br = new BufferedReader(fr);
@@ -222,19 +218,18 @@ public class loginPanel extends JPanel {
 				temp = people.head;
 				while (temp != null && !(username.equalsIgnoreCase(temp.username)))
 				{
-						temp = temp.next;
+						temp = temp.next; //if it doestn equal goes to next line
 				}
 				if (temp == null)
 				{
+					//prompts user to enter username
 					JOptionPane.showMessageDialog(null, "Please enter a real user.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				}
 				else
 				{
-					popUp p1=new popUp();
+					//loadsthe password resetpage
 					passwordReset pr = new passwordReset(username);
-					p1.getContentPane().add(pr);
-					p1.pack();
-					p1.show();
+					
 				}
 			}
 		});
