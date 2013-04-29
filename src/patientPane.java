@@ -33,8 +33,9 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 
-public class patientPane extends JTabbedPane
+public class patientPane extends JTabbedPane //creates patientPane class of type JTabbedPane
 {
+	//field variables
 	private JPanel patientContactPanel;
 	private JPanel patientAccountPanel;
 	private JTextArea patientContactBanner;
@@ -81,13 +82,13 @@ public class patientPane extends JTabbedPane
 	private JTextField patientContactPanelOfficeStreetInput;
 	private JTextField patientContactPanelOfficeStateInput;
 	private JTextField patientContactPanelOfficeZipInput;
-	private JLabel label_9;
-	private JLabel label_10;
-	private JLabel label_11;
+	private JLabel labeOfficeZip;
+	private JLabel labelOfficeState;
+	private JLabel labelOfficeStreet;
 	private String fName, id, email, phone, street, state, zip, insurance, doctor, nurse, doctorFile, lName, city, patientid;
 	String weightInput, dateInput, pressureInput1, pressureInput2, glucoseInput;
 	private JTextField patientContactPanelOfficeInput;
-	private JLabel lblCity_1;
+	private JLabel lblOfficeCity;
 	private JTextField patientContactPanelCityInput;
 	private JLabel lblCity;
 	private JLabel lblLastName;
@@ -174,130 +175,125 @@ public class patientPane extends JTabbedPane
 		patientContactPanelOfficeStateInput.setText(state);
 		patientContactPanelOfficeZipInput.setText(zip);
 	}
-
+	
+	//main method
 	public patientPane()
 	{
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		String dateInput = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
-		setTabPlacement(LEFT);
-		patientRecordsPane = new JTabbedPane(JTabbedPane.TOP);
-		patientAccountPanel = new JPanel();
-		patientContactPanel = new JPanel();
+
+		setTabPlacement(LEFT); //sets the patinets tabbs to the left
+		patientRecordsPane = new JTabbedPane(JTabbedPane.TOP); //creats a new JTabbedPane with tabs on the top
+		patientAccountPanel = new JPanel(); //creates new acountmanagement Panel
+		patientContactPanel = new JPanel(); //creates new Contact Pannel
+
+		addTab("Patient Information", null, patientContactPanel, null); //adds Patient Informaiton panel to the patientPane
+		//creates Patient contact info banner
+		patientContactBanner = new JTextArea();
+		patientContactBanner.setTabSize(5);
+		patientContactBanner.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		patientContactBanner.setEditable(false);
+		patientContactBanner.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		patientContactBanner.setForeground(new Color(0, 0, 128));
+		patientContactBanner.setText("\tWelcome\r\n  disGUIse Well-Check Clinic");
 		
-				addTab("Patient Information", null, patientContactPanel, null);
-				//////////////////////////////////////////////////////////////////////////
-				patientContactBanner = new JTextArea();
-				patientContactBanner.setTabSize(5);
-				patientContactBanner.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-				patientContactBanner.setEditable(false);
-				patientContactBanner.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-				patientContactBanner.setForeground(new Color(0, 0, 128));
-				patientContactBanner.setText("\tWelcome\r\n  disGUIse Well-Check Clinic");
-				
-						patientContactNameLbl = new JLabel("First Name:");
-						patientContactIdLbl = new JLabel("Patient ID:");
-						patientContactPhoneLbl = new JLabel("Telephone:");
-						patientContactEmailLbl = new JLabel("Email Address:");
-						patientContactAddressLbl = new JLabel("Address:");
-						patientContactInsuranceLbl = new JLabel("Insurance:");
-						patientContactInsuranceLbl.setHorizontalAlignment(SwingConstants.CENTER);
-						patientContactOffPhoneLbl = new JLabel("Office Telephone:");
-						patientContactOffPhoneLbl.setHorizontalAlignment(SwingConstants.CENTER);
-						patientContactDoctorLbl = new JLabel("Doctor:");
-						patientContactDoctorLbl.setHorizontalAlignment(SwingConstants.CENTER);
-						patientContactOffAddLbl = new JLabel("Office Address:");
-						patientContactOffAddLbl.setHorizontalAlignment(SwingConstants.CENTER);
-						
-						patientContactPanelNameInput = new JTextField();
-						patientContactPanelNameInput.setEditable(false);
-						patientContactPanelNameInput.setColumns(10);
-						
-						patientContactPanelIdInput = new JTextField();
-						patientContactPanelIdInput.setEditable(false);
-						patientContactPanelIdInput.setColumns(10);
-						
-						patientContactPanelPatientPhoneInput = new JTextField();
-						patientContactPanelPatientPhoneInput.setEditable(false);
-						patientContactPanelPatientPhoneInput.setColumns(10);
-						
-						patientContactPanelEmailInput = new JTextField();
-						patientContactPanelEmailInput.setEditable(false);
-						patientContactPanelEmailInput.setColumns(10);
-						
-						patientContactPanelStreetInput = new JTextField();
-						patientContactPanelStreetInput.setEditable(false);
-						patientContactPanelStreetInput.setColumns(10);
-						
-						patientContactPanelStateInput = new JTextField();
-						patientContactPanelStateInput.setEditable(false);
-						patientContactPanelStateInput.setColumns(10);
-						
-						patientContactPanelZipInput = new JTextField();
-						patientContactPanelZipInput.setEditable(false);
-						patientContactPanelZipInput.setColumns(10);
-						
-						label_6 = new JLabel("Zip:");
-						
-						label_7 = new JLabel("State:");
-						
-						label_8 = new JLabel("Street:");
-						
-						patientContactPanelInsuranceInput = new JTextField();
-						patientContactPanelInsuranceInput.setEditable(false);
-						patientContactPanelInsuranceInput.setHorizontalAlignment(SwingConstants.CENTER);
-						patientContactPanelInsuranceInput.setColumns(10);
-						
-						patientContactPanelDoctorInput = new JTextField();
-						patientContactPanelDoctorInput.setEditable(false);
-						patientContactPanelDoctorInput.setHorizontalAlignment(SwingConstants.CENTER);
-						patientContactPanelDoctorInput.setColumns(10);
-						
-						patientContactPanelOfficePhoneInput = new JTextField();
-						patientContactPanelOfficePhoneInput.setEditable(false);
-						patientContactPanelOfficePhoneInput.setHorizontalAlignment(SwingConstants.CENTER);
-						patientContactPanelOfficePhoneInput.setColumns(10);
-						
-						patientContactPanelOfficeStreetInput = new JTextField();
-						patientContactPanelOfficeStreetInput.setEditable(false);
-						patientContactPanelOfficeStreetInput.setColumns(10);
-						
-						patientContactPanelOfficeStateInput = new JTextField();
-						patientContactPanelOfficeStateInput.setEditable(false);
-						patientContactPanelOfficeStateInput.setColumns(10);
-						
-						patientContactPanelOfficeZipInput = new JTextField();
-						patientContactPanelOfficeZipInput.setEditable(false);
-						patientContactPanelOfficeZipInput.setColumns(10);
-						
-						label_9 = new JLabel("Zip:");
-						
-						label_10 = new JLabel("State:");
-						
-						label_11 = new JLabel("Street:");
-						
-						patientContactPanelOfficeInput = new JTextField();
-						patientContactPanelOfficeInput.setEditable(false);
-						patientContactPanelOfficeInput.setColumns(10);
-						
-						lblCity_1 = new JLabel("City:");
-						
-						patientContactPanelCityInput = new JTextField();
-						patientContactPanelCityInput.setEditable(false);
-						patientContactPanelCityInput.setColumns(10);
-						
-						lblCity = new JLabel("City:");
-						
-						lblLastName = new JLabel("Last Name:");
-						
-						patientContactPanelLastNameInput = new JTextField();
-						patientContactPanelLastNameInput.setEditable(false);
-						patientContactPanelLastNameInput.setColumns(10);
-						
-						btnPatientEditInformation = new JButton("Edit Information");
-						btnPatientAcceptInfo = new JButton("Accept");
-						
-						GroupLayout gl_patientContactPanel = new GroupLayout(patientContactPanel);
+		//creates new Labels for patient informaiton panel
+		patientContactNameLbl = new JLabel("First Name:");
+		patientContactIdLbl = new JLabel("Patient ID:");
+		patientContactPhoneLbl = new JLabel("Telephone:");
+		patientContactEmailLbl = new JLabel("Email Address:");
+		patientContactAddressLbl = new JLabel("Address:");
+		patientContactInsuranceLbl = new JLabel("Insurance:");
+		patientContactInsuranceLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		patientContactOffPhoneLbl = new JLabel("Office Telephone:");
+		patientContactOffPhoneLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		patientContactDoctorLbl = new JLabel("Doctor:");
+		patientContactDoctorLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		patientContactOffAddLbl = new JLabel("Office Address:");
+		patientContactOffAddLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		label_6 = new JLabel("Zip:");
+		label_7 = new JLabel("State:");
+		label_8 = new JLabel("Street:");
+		lblCity = new JLabel("City:");
+		lblLastName = new JLabel("Last Name:");
+		labeOfficeZip = new JLabel("Zip:");
+		labelOfficeState = new JLabel("State:");
+		labelOfficeStreet = new JLabel("Street:");
+		lblOfficeCity = new JLabel("City:");
+
+		//creates textboxes that would be used in Contact information Panel
+		patientContactPanelNameInput = new JTextField();
+		patientContactPanelNameInput.setEditable(false);
+		patientContactPanelNameInput.setColumns(10);
+
+		patientContactPanelIdInput = new JTextField();
+		patientContactPanelIdInput.setEditable(false);
+		patientContactPanelIdInput.setColumns(10);
+
+		patientContactPanelPatientPhoneInput = new JTextField();
+		patientContactPanelPatientPhoneInput.setEditable(false);
+		patientContactPanelPatientPhoneInput.setColumns(10);
+
+		patientContactPanelEmailInput = new JTextField();
+		patientContactPanelEmailInput.setEditable(false);
+		patientContactPanelEmailInput.setColumns(10);
+
+		patientContactPanelStreetInput = new JTextField();
+		patientContactPanelStreetInput.setEditable(false);
+		patientContactPanelStreetInput.setColumns(10);
+
+		patientContactPanelStateInput = new JTextField();
+		patientContactPanelStateInput.setEditable(false);
+		patientContactPanelStateInput.setColumns(10);
+
+		patientContactPanelZipInput = new JTextField();
+		patientContactPanelZipInput.setEditable(false);
+		patientContactPanelZipInput.setColumns(10);
+
+		patientContactPanelInsuranceInput = new JTextField();
+		patientContactPanelInsuranceInput.setEditable(false);
+		patientContactPanelInsuranceInput.setHorizontalAlignment(SwingConstants.CENTER);
+		patientContactPanelInsuranceInput.setColumns(10);
+
+		patientContactPanelDoctorInput = new JTextField();
+		patientContactPanelDoctorInput.setEditable(false);
+		patientContactPanelDoctorInput.setHorizontalAlignment(SwingConstants.CENTER);
+		patientContactPanelDoctorInput.setColumns(10);
+
+		patientContactPanelOfficePhoneInput = new JTextField();
+		patientContactPanelOfficePhoneInput.setEditable(false);
+		patientContactPanelOfficePhoneInput.setHorizontalAlignment(SwingConstants.CENTER);
+		patientContactPanelOfficePhoneInput.setColumns(10);
+
+		patientContactPanelOfficeStreetInput = new JTextField();
+		patientContactPanelOfficeStreetInput.setEditable(false);
+		patientContactPanelOfficeStreetInput.setColumns(10);
+
+		patientContactPanelOfficeStateInput = new JTextField();
+		patientContactPanelOfficeStateInput.setEditable(false);
+		patientContactPanelOfficeStateInput.setColumns(10);
+
+		patientContactPanelOfficeZipInput = new JTextField();
+		patientContactPanelOfficeZipInput.setEditable(false);
+		patientContactPanelOfficeZipInput.setColumns(10);
+
+		patientContactPanelOfficeInput = new JTextField();
+		patientContactPanelOfficeInput.setEditable(false);
+		patientContactPanelOfficeInput.setColumns(10);
+
+		patientContactPanelCityInput = new JTextField();
+		patientContactPanelCityInput.setEditable(false);
+		patientContactPanelCityInput.setColumns(10);
+
+		patientContactPanelLastNameInput = new JTextField();
+		patientContactPanelLastNameInput.setEditable(false);
+		patientContactPanelLastNameInput.setColumns(10);
+		//creates buttons for Contact info Panel
+		btnPatientEditInformation = new JButton("Edit Information");
+		btnPatientAcceptInfo = new JButton("Accept");
+
+		GroupLayout gl_patientContactPanel = new GroupLayout(patientContactPanel); //creates new GroupLayout for Contact Panel
 						gl_patientContactPanel.setHorizontalGroup(
 							gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_patientContactPanel.createSequentialGroup()
@@ -364,10 +360,10 @@ public class patientPane extends JTabbedPane
 												.addGroup(gl_patientContactPanel.createSequentialGroup()
 													.addGap(31)
 													.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
-														.addComponent(label_9)
-														.addComponent(label_10)
-														.addComponent(lblCity_1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-														.addComponent(label_11))
+														.addComponent(labeOfficeZip)
+														.addComponent(labelOfficeState)
+														.addComponent(lblOfficeCity, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+														.addComponent(labelOfficeStreet))
 													.addGap(4)
 													.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 														.addComponent(patientContactPanelOfficeZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -462,25 +458,25 @@ public class patientPane extends JTabbedPane
 											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 												.addGroup(gl_patientContactPanel.createSequentialGroup()
 													.addGap(6)
-													.addComponent(label_11))
+													.addComponent(labelOfficeStreet))
 												.addComponent(patientContactPanelOfficeStreetInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 											.addGap(6)
 											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 												.addGroup(gl_patientContactPanel.createSequentialGroup()
 													.addGap(6)
-													.addComponent(lblCity_1))
+													.addComponent(lblOfficeCity))
 												.addComponent(patientContactPanelOfficeInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 											.addGap(8)
 											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 												.addGroup(gl_patientContactPanel.createSequentialGroup()
 													.addGap(6)
-													.addComponent(label_10))
+													.addComponent(labelOfficeState))
 												.addComponent(patientContactPanelOfficeStateInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 											.addGap(6)
 											.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.LEADING)
 												.addGroup(gl_patientContactPanel.createSequentialGroup()
 													.addGap(6)
-													.addComponent(label_9))
+													.addComponent(labeOfficeZip))
 												.addComponent(patientContactPanelOfficeZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addGroup(gl_patientContactPanel.createParallelGroup(Alignment.BASELINE)
@@ -488,31 +484,33 @@ public class patientPane extends JTabbedPane
 										.addComponent(btnPatientAcceptInfo))
 									.addContainerGap())
 						);
-						patientContactPanel.setLayout(gl_patientContactPanel);
+		patientContactPanel.setLayout(gl_patientContactPanel); //sets the contact Panel Layout
+		//adds Tabs to the Patient pane
 		addTab("Health Records", null, patientRecordsPane, null);
 		addTab("Account Management", null, patientAccountPanel, null);
 
-		////////////////////////////////////////////////////////////////////////////////////HealthRecords Tab
-		patientHealthRecordsPanel = new JPanel();
-		patientRecordsPane.addTab("Health Records", null, patientHealthRecordsPanel, null);
+		//HealthRecords Tab
+		patientHealthRecordsPanel = new JPanel(); //creates new Panel
+		patientRecordsPane.addTab("Health Records", null, patientHealthRecordsPanel, null); //adds panel to patientHealthRecordspanel
 
-		patientsHealthRecordsScrollPane = new JScrollPane();
+		patientsHealthRecordsScrollPane = new JScrollPane(); //creates new ScrollPane
 		patientsHealthRecordsScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		patientsHealthRecordsScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-		patientsHealthRecordsTable = new JTable();
+		patientsHealthRecordsTable = new JTable(); //creates new Table
 		patientsHealthRecordsTable.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-						"Date:", "Weight:", "Blood Pressure:", "Glucose:"
+						"Date:", "Weight:", "Blood Pressure:", "Glucose:" //columns fo table
 				}
 				));
-		patientsHealthRecordsTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+		patientsHealthRecordsTable.getColumnModel().getColumn(0).setPreferredWidth(100); //sets width of each column
 		patientsHealthRecordsTable.getColumnModel().getColumn(1).setPreferredWidth(100);
 		patientsHealthRecordsTable.getColumnModel().getColumn(2).setPreferredWidth(100);
 		patientsHealthRecordsTable.getColumnModel().getColumn(3).setPreferredWidth(100);
 		patientsHealthRecordsScrollPane.setViewportView(patientsHealthRecordsTable);
+		//creates new Layout for the HealthRecords Tab of the Patient
 		GroupLayout gl_patientHealthRecordsPanel = new GroupLayout(patientHealthRecordsPanel);
 		gl_patientHealthRecordsPanel.setHorizontalGroup(
 			gl_patientHealthRecordsPanel.createParallelGroup(Alignment.LEADING)
@@ -528,43 +526,43 @@ public class patientPane extends JTabbedPane
 					.addComponent(patientsHealthRecordsScrollPane, GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
 					.addContainerGap())
 		);
-		patientHealthRecordsPanel.setLayout(gl_patientHealthRecordsPanel);
+		patientHealthRecordsPanel.setLayout(gl_patientHealthRecordsPanel); //sets the layout to this
 
-		patientUpdateIndicatorsPanel = new JPanel();
-		patientRecordsPane.addTab("Update Indicators", null, patientUpdateIndicatorsPanel, null);
+		patientUpdateIndicatorsPanel = new JPanel(); //adds new Panel for indicators
+		patientRecordsPane.addTab("Update Indicators", null, patientUpdateIndicatorsPanel, null); //adds pane to PateintRecordspane
 		
-		HealthRecordsPanelUpdateIndicatorsPanelSubmit = new JButton("Submit");
+		//creates labels to be used in the Indicators Panel
 		JLabel label = new JLabel("mg/dL");
-		HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput = new JTextField(5);
 		JLabel label_1 = new JLabel("Blood Glucose");
 		JLabel label_2 = new JLabel("Blood Pressure");
-		HealthRecordsPanelUpdateIndicatorsPanelPressureInput1 = new JTextField(5);
-		HealthRecordsPanelUpdateIndicatorsPanelPressureInput2 = new JTextField(5);
 		JLabel label_3 = new JLabel("DIA");
 		JLabel label_4 = new JLabel("lbs");
-		HealthRecordsPanelUpdateIndicatorsPanelWeightInput = new JTextField(5);
 		JLabel label_5 = new JLabel("Weight");
+		JLabel lblDate = new JLabel("Date");
+		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
+		//creates Textboxes to be used in the indicators panel
+		HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput = new JTextField(5);
+		HealthRecordsPanelUpdateIndicatorsPanelPressureInput1 = new JTextField(5);
+		HealthRecordsPanelUpdateIndicatorsPanelPressureInput2 = new JTextField(5);
+		HealthRecordsPanelUpdateIndicatorsPanelWeightInput = new JTextField(5);
+		updateIndicatorsPanelDateInput = new JTextField(5);
+		updateIndicatorsPanelDateInput.setText(dateInput);
+		updateIndicatorsPanelDateInput.setEditable(false);
 		textField_4 = new JTextField(10);
 		textField_4.setText("Update the textboxes with your Health Indicators, Submit to save.");
 		textField_4.setEditable(false);
-		
+		//creates new Banner for indicators Panel
 		JTextArea textArea = new JTextArea();
 		textArea.setText("\t\tUpdate Health Indicators\r\n\r\n");
 		textArea.setTabSize(5);
 		textArea.setForeground(new Color(0, 0, 102));
 		textArea.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		textArea.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		
-		JLabel lblDate = new JLabel("Date");
-		
-		updateIndicatorsPanelDateInput = new JTextField(5);
-		updateIndicatorsPanelDateInput.setText(dateInput);
-		updateIndicatorsPanelDateInput.setEditable(false);
-		
-		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
-		
+		//creates new Butttons for the indicators Panel
+		HealthRecordsPanelUpdateIndicatorsPanelSubmit = new JButton("Submit");
 		HealthRecordsPanelUpdateIndicatorsPanelGraph = new JButton("Graph");
 		
+		//creates new Layout for Inidcators Panel
 		GroupLayout gl_patientUpdateIndicatorsPanel = new GroupLayout(patientUpdateIndicatorsPanel);
 		gl_patientUpdateIndicatorsPanel.setHorizontalGroup(
 			gl_patientUpdateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
@@ -656,30 +654,29 @@ public class patientPane extends JTabbedPane
 								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelSubmit)
 								.addComponent(HealthRecordsPanelUpdateIndicatorsPanelGraph)))))
 		);
-		patientUpdateIndicatorsPanel.setLayout(gl_patientUpdateIndicatorsPanel);
+		patientUpdateIndicatorsPanel.setLayout(gl_patientUpdateIndicatorsPanel); //sets the indicator Panel to the layout above
 
 		
-		patientPrescriptionsPanel = new JPanel();
-
-		
-		patientRecordsPane.addTab("Prescriptions", null, patientPrescriptionsPanel, null);
-
+		patientPrescriptionsPanel = new JPanel(); //creates new Prescriptions Panel
+		patientRecordsPane.addTab("Prescriptions", null, patientPrescriptionsPanel, null);//adds prescriptionPanel to the RecoredsPane
+		//adds new Scrollpane
 		patientPrescriptionsScrollPane = new JScrollPane();
 		patientPrescriptionsScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		patientPrescriptionsScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
+		//adds new table for prescriptions
 		patientsPrescriptionsTable = new JTable();
 		patientsPrescriptionsTable.setModel(new DefaultTableModel(
 				new Object[][] {
 						
 				},
 				new String[] {
-						"Date:", "Prescription", "Comments"
+						"Date:", "Prescription", "Comments" //table columns
 				}
 				));
-		patientsPrescriptionsTable.getColumnModel().getColumn(1).setPreferredWidth(140);
+		patientsPrescriptionsTable.getColumnModel().getColumn(1).setPreferredWidth(140);//sets the width of the columns
 		patientsPrescriptionsTable.getColumnModel().getColumn(2).setPreferredWidth(420);
 		patientPrescriptionsScrollPane.setViewportView(patientsPrescriptionsTable);
+		//sets layout for the prescriptions list Panel
 		GroupLayout gl_patientPrescriptionsPanel = new GroupLayout(patientPrescriptionsPanel);
 		gl_patientPrescriptionsPanel.setHorizontalGroup(
 			gl_patientPrescriptionsPanel.createParallelGroup(Alignment.LEADING)
@@ -696,7 +693,8 @@ public class patientPane extends JTabbedPane
 					.addContainerGap())
 		);
 		patientPrescriptionsPanel.setLayout(gl_patientPrescriptionsPanel);
-		//////////////////////////////////////////////////////////////////////
+		///Account tab
+		//creates new Banner for the Patient Account managemetn Panel
 		patientAccountManagementBanner = new JTextArea();
 		patientAccountManagementBanner.setBounds(49, 26, 327, 46);
 		patientAccountManagementBanner.setText("         disGUIse Account Management");
@@ -704,24 +702,26 @@ public class patientPane extends JTabbedPane
 		patientAccountManagementBanner.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		patientAccountManagementBanner.setEditable(false);
 		patientAccountManagementBanner.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-
+		
+		//creates new buttons
 		patientChangePassword = new JButton("Change Password?");
 		patientChangePassword.setBounds(49, 128, 188, 23);
 		patientRecoverPassword = new JButton("Recover Password?");
 		patientRecoverPassword.setBounds(49, 169, 188, 23);
 		patientManageSecurityQuestions = new JButton("Manage Security Questions?");
 		patientManageSecurityQuestions.setBounds(49, 203, 188, 23);
-
 		patientChangePassword.setForeground(new Color(0, 0, 102));
 		patientRecoverPassword.setForeground(new Color(0, 0, 102));
 		patientManageSecurityQuestions.setForeground(new Color(0, 0, 102));
 		patientAccountPanel.setLayout(null);
+		//adds buttons to the pateint account panel
 		patientAccountPanel.add(patientAccountManagementBanner);
 		patientAccountPanel.add(patientChangePassword);
 		patientAccountPanel.add(patientRecoverPassword);
 		patientAccountPanel.add(patientManageSecurityQuestions);
 		patientPaneEvents();
 	}
+	//method for button listeners
 	private void patientPaneEvents()
 	{
 		HealthRecordsPanelUpdateIndicatorsPanelSubmit.addActionListener(new ActionListener() {
@@ -730,7 +730,6 @@ public class patientPane extends JTabbedPane
 				// Updates patient indicators when 'Submit' is clicked
 				
 				String patientIndicatorFile; // Establishes variable for patient file
-				
 				System.out.println("Current patient: " + user); // console test
 				
 				// Fields are not editable after clicking the 'Submit' button
@@ -791,6 +790,7 @@ public class patientPane extends JTabbedPane
 		btnPatientEditInformation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				//sets information to editable
 				patientContactPanelPatientPhoneInput.setEditable(true);
 				patientContactPanelEmailInput.setEditable(true);
 				patientContactPanelStreetInput.setEditable(true);
@@ -803,6 +803,7 @@ public class patientPane extends JTabbedPane
 			public void actionPerformed(ActionEvent e) 
 			{
 				//updates file
+				//sets the textboxes to uneditable
 				patientContactPanelPatientPhoneInput.setEditable(false);
 				patientContactPanelEmailInput.setEditable(false);
 				patientContactPanelStreetInput.setEditable(false);
@@ -815,14 +816,15 @@ public class patientPane extends JTabbedPane
 				File file=new File(user);
 				BufferedReader br=new BufferedReader(new FileReader(file));
 
-
+				//gets information from textboxes and stores into strings
 				String newPhone=patientContactPanelPatientPhoneInput.getText();
 				String newEmail=patientContactPanelEmailInput.getText();
 				String newStreet=patientContactPanelStreetInput.getText();
 				String newCity=patientContactPanelCityInput.getText();
 				String newState=patientContactPanelStateInput.getText();
 				String newZip=patientContactPanelZipInput.getText();
-
+				
+				//reads information from ID patients .txt
 				fName = br.readLine();
 				lName = br.readLine();
 				id = br.readLine(); //sets lines to variables
@@ -836,7 +838,7 @@ public class patientPane extends JTabbedPane
 				email = br.readLine();
 				phone = br.readLine();
 
-
+				//swaps old info with new info
 				phone=newPhone;
 				email=newEmail;
 				street=newStreet;
@@ -844,6 +846,7 @@ public class patientPane extends JTabbedPane
 				state=newState;
 				zip=newZip;
 
+				//rewrites file using new info
 				FileWriter fr=new FileWriter(file);
 				fr.write(fName+"\n");
 				fr.write(lName+"\n");
@@ -869,23 +872,19 @@ public class patientPane extends JTabbedPane
 		patientChangePassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				changePassword cp=new changePassword();
+				changePassword cp=new changePassword(); //calls changePassword Class
 			}
 		});
 		patientRecoverPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				
-				passwordReset pr=new passwordReset(disGuiseFrame.Username);
-				
+				passwordReset pr=new passwordReset(disGuiseFrame.Username); //calls password Reset class	
 			}
 		});
 		patientManageSecurityQuestions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				
-				securityQuestion sq=new securityQuestion();
-				
+				securityQuestion sq=new securityQuestion(); //calls secuityQuestion class	
 			}
 		});
 		HealthRecordsPanelUpdateIndicatorsPanelGraph.addActionListener(new ActionListener() {
