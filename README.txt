@@ -8,7 +8,7 @@
 ========================================================
 Project:      disGUIse Well-Check Clinic
 Authors:      Al-Weeam Awad, Dave Bach, Michael Gilardi, 
-	      Sean Hanson, Dylan Watts
+	          Sean Hanson, Dylan Watts
 Version:      3.0
 Release Date: 4/29/2013
 Course:       CSE 360, Phase III
