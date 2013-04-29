@@ -35,11 +35,12 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 	private JTextField addNursePanelIDInput;
 
 	public addNursePanel() {
-		
+		//creates addNurse Banner at Top of Panel
 		JLabel lblAddNurse = new JLabel("Add Nurse");
 		lblAddNurse.setForeground(new Color(0, 0, 139));
 		lblAddNurse.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 21)); //changes font type and size
 		
+	//creates labels used in Panel	
 		JLabel lblName = new JLabel("Name:");
 		JLabel lblUsername = new JLabel("Username:");
 		JLabel lblPassowrd = new JLabel("Doctor:");
@@ -54,6 +55,7 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 		lblPassword = new JLabel("Password:");
 		lblNurseId = new JLabel("Nurse ID:");
 		
+		//creates textfields that would be used in Panel.
 		addNursePanelNameInput = new JTextField();
 		addNursePanelNameInput.setColumns(10);
 		addNursePanelUsernameInput = new JTextField();
@@ -78,11 +80,13 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 		addNursePanelPasswordInput.setColumns(10);
 		addNursePanelIDInput = new JTextField();
 		addNursePanelIDInput.setColumns(10);
-		
+		//creates the buttons that would be used in this Panel
 		addNursePanelSubmit = new JButton("Submit");
 		addNursePanelCancel = new JButton("Cancel");
 		
-		GroupLayout groupLayout = new GroupLayout(this);
+		GroupLayout groupLayout = new GroupLayout(this); //creates a new grouplayout for this panel
+		
+		//sets components in correct positions from windowBuilder
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -205,7 +209,7 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 						.addComponent(addNursePanelSubmit)
 						.addComponent(addNursePanelCancel)))
 		);
-		setLayout(groupLayout);
+		setLayout(groupLayout); //ets the layout of the panel to grouplayout
 	
 		
 		addNurseEvents(); //calls addNurseEvents Method
@@ -234,6 +238,7 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 				String nZip = addNursePanelZipInput.getText(); // Nurse's zipcode (address)
 				String nPhone = addNursePanelPhoneInput.getText(); // Nurse's phone number
 				
+				//If something is entered in all boxes does the following
 				if(nName.length()!=0 &&
 						   nUsername.length()!=0 &&
 						   nPassword.length()!=0 &&
@@ -249,14 +254,14 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 				{
 					// Pop up message after clicking submit
 					int response=JOptionPane.showConfirmDialog(addNursePanelSubmit, "Are you sure you want to submit"); //ask user for confirmation
-					if(response != JOptionPane.YES_OPTION) //if yes is not chosen then doesnt submit
+					if(response != JOptionPane.YES_OPTION) //if yes is not chosen then doesn't submit
 					{
 						return;
 					}
-					String filename = nUsername +".txt";
+					String filename = nUsername +".txt"; //creates string of the username of the nurse and .txt
 					try {
 						 
-						File file = new File(filename);
+						File file = new File(filename); //creates new file with the username of the nurse
 			 
 						// if file doesnt exists, then create it
 						if (!file.exists()) {
@@ -265,7 +270,8 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 			 
 						FileWriter fw = new FileWriter(file.getAbsoluteFile());
 						BufferedWriter bw = new BufferedWriter(fw);
-						
+					
+						//writes nurse information to the file
 						bw.write(nName + "\n");
 						bw.write(nUsername + "\n");
 						bw.write(nDoctor + "\n");
@@ -292,9 +298,10 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 							file.createNewFile();
 						}
 			 
-						FileWriter fw3 = new FileWriter(file.getAbsoluteFile(),true);
+						FileWriter fw3 = new FileWriter(file.getAbsoluteFile(),true); //adds info to next blank line of loginCred
 						BufferedWriter bw3 = new BufferedWriter(fw3);
-						
+					
+						//writes login informaiton to login cred file
 						bw3.newLine();
 						bw3.write(nUsername);
 						bw3.newLine();
@@ -316,16 +323,17 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 					}
 				}
 				else
-				{
-					JOptionPane.showMessageDialog(addNursePanelSubmit, "Please Fill All Fields");
+				{	
+					//if not all information is filled out prompts user to fill in information
+					JOptionPane.showMessageDialog(addNursePanelSubmit, "Please Fill All Fields"); 
 				}
-			p.dispose();
+			p.dispose(); //closes window
 			}
 		});
 		addNursePanelCancel.addActionListener(new ActionListener() { //buttonListnere for cancel
 			public void actionPerformed(ActionEvent e)
 			{
-				p.dispose(); //closes the popup
+				p.dispose(); //closes window
 			}
 		});
 	}
