@@ -94,6 +94,7 @@ public class loginPanel extends JPanel {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				int cleared = 0;
 				String username,password;
 				System.out.println("Button Pressed");
 				username = uNameInput.getText();
@@ -151,11 +152,13 @@ public class loginPanel extends JPanel {
 							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.NURSE);
 								disGuiseFrame.nurse.refreshPane(name); // refreshes panel based on inputted text file name;
+								cleared = 1;
 							}
 							else if(temp.type.equalsIgnoreCase("doctor")) //if its a doctor loads doctor screen
 							{
 								card.show(disGuiseFrame.contentPane, disGuiseFrame.DOCTOR);
 								disGuiseFrame.doctor.refreshPanel(name);
+								cleared = 1;
 							}
 							else if(temp.type.equalsIgnoreCase("patient")) //if its a patient loads patient screen
 							{
@@ -164,18 +167,27 @@ public class loginPanel extends JPanel {
 								disGuiseFrame.patient.refreshPanel(idFile);
 								disGuiseFrame.patient.refreshIndicatorTable(temp.id);
 								disGuiseFrame.patient.refreshPrescriptionTable(temp.id);
+								cleared = 1;
 							}
 						}
 						//
 						else
 						{
 							//password and username do not match
-							System.out.println("Incorrect Username/Password"); 
-							JOptionPane.showMessageDialog(null, "Invalid username or password. Try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
+							//System.out.println("Incorrect Username/Password"); 
+							//JOptionPane.showMessageDialog(null, "Invalid username or password. Try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
+							temp = null;
 						}
 					}
-					temp = temp.next;
+					if(temp != null)
+						temp = temp.next;
 
+				}
+				
+				if(cleared == 0)
+				{
+				System.out.println("Incorrect Username/Password"); 
+				JOptionPane.showMessageDialog(null, "Invalid username or password. Try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
