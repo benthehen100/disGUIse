@@ -17,6 +17,7 @@ import javax.swing.JPasswordField;
 
 
 public class changePassword extends JPanel {// changepassword Panel
+	//creates field variables
 	private JPasswordField confirmPasswordInput;
 	private JTextField oldPasswordInput;
 	private JPasswordField newPasswordInput;
@@ -26,19 +27,21 @@ public class changePassword extends JPanel {// changepassword Panel
 
 	public changePassword() {
 		
+		//creates textfields and sets size to 10
 		confirmPasswordInput = new JPasswordField(10); //creates textfields and sets size to 10
 		oldPasswordInput = new JTextField(10); //textfields are for inputs
 		newPasswordInput = new JPasswordField(10);
 		
-		
+		//creates labels that would be usd in this Panel
 		JLabel oldPasswordLbl = new JLabel("Old Password: "); //creates labels
 		JLabel newPasswordLbl = new JLabel("New Password: ");
 		JLabel confirmPasswordLbl = new JLabel("Confirm Password: ");
 		
+		//creates buttons
 		changePasswordSubmit = new JButton("Submit"); //submit button
 		changePasswordCancel = new JButton("Cancel"); //cancel button
 		
-		
+		//creates ChangePassword Banner
 		JLabel changePasswordReset = new JLabel("disGUIse Password Change"); //password change label
 		changePasswordReset.setForeground(new Color(0, 0, 139));
 		changePasswordReset.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 24));
@@ -96,17 +99,18 @@ public class changePassword extends JPanel {// changepassword Panel
 		setLayout(groupLayout); //sets the layout for this class to grouplayout
 		
 		changePasswordEvents(); //action events
-		
-		p3=new popUp();
-		p3.getContentPane().add(this); //addes it to popup window
-		p3.pack();
-		p3.show();
+		p3=new popUp(); //creates new popUP
+		p3.getContentPane().add(this); //adds it to popup window
+		p3.pack();//packs frame
+		p3.show();//shows frame
 	}
+	//method for button listeners
 	private void changePasswordEvents()
 	{
 		changePasswordSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
+				//stores textfield info into strings
 				String oldPassword, newPassword, newPasswordConfirm;
 				oldPassword = oldPasswordInput.getText();
 				newPassword = newPasswordInput.getText();
@@ -115,10 +119,10 @@ public class changePassword extends JPanel {// changepassword Panel
 				linkList people = new linkList();
 				Link temp;
 				FileReader fr;
-				if (newPassword.equals(newPasswordConfirm))
+				if (newPassword.equals(newPasswordConfirm)) //checks if the newpasswords match
 				{
 				try {
-					fr = new FileReader("LoginCred.txt");
+					fr = new FileReader("LoginCred.txt"); //opens logincred file
 					
 				BufferedReader br = new BufferedReader(fr);
 				String a, b, c, d, e2, f;
@@ -149,7 +153,7 @@ public class changePassword extends JPanel {// changepassword Panel
 					System.out.println(temp.password);
 					if(disGuiseFrame.Username.equalsIgnoreCase(temp.username))
 					{
-						if(oldPassword.equals(temp.password))
+						if(oldPassword.equals(temp.password)) //updates new password
 						{
 							System.out.println("User Match!");
 							temp.password = newPassword;
@@ -158,10 +162,11 @@ public class changePassword extends JPanel {// changepassword Panel
 						}
 						else
 						{
+							//the old password is not correct
 							JOptionPane.showMessageDialog(null, "Old password not correct.", "Error Message", JOptionPane.ERROR_MESSAGE);
 						}
 					}
-					temp = temp.next;
+					temp = temp.next; //moves to next in the list
 				}
 				temp = people.head;
 				try {
@@ -185,6 +190,7 @@ public class changePassword extends JPanel {// changepassword Panel
 				}
 				else
 				{
+					//the new passowrd does not mathch the new password confirmation
 					JOptionPane.showMessageDialog(null, "New Password and Password Confirm do not match.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -194,7 +200,7 @@ public class changePassword extends JPanel {// changepassword Panel
 			public void actionPerformed(ActionEvent e)
 			{
 				//cancel button effects
-				p3.dispose();
+				p3.dispose(); //closes window
 			}
 		});
 	}
