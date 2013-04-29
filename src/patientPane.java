@@ -745,10 +745,11 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 				{
 				// Fields are not editable after clicking the 'Submit' button
 				updateIndicatorsPanelDateInput.setEditable(false);
-				HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput.setEditable(false);
+				/*HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput.setEditable(false);
 				HealthRecordsPanelUpdateIndicatorsPanelPressureInput1.setEditable(false);
 				HealthRecordsPanelUpdateIndicatorsPanelPressureInput2.setEditable(false);
-				HealthRecordsPanelUpdateIndicatorsPanelWeightInput.setEditable(false);
+				HealthRecordsPanelUpdateIndicatorsPanelWeightInput.setEditable(false);*/
+				
 				HealthRecordsPanelUpdateIndicatorsPanelSubmit.setEnabled(false);
 				
 				// Defines patientIndicatorFile
@@ -1014,14 +1015,19 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 	public void refreshIndicatorTable(String file)
 	{
 		DefaultTableModel model = (DefaultTableModel) patientsHealthRecordsTable.getModel(); //clears the table, before table is repopulated;
-		for(int i = 0; i < model.getRowCount(); i++)
+		if (model.getRowCount()!= 0)
 		{
-			model.removeRow(i);
+			for(int i = model.getRowCount(); i > 0; i--)
+			{
+				model.removeRow(0);
+			}
 		}
+		
 		String date, weight, blood1, blood2, glucose;
 		
 		String fileName = file + "indicators.txt";
 		FileReader fr; //reads data from file
+		
 		
 
 		try {
@@ -1038,8 +1044,18 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 				glucose= br.readLine();
 				model.addRow(new Object[]{date, weight, blood1 + "/" + blood2,glucose});
 			}
-				
 			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date2 = new Date();
+			String dateInput2 = Integer.toString(date2.getMonth()+1) + "/" + Integer.toString(date2.getDate()) + "/" + Integer.toString(date2.getYear()+1900);
+			if(patientsHealthRecordsTable.getRowCount() != 0 && patientsHealthRecordsTable.getValueAt( patientsHealthRecordsTable.getRowCount()-1, 0).equals(dateInput2) )
+			{
+				HealthRecordsPanelUpdateIndicatorsPanelSubmit.setEnabled(false);
+			}
+			else
+			{
+				HealthRecordsPanelUpdateIndicatorsPanelSubmit.setEnabled(true);
+			}
 		fr.close();
 		
 		} catch (Throwable e1) {

@@ -162,11 +162,11 @@ public class loginPanel extends JPanel {
 							}
 							else if(temp.type.equalsIgnoreCase("patient")) //if its a patient loads patient screen
 							{
-								card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
 								idFile = temp.id + ".txt";
 								disGuiseFrame.patient.refreshPanel(idFile);
 								disGuiseFrame.patient.refreshIndicatorTable(temp.id);
 								disGuiseFrame.patient.refreshPrescriptionTable(temp.id);
+								card.show(disGuiseFrame.contentPane, disGuiseFrame.PATIENT);
 								cleared = 1;
 							}
 						}
