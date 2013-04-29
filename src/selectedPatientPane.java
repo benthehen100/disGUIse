@@ -49,6 +49,9 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 	String patientFileName, patientFile, patientID;
 	String weightInput, dateInput, pressureInput1, pressureInput2, glucoseInput;
 	private final Action action = new SwingAction();
+	private JButton btnEditInformation;
+	private JButton btnAccept;
+	private String fName, id, email, phone, street, state, zip, insurance, doctor, nurse, doctorFile, lName, city, patientid;
 
 	public selectedPatientPane() {
 
@@ -87,6 +90,7 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 		
 		//creates new textboxes for information tab
 		patientInformationPanelNameInput = new JTextField(10);
+		patientInformationPanelLastNameInput = new JTextField(10);
 		patientInformationPanelIdInput = new JTextField(10);
 		patientInformationPanelPatientPhoneInput = new JTextField(10);
 		patientInformationPanelEmailInput = new JTextField(10);
@@ -95,6 +99,8 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 		patientInformationPanelZipInput = new JTextField(10);
 		patientInformationPanelInsuranceInput = new JTextField(10);
 		patientInformationPanelInsurancePhoneInpu = new JTextField(10);
+		patientInformationPanelCityInput = new JTextField(10);
+		
 		//sets textboxes to uneditable
 		patientInformationPanelNameInput.setEditable(false);
 		patientInformationPanelIdInput.setEditable(false);
@@ -105,10 +111,12 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 		patientInformationPanelZipInput.setEditable(false);
 		patientInformationPanelInsuranceInput.setEditable(false);
 		patientInformationPanelInsurancePhoneInpu.setEditable(false);	
-		patientInformationPanelCityInput = new JTextField(10);
 		patientInformationPanelCityInput.setEditable(false);
-		patientInformationPanelLastNameInput = new JTextField(10);
 		patientInformationPanelLastNameInput.setEditable(false);
+		
+		btnEditInformation = new JButton("Edit Information");
+		btnAccept = new JButton("Accept");
+		
 		//sets new groupLayout for PatientInformation panel
 		GroupLayout gl_PatientInformationPanel = new GroupLayout(PatientInformationPanel);
 		gl_PatientInformationPanel.setHorizontalGroup(
@@ -170,6 +178,12 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 							.addGap(34)
 							.addComponent(label, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
 					.addGap(80))
+				.addGroup(Alignment.TRAILING, gl_PatientInformationPanel.createSequentialGroup()
+					.addContainerGap(370, Short.MAX_VALUE)
+					.addComponent(btnEditInformation)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnAccept)
+					.addGap(49))
 		);
 		gl_PatientInformationPanel.setVerticalGroup(
 			gl_PatientInformationPanel.createParallelGroup(Alignment.LEADING)
@@ -239,7 +253,12 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 						.addGroup(gl_PatientInformationPanel.createSequentialGroup()
 							.addGap(3)
 							.addComponent(lblZip))
-						.addComponent(patientInformationPanelZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(patientInformationPanelZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+					.addGroup(gl_PatientInformationPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnEditInformation)
+						.addComponent(btnAccept))
+					.addContainerGap())
 		);
 		PatientInformationPanel.setLayout(gl_PatientInformationPanel); //sets the patientinfo panel to the above layout
 		//HealthRecords Tab
@@ -464,7 +483,93 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 	}
 	//method for button listener events
 	private void selectedPatientEvents()
-	{
+	{	
+		btnEditInformation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				//sets textfields to editable
+				patientInformationPanelPatientPhoneInput.setEditable(true);
+				patientInformationPanelEmailInput.setEditable(true);
+				patientInformationPanelStreetInput.setEditable(true);
+				patientInformationPanelStateInput.setEditable(true);
+				patientInformationPanelZipInput.setEditable(true);
+				patientInformationPanelInsuranceInput.setEditable(true);
+				patientInformationPanelCityInput.setEditable(true);
+			}
+		});
+		btnAccept.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+				//stores textfields into strings
+				String sppPhone=patientInformationPanelPatientPhoneInput.getText();
+				String sppEmail=patientInformationPanelEmailInput.getText();
+				String sppStreet=patientInformationPanelStreetInput.getText();
+				String sppCity=patientInformationPanelCityInput.getText();
+				String sppState=patientInformationPanelStateInput.getText();
+				String sppZip=patientInformationPanelZipInput.getText();
+				String sppInsurance=patientInformationPanelInsuranceInput.getText();
+				
+				String userFile=patientFile+".txt"; 
+				
+				try
+				{
+				File file=new File(userFile); //opens the selected patiens file
+				BufferedReader br=new BufferedReader(new FileReader(file));
+				//reads every line from file and stores it into string
+				fName = br.readLine();
+				lName = br.readLine();
+				id = br.readLine(); //sets lines to variables
+				street = br.readLine();
+				city = br.readLine();
+				state = br.readLine();
+				zip = br.readLine();
+				nurse = br.readLine();
+				doctor = br.readLine();
+				insurance = br.readLine();
+				email = br.readLine();
+				phone = br.readLine();
+				
+				//swaps old data with new data
+				street=sppStreet;
+				city=sppCity;
+				state=sppState;
+				zip=sppZip;
+				insurance=sppInsurance;
+				email=sppEmail;
+				phone=sppPhone;
+				
+				//rewrites file using new data
+				FileWriter fr=new FileWriter(file);
+			
+				fr.write(fName+"\n");
+				fr.write(lName+"\n");
+				fr.write(id+"\n");
+				fr.write(street+"\n");
+				fr.write(city+"\n");
+				fr.write(state+"\n");
+				fr.write(zip+"\n");
+				fr.write(nurse+"\n");
+				fr.write(doctor+"\n");
+				fr.write(insurance+"\n");
+				fr.write(email+"\n");
+				fr.write(phone+"\n");
+				fr.close();				
+				}catch (Throwable e1) {
+					e1.printStackTrace();
+				}	
+				//sets textfields to be uneditable
+				patientInformationPanelNameInput.setEditable(false);
+				patientInformationPanelLastNameInput.setEditable(false);
+				patientInformationPanelPatientPhoneInput.setEditable(false);
+				patientInformationPanelEmailInput.setEditable(false);
+				patientInformationPanelStreetInput.setEditable(false);
+				patientInformationPanelStateInput.setEditable(false);
+				patientInformationPanelZipInput.setEditable(false);
+				patientInformationPanelInsuranceInput.setEditable(false);
+				patientInformationPanelCityInput.setEditable(false);
+			}
+		});
 		updateIndicatorsPanelSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
