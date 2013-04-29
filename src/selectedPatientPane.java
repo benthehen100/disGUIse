@@ -770,9 +770,13 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 	public void refreshIndicatorTable(String file)
 	{
 		DefaultTableModel model = (DefaultTableModel) SelectedPatientPatientHealthRecordsTable.getModel(); //clears the table, before table is repopulated;
-		for(int i = 0; i < model.getRowCount(); i++)
+		int row = model.getRowCount()-1; // get the number of rows already in the table
+		System.out.println("number of row is: " + row);
+		while(row >= 0)
 		{
-			model.removeRow(i);
+			model.removeRow(row);
+			System.out.println(row);
+			row--;
 		}
 		String date, weight, blood1, blood2, glucose;
 		

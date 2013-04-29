@@ -610,6 +610,7 @@ public class nursePane extends JTabbedPane { //creates class nursePane of type t
 					System.out.println("patient: " + nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0));
 					String fileName = nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0)+ ".txt";
 					spp.refreshPanel(fileName);
+					spp.patientID = (String) nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0);
 					spp.refreshIndicatorTable((String)nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0));
 					spp.refreshPrescriptionTable((String)nursePatientList.getValueAt(nursePatientList.getSelectedRow(), 0));
 					spp.setButton(); //disables addprescription button for nurse
