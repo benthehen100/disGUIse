@@ -14,12 +14,12 @@ import java.io.IOException;
 
 
 public class addPatientPanel extends JPanel { //this panel is the called when a new patient is created
-	
+	//creates field varaibles
 	private JTextField addPatientFirstInput;
 	private JTextField addPatientLastInput;
 	private JTextField addPatientPatientIDInput;
 	private JTextField addPatientUsernameInput;
-	private JTextField addPatientPasswordInput; //parameters
+	private JTextField addPatientPasswordInput; 
 	private JTextField addPatientStreetInput;
 	private JTextField addPatientCityInput;
 	private JTextField addPatientStateInput;
@@ -37,57 +37,56 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 	
 	public addPatientPanel() {
 	
-		createPatientList list = new createPatientList();
-		pPatientID = Integer.toString(list.returnID());
+		createPatientList list = new createPatientList(); //creates new patient list
+		pPatientID = Integer.toString(list.returnID()); //confirst int to string
+		//creates the texboxes used in panel
 		addPatientFirstInput = new JTextField(10);
 		addPatientLastInput = new JTextField(10);
 		addPatientPatientIDInput = new JTextField(10);
-		addPatientPatientIDInput.setText(pPatientID);
-		addPatientPatientIDInput.setEditable(false);
+		addPatientPatientIDInput.setText(pPatientID); //sets the text of this file to pPatientID
+		addPatientPatientIDInput.setEditable(false); //unable to edit this box
 		addPatientUsernameInput = new JTextField(10);
 		addPatientPasswordInput = new JTextField(10);
 		addPatientStreetInput = new JTextField(10);
-		
 		addPatientCityInput = new JTextField(10);
 		addPatientStateInput = new JTextField(10);
 		addPatientZipInput = new JTextField(10);
-		
 		addPatientNurseNameInput = new JTextField(10);
 		addPatientDoctorNameInput = new JTextField(10);
-		
 		addPatientInsuranceInput = new JTextField(10);
 		addPatientEmailInput = new JTextField(10);
 		addPatientDOBInput = new JTextField(10);
 		addPatientPhoneInput = new JTextField(10);
 		
+		//creates labels that will be used in this panel
 		JLabel lblFirst = new JLabel("First:");
 		JLabel lblLast = new JLabel("Last: ");
 		JLabel lblNewLabel = new JLabel("Patient ID:");
 		JLabel lblPatientUsername = new JLabel("Patient Username:");
 		JLabel lblPatientPassword = new JLabel("Patient Password:");
-		
 		JLabel lblStreet = new JLabel("Street:");
 		JLabel lblCity = new JLabel("City:");
 		JLabel lblState = new JLabel("State:");
 		JLabel lblZip = new JLabel("Zip:");
 		JLabel lblPatientAddress = new JLabel("Patient Address");
 		JLabel lblPatientInformation = new JLabel("Patient Name");
-		
 		JLabel lblNurseId = new JLabel("Nurse Name:");
 		JLabel lblDoctorId = new JLabel("Doctor Name:");
-		
 		JLabel lblInsurance = new JLabel("Insurance:");
 		JLabel lblEmail = new JLabel("Email:");
 		JLabel lblDob = new JLabel("DOB:");
 		JLabel lblPhone = new JLabel("Phone:");
-		
+		//creates buttons for this panel
 		addPatientSubmit = new JButton("Submit");
 		addPatientCancel = new JButton("Cancel");
 		
+		//creates add Pateint Banner on top of panel
 		JLabel lblAddPatient = new JLabel("Add Patient");
 		lblAddPatient.setForeground(new Color(0, 0, 139));
 		lblAddPatient.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 21));
-		GroupLayout groupLayout = new GroupLayout(this);
+		
+		GroupLayout groupLayout = new GroupLayout(this); //creates new grouplayout
+		//sets horizontal and verical positions of all components using window builder
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -260,15 +259,16 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 						.addComponent(addPatientSubmit)
 						.addComponent(addPatientCancel)))
 		);
-		setLayout(groupLayout);
+		setLayout(groupLayout); //sets the layout of this panel to grouplayout
 		//
 		
 		addPatientEvents(); //calls the events that are done in this panel
-		p=new popUp();
-		p.getContentPane().add(this);
-		p.pack();
-		p.show();
+		p=new popUp(); //creates new popup instance
+		p.getContentPane().add(this); //adds this panel to popUP
+		p.pack(); //packs the popup frame
+		p.show(); //shows the popup
 	}
+	//method used for holding all the button listeners in this class
 	private void addPatientEvents()
 	{
 		addPatientSubmit.addActionListener(new ActionListener() { //what happens when the user submits
@@ -292,7 +292,8 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				String pDoctorID = addPatientDoctorNameInput.getText(); // Doctor ID (of assigned doctor)
 				String pNurseID = addPatientNurseNameInput.getText(); // Nurse ID (of assigned nurse)
 				
-				if(pPatientID.length()!=0 &&
+				
+				if(pPatientID.length()!=0 && //check if informatoin is entered in all textboxes
 				   pFirst.length()!=0 &&
 				   pLast.length()!=0 &&
 				   pStreet.length()!=0 &&
@@ -319,14 +320,14 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				createPatientList list1 = new createPatientList(); //creates a linked-list of the patients In the file already
 				try {
 		 
-					File file = new File("patientList.txt");
+					File file = new File("patientList.txt"); //creates a new file with the patients name
 		 
 					// if file doesnt exists, then create it
 					if (!file.exists()) {
 						file.createNewFile();
 					}
 		 
-					FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
+					FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);//adds informaiton to bottom of file
 					/*BufferedWriter bw = new BufferedWriter(fw);
 					patientLinkedList temp;
 					temp = list1.head;
@@ -342,6 +343,7 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 						temp = temp.getNext();
 					}
 					*/
+					//writes the patients ID and Name
 					fw.write(pPatientID + "\n");
 					fw.write(pFirst + "\n");
 					fw.write(pLast + "\n");
@@ -358,7 +360,7 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				String filename = pPatientID +".txt";
 				try {
 					 
-					File file = new File(filename);
+					File file = new File(filename); //creates a file for the new patient using his ID
 		 
 					// if file doesnt exists, then create it
 					if (!file.exists()) {
@@ -367,11 +369,8 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 		 
 					FileWriter fw = new FileWriter(file.getAbsoluteFile());
 					BufferedWriter bw = new BufferedWriter(fw);
-
 					
-
-					
-					
+					//writes patients contact information to file
 					bw.write(pFirst + "\n");
 					bw.write(pLast + "\n");
 					bw.write(pPatientID + "\n");
@@ -504,19 +503,16 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				//
-				
-				disGuiseFrame.doctor.refreshTable();
-				disGuiseFrame.nurse.refreshTable();
-				p.dispose();
+				disGuiseFrame.doctor.refreshTable(); //refreshes the patient list for doctor
+				disGuiseFrame.nurse.refreshTable(); //refreshes the patient list for nurse
+				p.dispose(); //closes the window
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(addPatientSubmit, "Please Fill All Fields");
+					JOptionPane.showMessageDialog(addPatientSubmit, "Please Fill All Fields"); //prompts user to input all fields
 				}
 				
 			}
-			
 			
 			
 		});
@@ -525,8 +521,7 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 			public void actionPerformed(ActionEvent e) 
 			{
 				//cancel button
-				p.dispose();
-				//p.setVisible(false);
+				p.dispose(); //closes the window
 			}
 		});
 	}
