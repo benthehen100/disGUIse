@@ -988,6 +988,13 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 		DefaultTableModel model = (DefaultTableModel) patientsPrescriptionsTable.getModel();
 		String date, drug, comment;
 		
+		if (model.getRowCount()!= 0)
+		{
+			for(int i = model.getRowCount(); i > 0; i--)
+			{
+				model.removeRow(0);
+			}
+		}
 		String fileName = file + "prescriptions.txt";
 		FileReader fr; //reads data from file
 		
