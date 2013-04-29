@@ -10,7 +10,8 @@ import java.io.FileWriter;
 
 
 
-public class passwordReset extends JPanel {
+public class passwordReset extends JPanel { //new Jpanel calss
+	//field varaibles
 	private JTextField answerResetPassword;
 	private JButton submitResetPassword;
 	private JButton cancelResetPassword;
@@ -19,23 +20,24 @@ public class passwordReset extends JPanel {
 	String question;
 
 
-	public static void setUsername(String s)
+	public static void setUsername(String s) //sets the username
 	{
 		username = s;
 	}
-	public static String getUsername()
+	public static String getUsername() //gets the username
 	{
 		return username;
 	}
-	public passwordReset(String userName) {
+	public passwordReset(String userName) { //main method
 
+		//creates new textfield
 		answerResetPassword = new JTextField();
 		answerResetPassword.setColumns(10);
+		
 		setUsername(userName);
 		linkList people = new linkList();
 		Link temp;
 		FileReader fr;
-
 
 		try {
 		fr = new FileReader("LoginCred.txt");	
@@ -71,18 +73,21 @@ public class passwordReset extends JPanel {
 			System.out.println("User Not Found.");
 		else
 			question = temp.recovery;
+		
+		//creates labes
 		JLabel promptResetPassword = new JLabel("To reset your password, answer the following security question");
 		JLabel questionResetPassword = new JLabel(question);
 		questionResetPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
-
+		//creates buttons
 		submitResetPassword = new JButton("Submit");
 		cancelResetPassword = new JButton("Cancel");
 
-
+		//creates Password Reset Banner Lable
 		JLabel resetPasswordBanner = new JLabel("disGUIse Password Reset");
 		resetPasswordBanner.setForeground(new Color(0, 0, 139));
 		resetPasswordBanner.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
-
+		
+		//creates new grouplayout for this panel
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -119,24 +124,25 @@ public class passwordReset extends JPanel {
 						.addComponent(cancelResetPassword))
 					.addContainerGap(108, Short.MAX_VALUE))
 		);
-		setLayout(groupLayout);
-		passwordResetEvents();
+		setLayout(groupLayout); //sets this layout to the group layout above
+		passwordResetEvents(); //calls passwords events method
 
-		p4=new popUp();
+		p4=new popUp(); //creates new popUP
 		p4.getContentPane().add(this); //adds it to popUpwindow
-		p4.pack();
-		p4.show();
+		p4.pack();//packs frame
+		p4.show(); //shows frame
 	}
 	private void passwordResetEvents()
 	{
-		submitResetPassword.addActionListener(new ActionListener() {
+		submitResetPassword.addActionListener(new ActionListener() { //code when submit is pressed
 			public void actionPerformed(ActionEvent e) 
 			{
 				linkList people = new linkList();
 				Link temp;
 				FileReader fr;
 				String answer = answerResetPassword.getText(), username = getUsername();
-
+				
+				//seraches through loginCred file to find correct users password
 				try {
 				fr = new FileReader("LoginCred.txt");	
 				BufferedReader br = new BufferedReader(fr);
@@ -169,12 +175,13 @@ public class passwordReset extends JPanel {
 					temp = temp.next;
 					tempUsername = temp.username;
 				}
-				if (answer.equalsIgnoreCase(temp.answer))	{
+				if (answer.equalsIgnoreCase(temp.answer))	{ //displays the password if correct info is entered
 					System.out.println("Answer Match");
 					JOptionPane.showMessageDialog(null, temp.password, "Your Password", JOptionPane.ERROR_MESSAGE);
-					p4.dispose();
+					p4.dispose(); //closes window
 				}
 				else	{
+					//if wrong answer is entered
 					JOptionPane.showMessageDialog(null, "Wrong answer to Security Question, Sorry.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				}
 
@@ -186,7 +193,7 @@ public class passwordReset extends JPanel {
 			public void actionPerformed(ActionEvent e)
 			{
 				//cancel button
-				p4.dispose();
+				p4.dispose(); //closes window
 			}
 		});
 	}
