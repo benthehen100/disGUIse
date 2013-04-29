@@ -21,7 +21,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class selectedPatientPane extends JTabbedPane {
+public class selectedPatientPane extends JTabbedPane { //new class of type Jtabbed pane
+	//field variables
 	private JTextField patientInformationPanelNameInput;
 	private JTextField patientInformationPanelIdInput;
 	private JTextField patientInformationPanelPatientPhoneInput;
@@ -55,9 +56,10 @@ public class selectedPatientPane extends JTabbedPane {
 		Date date = new Date();
 		String dateString = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
 		
-		JPanel PatientInformationPanel = new JPanel();
-		addTab("Patient Information", null, PatientInformationPanel, null);
-
+		JPanel PatientInformationPanel = new JPanel(); //creates new JPanel
+		addTab("Patient Information", null, PatientInformationPanel, null); //adds the Panel to the tab
+		
+		//creates labels for class
 		JLabel label = new JLabel("Address:");
 		label.setVerticalAlignment(SwingConstants.TOP);
 		JLabel label_1 = new JLabel("Email Address:");
@@ -78,7 +80,12 @@ public class selectedPatientPane extends JTabbedPane {
 		lblZip.setVerticalAlignment(SwingConstants.TOP);
 		JLabel lblPhone = new JLabel("Phone:");
 		lblPhone.setVerticalAlignment(SwingConstants.TOP);
-
+		JLabel lblCity = new JLabel("City:");
+		lblCity.setVerticalAlignment(SwingConstants.TOP);
+		JLabel lblLastName = new JLabel("Last Name:");
+		lblLastName.setVerticalAlignment(SwingConstants.TOP);
+		
+		//creates new textboxes for information tab
 		patientInformationPanelNameInput = new JTextField(10);
 		patientInformationPanelIdInput = new JTextField(10);
 		patientInformationPanelPatientPhoneInput = new JTextField(10);
@@ -88,7 +95,7 @@ public class selectedPatientPane extends JTabbedPane {
 		patientInformationPanelZipInput = new JTextField(10);
 		patientInformationPanelInsuranceInput = new JTextField(10);
 		patientInformationPanelInsurancePhoneInpu = new JTextField(10);
-
+		//sets textboxes to uneditable
 		patientInformationPanelNameInput.setEditable(false);
 		patientInformationPanelIdInput.setEditable(false);
 		patientInformationPanelPatientPhoneInput.setEditable(false);
@@ -97,19 +104,12 @@ public class selectedPatientPane extends JTabbedPane {
 		patientInformationPanelStateInput.setEditable(false);
 		patientInformationPanelZipInput.setEditable(false);
 		patientInformationPanelInsuranceInput.setEditable(false);
-		patientInformationPanelInsurancePhoneInpu.setEditable(false);
-		
-		JLabel lblCity = new JLabel("City:");
-		lblCity.setVerticalAlignment(SwingConstants.TOP);
-		
+		patientInformationPanelInsurancePhoneInpu.setEditable(false);	
 		patientInformationPanelCityInput = new JTextField(10);
 		patientInformationPanelCityInput.setEditable(false);
-		
-		JLabel lblLastName = new JLabel("Last Name:");
-		lblLastName.setVerticalAlignment(SwingConstants.TOP);
-		
 		patientInformationPanelLastNameInput = new JTextField(10);
 		patientInformationPanelLastNameInput.setEditable(false);
+		//sets new groupLayout for PatientInformation panel
 		GroupLayout gl_PatientInformationPanel = new GroupLayout(PatientInformationPanel);
 		gl_PatientInformationPanel.setHorizontalGroup(
 			gl_PatientInformationPanel.createParallelGroup(Alignment.LEADING)
@@ -241,15 +241,16 @@ public class selectedPatientPane extends JTabbedPane {
 							.addComponent(lblZip))
 						.addComponent(patientInformationPanelZipInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 		);
-		PatientInformationPanel.setLayout(gl_PatientInformationPanel);
-
-		JPanel HealthRecordsPanel = new JPanel();
-		addTab("HealthRecords", null, HealthRecordsPanel, null);
-
+		PatientInformationPanel.setLayout(gl_PatientInformationPanel); //sets the patientinfo panel to the above layout
+		//HealthRecords Tab
+		JPanel HealthRecordsPanel = new JPanel(); //creates new panel for healthrecords
+		addTab("HealthRecords", null, HealthRecordsPanel, null); //adds the panel to the Jtabbedpane
+		
+		//creates new scrollPane
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-
+		//sets the new layout for the HealthRecrods tab
 		GroupLayout gl_HealthRecordsPanel = new GroupLayout(HealthRecordsPanel);
 		gl_HealthRecordsPanel.setHorizontalGroup(
 				gl_HealthRecordsPanel.createParallelGroup(Alignment.LEADING)
@@ -265,58 +266,56 @@ public class selectedPatientPane extends JTabbedPane {
 						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
 						.addContainerGap())
 				);
-
+		//creates new table for health records
 		SelectedPatientPatientHealthRecordsTable = new JTable();
 		SelectedPatientPatientHealthRecordsTable.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-						"Date", "Weight", "Blood Pressure", "Blood Glucose"
+						"Date", "Weight", "Blood Pressure", "Blood Glucose" //columns of the table
 				}
 				));
 		scrollPane.setViewportView(SelectedPatientPatientHealthRecordsTable);
-		HealthRecordsPanel.setLayout(gl_HealthRecordsPanel);
-
-		JPanel updateIndicatorsPanel = new JPanel();
-		addTab("Update Indicators", null, updateIndicatorsPanel, null);
-
+		HealthRecordsPanel.setLayout(gl_HealthRecordsPanel); //sets the layout to the group layout
+		
+		////Indicators Tab
+		JPanel updateIndicatorsPanel = new JPanel();//creates new Panel
+		addTab("Update Indicators", null, updateIndicatorsPanel, null); //adds Panel to tab
+		
+		//creates new JTextArea
 		JTextArea updateIndicatorsPanelBanner = new JTextArea();
 		updateIndicatorsPanelBanner.setText("\t\tUpdate Health Indicators\r\n\r\n");
 		updateIndicatorsPanelBanner.setTabSize(5);
 		updateIndicatorsPanelBanner.setForeground(new Color(0, 0, 102));
 		updateIndicatorsPanelBanner.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		updateIndicatorsPanelBanner.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-
+		//creates new textfield for indicators Panel
 		updateIndicatorsPanelPrompt = new JTextField(10);
 		updateIndicatorsPanelPrompt.setText("Update the textboxes with your Health Indicators, Submit to save.");
 		updateIndicatorsPanelPrompt.setEditable(false);
-
+		updateIndicatorsPanelPressureInput1 = new JTextField(5);
+		updateIndicatorsPanelWeightInput = new JTextField(5);
+		updateIndicatorsPanelPressureInput2 = new JTextField(5);
+		updateIndicatorsPanelGlucoseInput = new JTextField(5);
+		updateIndicatorsPanelDateInput = new JTextField(5);
+		updateIndicatorsPanelDateInput.setEditable(false);
+		updateIndicatorsPanelDateInput.setText(dateString);
+		
+		//creates new Labels for indicators panel
 		JLabel label_6 = new JLabel("Weight:");
 		JLabel label_7 = new JLabel("lbs");
 		JLabel label_8 = new JLabel("Blood Pressure");
 		JLabel label_9 = new JLabel("DIA");
 		JLabel label_10 = new JLabel("Blood Glucose");
 		JLabel label_11 = new JLabel("mg/dL");
-
-		updateIndicatorsPanelPressureInput1 = new JTextField(5);
-		updateIndicatorsPanelWeightInput = new JTextField(5);
-		updateIndicatorsPanelPressureInput2 = new JTextField(5);
-		updateIndicatorsPanelGlucoseInput = new JTextField(5);
-
-
-		updateIndicatorsPanelSubmit = new JButton("Submit");
-		
 		JLabel lblDate = new JLabel("Date:");
-		
-		updateIndicatorsPanelDateInput = new JTextField(5);
-		updateIndicatorsPanelDateInput.setEditable(false);
-		updateIndicatorsPanelDateInput.setText(dateString);
-		
-		
 		JLabel lblXxxxxxxx = new JLabel("xx/xx/xxxx");
 		
+		//creates Buttons for indicators panel
+		updateIndicatorsPanelSubmit = new JButton("Submit");	
 		btnGraph = new JButton("Graph"); //create graph button
 		
+		//creates layout for Indicators Panel using WindwoBuilder
 		GroupLayout gl_updateIndicatorsPanel = new GroupLayout(updateIndicatorsPanel);
 		gl_updateIndicatorsPanel.setHorizontalGroup(
 			gl_updateIndicatorsPanel.createParallelGroup(Alignment.LEADING)
@@ -410,20 +409,20 @@ public class selectedPatientPane extends JTabbedPane {
 						.addComponent(updateIndicatorsPanelSubmit)
 						.addComponent(btnGraph)))
 		);
-		updateIndicatorsPanel.setLayout(gl_updateIndicatorsPanel);
-
+		updateIndicatorsPanel.setLayout(gl_updateIndicatorsPanel); //sets the layout of the indicator panel to the above
+		//Prescriptions Tab
 		
-		//selectedPatientEvents();
+		JPanel prescriptionsPanel = new JPanel(); //creates new Panel for Prescriptions
+		addTab("Prescriptions", null, prescriptionsPanel, null);//adds panel to tab
 		
-		JPanel prescriptionsPanel = new JPanel();
-		addTab("Prescriptions", null, prescriptionsPanel, null);
-
+		//creates new scroll Pane
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-
+		//creates add prescription button
 		prescriptionsPanelAddPrescriptions = new JButton("Add Prescription");
 		
+		//creates layout for prescriptions Panel
 		GroupLayout gl_prescriptionsPanel = new GroupLayout(prescriptionsPanel);
 		gl_prescriptionsPanel.setHorizontalGroup(
 				gl_prescriptionsPanel.createParallelGroup(Alignment.LEADING)
@@ -446,22 +445,24 @@ public class selectedPatientPane extends JTabbedPane {
 						.addComponent(prescriptionsPanelAddPrescriptions)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				);
-
+		
+		//creates new Table for prescriptoins
 		SelectedPatientPresciptionsTable = new JTable();
 		SelectedPatientPresciptionsTable.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-						"Date", "Prescription", "Comments"
+						"Date", "Prescription", "Comments" //table columns
 				}
 				));
-		SelectedPatientPresciptionsTable.getColumnModel().getColumn(1).setPreferredWidth(140);
+		SelectedPatientPresciptionsTable.getColumnModel().getColumn(1).setPreferredWidth(140); //columns width
 		SelectedPatientPresciptionsTable.getColumnModel().getColumn(2).setPreferredWidth(420);
 		scrollPane_1.setViewportView(SelectedPatientPresciptionsTable);
-		prescriptionsPanel.setLayout(gl_prescriptionsPanel);
-		selectedPatientEvents();
+		prescriptionsPanel.setLayout(gl_prescriptionsPanel); //sets layout to the layout above
+		selectedPatientEvents(); //calls the events method
 		
 	}
+	//method for button listener events
 	private void selectedPatientEvents()
 	{
 		updateIndicatorsPanelSubmit.addActionListener(new ActionListener() {
@@ -473,8 +474,6 @@ public class selectedPatientPane extends JTabbedPane {
 				// Updates patient indicators when 'Submit' is clicked
 				
 				String patientIndicatorFile; // Establishes variable for patient file
-				
-				
 				System.out.println("Current patient: " + patientFile); // console test
 				
 				// Fields are not editable after clicking the 'Submit' button
@@ -487,7 +486,6 @@ public class selectedPatientPane extends JTabbedPane {
 				
 				// Defines patientIndicatorFile
 				patientIndicatorFile = patientFile + "indicators.txt";
-				
 				System.out.println("Current file: " + patientIndicatorFile); // console test
 				
 				try
@@ -541,14 +539,11 @@ public class selectedPatientPane extends JTabbedPane {
 			public void actionPerformed(ActionEvent e) 
 			{
 				//add Patient button
-				
 				System.out.println("Patient file to be passed: " + patientFile); // console test
-				addPrescription prescript=new addPrescription(patientFile);
+				addPrescription prescript=new addPrescription(patientFile); //calls add prescription class
 				
 			}
 		});
-		
-		
 		btnGraph.addActionListener(new ActionListener() {
 			public int[] convertIntegers(ArrayList<Integer> integers) 	//this method converts arrayLists into arrays
 			{
@@ -751,12 +746,8 @@ public class selectedPatientPane extends JTabbedPane {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-
-
 ;
 		
-	
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
