@@ -946,7 +946,7 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 					weight.add((int)(Double.parseDouble(data.get(i+1))));
 					syspressure.add((int)(Double.parseDouble(data.get(i+2))));
 					diapressure.add((int)(Double.parseDouble(data.get(i+3))));
-					bldsugar.add((int)(Double.parseDouble(data.get(i+3))));
+					bldsugar.add((int)(Double.parseDouble(data.get(i+4))));
 				}
 				
 				int datalength = date.size();

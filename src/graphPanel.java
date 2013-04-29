@@ -145,7 +145,7 @@ public class graphPanel extends JPanel{
 		 * the specified pixel directions accomodated to any amount of data you're using.
 		 */
 		
-		double xScale = (double)(width-2*borderdist)/(datapoints-1);  
+		double xScale = (double)(width-2*borderdist)/(datapoints);  
 		double yScale = (double)(height-2*borderdist)/getMax();
 		
 		/*
@@ -185,7 +185,7 @@ public class graphPanel extends JPanel{
 			double xcoor1 = borderdist + i*xScale;                                  //set x coordinate first point
 	        double ycoor1 = height - borderdist - yScale*weight[i];
 	        Graph.fill(new Ellipse2D.Double(xcoor1-2,ycoor1-2,4,4));
-	            //draws dots
+	            
 	        	Graph.drawString(""+weight[i]+"", (float)xcoor1, (float)ycoor1);
 	           //this puts the values next to the dots
 		}
@@ -260,9 +260,8 @@ public class graphPanel extends JPanel{
 		{
 			double xcoor1 = borderdist + i*xScale;                                  
 	        double ycoor1 = height - borderdist - yScale*bldsugar[i];
-	        Graph.fill(new Ellipse2D.Double(xcoor1-2,ycoor1-2,4,4));
-	        
-	        	Graph.drawString(""+bldsugar[i]+"", (float)xcoor1, (float)ycoor1);
+	        Graph.fill(new Ellipse2D.Double(xcoor1-2,ycoor1-2,4,4));        
+	        Graph.drawString(""+bldsugar[i]+"", (float)xcoor1, (float)ycoor1);
 		}
 		
 	}
