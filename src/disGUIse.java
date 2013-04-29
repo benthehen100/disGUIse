@@ -49,7 +49,6 @@ class disGuiseFrame extends JFrame //class extends jframe
 		
 		loginPanel login=new loginPanel(); //creates new object of type loginPanel
 		
-		
 	    login.setAlignmentX(JComponent.CENTER_ALIGNMENT); //sets the alignment to the center
 		Box box=new Box(BoxLayout.Y_AXIS); //creates new box layout
 		box.add(Box.createVerticalGlue());
@@ -61,16 +60,14 @@ class disGuiseFrame extends JFrame //class extends jframe
 		
 	
 		contentPane.add(nurse,NURSE); //add nurse to contentPane
-		
 		contentPane.add(doctor,DOCTOR); //adds it to Contentpane
-		
 		contentPane.add(patient,PATIENT);//adds it to contentPane
 	} 
-	public static void setUsername(String uName)
+	public static void setUsername(String uName) //sets the username
 	{
 		disGuiseFrame.Username = uName;
 	}
-	public static String getUsername()
+	public static String getUsername() //gets the username
 	{
 		return disGuiseFrame.Username;
 	}
@@ -120,13 +117,13 @@ class disGUIseMenuBar extends JMenuBar  //class for JMenuBar
 		);
 		mntmAboutDisguise.addActionListener(new ActionListener(){ //when user chooses file->exit
 			public void actionPerformed(ActionEvent e) { //closes program
-				popUp p=new popUp();
+				popUp p=new popUp(); //creates new popUP
 				JTextArea temp=new JTextArea();
 				temp.setText("Welcome to disGUIse Well-Check Clinic"+"\n Stiving forward to helping those in Need. Easy to use interface" +
 						"to check your health over time. Keep in touch with your Doctor and see prescriptions as well as Visual indicators");
-				p.add(temp);
-				p.pack();
-				p.show();
+				p.add(temp);//adds to popup
+				p.pack();//packs popup
+				p.show();//shows popUP
 				
 		}}
 		);
