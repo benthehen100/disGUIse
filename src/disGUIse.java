@@ -119,8 +119,8 @@ class disGUIseMenuBar extends JMenuBar  //class for JMenuBar
 			public void actionPerformed(ActionEvent e) { //closes program
 				popUp p=new popUp(); //creates new popUP
 				JTextArea temp=new JTextArea();
-				temp.setText("Welcome to disGUIse Well-Check Clinic"+"\n Stiving forward to helping those in Need. Easy to use interface" +
-						"to check your health over time. Keep in touch with your Doctor and see prescriptions as well as Visual indicators");
+				temp.setText("Welcome to disGUIse Well-Check Clinic"+"\n Stiving forward to helping those in Need. With an easy to use interface " +
+						"you can check your health over time. Keep in touch with your Doctor and see prescriptions as well as Visual indicators");
 				p.add(temp);//adds to popup
 				p.pack();//packs popup
 				p.show();//shows popUP
