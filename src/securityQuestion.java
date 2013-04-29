@@ -15,30 +15,35 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 
-public class securityQuestion extends JPanel {
+public class securityQuestion extends JPanel { //creates new class of type Panel
+	//field variables
 	private JTextField securityQuestionAnswer;
 	private JTextField securityQuestionInput;
 	private JButton securityQuestionSubmit;
 	private JButton securityQuestionCancel;
 	private popUp p5;
 	
+	//main method
 	public securityQuestion() {
 		
+		//creates textfields
 		securityQuestionAnswer = new JTextField(10);
 		securityQuestionInput = new JTextField(10);
 		
-		
+		//creates labels
 		JLabel lblWhatWouldYou = new JLabel("What would you like your security Question to be? ");
 		JLabel lblAnswer = new JLabel("Answer:");
 		
+		//creates banner
 		JLabel securityQuestionBanner = new JLabel("disGUIse Security Questions");
 		securityQuestionBanner.setForeground(new Color(0, 0, 139));
 		securityQuestionBanner.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 24));
 		
+		//creates buttons
 		securityQuestionSubmit = new JButton("Submit");
 		securityQuestionCancel = new JButton("Cancel");
 		
-	
+		//creates new GroupLayotu for this panel
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -86,19 +91,20 @@ public class securityQuestion extends JPanel {
 						.addComponent(securityQuestionCancel))
 					.addContainerGap(95, Short.MAX_VALUE))
 		);
-		setLayout(groupLayout);
-		securityQuestionEvents();
+		setLayout(groupLayout); //sets the layout of the panel to the code above
+		securityQuestionEvents(); //calls events method
 		
-		p5=new popUp();
+		p5=new popUp(); //creates new popUP
 		p5.getContentPane().add(this); //calls secuity question Panel
-		p5.pack();
-		p5.show();
+		p5.pack(); //packs frame
+		p5.show();//shows the frame
 	}	
 		private void securityQuestionEvents()
 		{
-			securityQuestionSubmit.addActionListener(new ActionListener() {
+			securityQuestionSubmit.addActionListener(new ActionListener() { //if submit is chosen
 				public void actionPerformed(ActionEvent e) 
 				{
+					//gets information from textboxes
 					String securityQuestion, securityAnswer;
 					securityQuestion = securityQuestionInput.getText();
 					securityAnswer = securityQuestionAnswer.getText();
@@ -106,8 +112,9 @@ public class securityQuestion extends JPanel {
 					linkList people = new linkList();
 					Link temp;
 					FileReader fr;
-					if (securityQuestion.length() != 0 && securityAnswer.length() != 0)
+					if (securityQuestion.length() != 0 && securityAnswer.length() != 0) //as long is input is entered
 					{
+					//searches login Cred file to find secuiryt question and answer
 					try {
 						fr = new FileReader("LoginCred.txt");
 						
@@ -137,20 +144,20 @@ public class securityQuestion extends JPanel {
 					temp = people.head;
 					while (temp != null)
 					{
-						if(disGuiseFrame.Username.equalsIgnoreCase(temp.username))
+						if(disGuiseFrame.Username.equalsIgnoreCase(temp.username)) //changes secuity question and answer
 						{
 							System.out.println("User Match!");
 							temp.recovery = securityQuestion;
 							temp.answer = securityAnswer;
 							JOptionPane.showMessageDialog(null, "Security Question and Answer changed", "Security Change Status", JOptionPane.OK_OPTION);
-							p5.dispose();
+							p5.dispose(); //closes window
 						}
 						temp = temp.next;
 					}
 					temp = people.head;
 					try {
 						
-					FileWriter wr = new FileWriter("LoginCred.txt");
+					FileWriter wr = new FileWriter("LoginCred.txt"); //writes the info with the new file
 						while (temp != null)
 						{
 							wr.write(temp.username + "\n");
@@ -169,6 +176,7 @@ public class securityQuestion extends JPanel {
 					}
 					else
 					{
+						//prompts user to enter all the fields
 						JOptionPane.showMessageDialog(null, "Please enter all fields.", "Error Message", JOptionPane.ERROR_MESSAGE);
 					}
 				}
@@ -178,7 +186,7 @@ public class securityQuestion extends JPanel {
 				public void actionPerformed(ActionEvent e) 
 				{
 					//cancel button
-					p5.dispose();
+					p5.dispose();//closes window
 				}
 			});
 		}
