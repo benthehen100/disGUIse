@@ -578,6 +578,17 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 				String dateString = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900); //years after 1900
 				// Updates patient indicators when 'Submit' is clicked
 				
+				String indGlucose=updateIndicatorsPanelGlucoseInput.getText();
+				String indP1=updateIndicatorsPanelPressureInput1.getText();
+				String indP2=updateIndicatorsPanelPressureInput2.getText();
+				String indWeight=updateIndicatorsPanelWeightInput.getText();
+				
+				if(indGlucose.length()!=0 &&
+					indP1.length()!=0 &&
+					indP2.length()!=0 &&
+					indWeight.length()!=0)
+				{
+			
 				String patientIndicatorFile; // Establishes variable for patient file
 				System.out.println("Current patient: " + patientFile); // console test
 				
@@ -586,7 +597,6 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 				updateIndicatorsPanelGlucoseInput.setEditable(false);
 				updateIndicatorsPanelPressureInput1.setEditable(false);
 				updateIndicatorsPanelPressureInput2.setEditable(false);
-				updateIndicatorsPanelWeightInput.setEditable(false);
 				updateIndicatorsPanelWeightInput.setEditable(false);
 				updateIndicatorsPanelSubmit.setEnabled(false);
 				
@@ -639,6 +649,12 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 				disGuiseFrame.doctor.refreshTable();
 				disGuiseFrame.nurse.refreshTable();
 			}
+				else
+				{
+					JOptionPane.showMessageDialog(updateIndicatorsPanelSubmit, "Please Fill in All Fields");
+				}
+			}
+			
 		});
 		//
 		prescriptionsPanelAddPrescriptions.addActionListener(new ActionListener() {
