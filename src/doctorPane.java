@@ -28,8 +28,9 @@ import java.awt.Component;
 
 
 public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type JtabbedPane
-	
-		private JPanel doctorContactPanel; //field variables
+		
+	//field variables
+		private JPanel doctorContactPanel; 
 		private JPanel doctorPatientsPanel;
 		private JPanel doctorAccountPanel;
 		private JTextArea doctorContactBanner;
@@ -68,25 +69,33 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 		public doctorPane() //doctorpane class
 		{
 
-			
 			setTabPlacement(JTabbedPane.LEFT); //sets the tabs to the left of pane
 			
 			doctorContactPanel = new JPanel(); //creates panel for doctor contactInfo
 			doctorContactPanel.setBorder(null);
 			addTab("Contact Information", null, doctorContactPanel, null); //adds panel to tabbed pane
-
+			
+			//creates Banner of information page
 			doctorContactBanner = new JTextArea();
 			doctorContactBanner.setText(" \t    Welcome\r\n\r\n            disGUIse Well-Check Clinic");
 			doctorContactBanner.setForeground(new Color(0, 0, 102));
 			doctorContactBanner.setFont(new Font("Times New Roman", Font.BOLD, 13));
 			doctorContactBanner.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 			doctorContactBanner.setBackground(Color.WHITE);
-
+			
+			//creates labels for information page
 			doctorContactDoctorLbl = new JLabel("Doctor:");
 			doctorContactDoctorIdLbl = new JLabel("Doctor ID:");
 			doctorContactEmailLbl = new JLabel("Email Address:");
 			doctorContactPhoneLbl = new JLabel("Office Phone:");
+			label = new JLabel("Office Address:");
+			label.setHorizontalAlignment(SwingConstants.CENTER);
+			label_1 = new JLabel("Street:");
+			lblCity = new JLabel("City:");
+			label_2 = new JLabel("State:");
+			label_3 = new JLabel("Zip:");
 			
+			//creates textboxes and sets them to be uneditable
 			doctorContactPanelDoctorInput = new JTextField();
 			doctorContactPanelDoctorInput.setEditable(false);
 			doctorContactPanelDoctorInput.setColumns(10);
@@ -122,25 +131,19 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			doctorContactPanelCityInput.setEditable(false);
 			doctorContactPanelCityInput.setColumns(10);
 			
-			label = new JLabel("Office Address:");
-			label.setHorizontalAlignment(SwingConstants.CENTER);
-			
-			label_1 = new JLabel("Street:");
-			label_2 = new JLabel("State:");
-			label_3 = new JLabel("Zip:");
-			
 			doctorContactPanelOfficePhoneInput = new JTextField();
 			doctorContactPanelOfficePhoneInput.setEditable(false);
 			doctorContactPanelOfficePhoneInput.setColumns(10);
 			doctorContactPanelOfficePhoneInput.setText("N/A");
 			
-			lblCity = new JLabel("City:");
 			
+			
+			//creates buttons
 			btnDoctorEditInformation = new JButton("Edit Information");
-			
 			btnDoctorAcceptnewInfo = new JButton("Accept");
 			
-			GroupLayout gl_doctorContactPanel = new GroupLayout(doctorContactPanel);
+			GroupLayout gl_doctorContactPanel = new GroupLayout(doctorContactPanel); //creates new grouplayout
+			//sets positions of components with grouplayout using WindowBuilder
 			gl_doctorContactPanel.setHorizontalGroup(
 				gl_doctorContactPanel.createParallelGroup(Alignment.TRAILING)
 					.addGroup(gl_doctorContactPanel.createSequentialGroup()
@@ -257,33 +260,33 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 							.addComponent(btnDoctorAcceptnewInfo))
 						.addGap(21))
 			);
-			doctorContactPanel.setLayout(gl_doctorContactPanel);
+			doctorContactPanel.setLayout(gl_doctorContactPanel); //sets the layout of this panel to the layoutabove
 
 			///////////////////////////////////////Doctor Patient List tab
-			doctorPatientsPanel = new JPanel(); //creates Panel for Doctorpatietns
+			doctorPatientsPanel = new JPanel(); //creates Panel for Doctorpatients
 			addTab("Patient List", null, doctorPatientsPanel, null); //adds panel to tab
-
+			
+			//creates buttons
 			doctorAddPatient = new JButton("Add Patient");
 			doctorSelectPatient = new JButton("Select Patient");
-
+			addNurseButton = new JButton("Add Nurse");
+			//creates a scroll  pane
 			doctorScrollPane = new JScrollPane();
 			doctorScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 			doctorScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 			
-			
-			
-			doctorPatientList = new JTable(); //cretes a new table
+			doctorPatientList = new JTable(); //creates a new table
 			doctorPatientList.setModel(new DefaultTableModel( // creates empty table
 					new Object[][] {
 					},
-					
 					new String[] {
 							"Patient ID:", "Patient First:", "Patient Last:", "Nurse Name:", "Last Checkup:" //table columns
 					}
 					));
 			
 			DefaultTableModel model = (DefaultTableModel) doctorPatientList.getModel();
-			createPatientList list1 = new createPatientList();
+			
+			createPatientList list1 = new createPatientList(); //creates new patientlist
 			patientLinkedList temp = list1.head;
 			while( temp != null)
 			{
@@ -291,7 +294,6 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				date = "N/A";
 				String fileName = temp.getId() + "indicators.txt";
 				FileReader fr; //reads data from file
-				
 
 				try {
 					fr = new FileReader(fileName);
@@ -307,8 +309,6 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 						blood2 = br.readLine();
 						glucose= br.readLine();
 					}
-						
-					
 				fr.close();
 				
 				} catch (Throwable e1) {
@@ -318,8 +318,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),date});
 				temp = temp.getNext();
 			}
-			
-
+			//sets size of each column
 			doctorPatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
 			doctorPatientList.getColumnModel().getColumn(1).setPreferredWidth(80);
 			doctorPatientList.getColumnModel().getColumn(2).setPreferredWidth(80);
@@ -327,8 +326,9 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			doctorPatientList.getColumnModel().getColumn(4).setPreferredWidth(80);
 			doctorScrollPane.setViewportView(doctorPatientList);
 			
-			addNurseButton = new JButton("Add Nurse");
-			GroupLayout gl_doctorPatientsPanel = new GroupLayout(doctorPatientsPanel);
+			
+			GroupLayout gl_doctorPatientsPanel = new GroupLayout(doctorPatientsPanel);//creates new grouplayout for this panel
+			//sets positions of components for PatientsPanel using WindowBuilder
 			gl_doctorPatientsPanel.setHorizontalGroup(
 				gl_doctorPatientsPanel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_doctorPatientsPanel.createSequentialGroup()
@@ -354,26 +354,28 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 							.addComponent(doctorAddPatient)
 							.addComponent(doctorSelectPatient)))
 			);
-			doctorPatientsPanel.setLayout(gl_doctorPatientsPanel);
+			doctorPatientsPanel.setLayout(gl_doctorPatientsPanel); //sets the layout to the above
 
-			/////////////////////////////////////////Doctor Account Management Tab
+			//Doctor Account Management Tab
 			doctorAccountPanel = new JPanel(); //doctor panel for account management
-			addTab("Account Management", null, doctorAccountPanel, null);
-
-			doctorManageSecurityQuestions = new JButton("Manage Security Questions?"); //creates new buttons
+			addTab("Account Management", null, doctorAccountPanel, null); //adds the tab
+			
+			//creates new buttons
+			doctorManageSecurityQuestions = new JButton("Manage Security Questions?"); 
 			doctorRecoverPassword = new JButton("Recover Password?");
 			doctorChangePassword = new JButton("Change Password?");
 
 			doctorManageSecurityQuestions.setForeground(new Color(0, 0, 102));
 			doctorRecoverPassword.setForeground(new Color(0, 0, 102));
 			doctorChangePassword.setForeground(new Color(0, 0, 102));
-
+			//creates new Banner
 			doctorAccountManagementBanner = new JTextArea();
 			doctorAccountManagementBanner.setText("         disGUIse Account Management");
 			doctorAccountManagementBanner.setForeground(new Color(0, 0, 102));
 			doctorAccountManagementBanner.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 			doctorAccountManagementBanner.setEditable(false);
 			doctorAccountManagementBanner.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+			
 			//creates layout for account management components
 			GroupLayout gl_doctorAccountPanel = new GroupLayout(doctorAccountPanel);
 			gl_doctorAccountPanel.setHorizontalGroup(
@@ -401,11 +403,12 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 						.addContainerGap(84, Short.MAX_VALUE))
 			);
 			gl_doctorAccountPanel.linkSize(SwingConstants.HORIZONTAL, new Component[] {doctorManageSecurityQuestions, doctorRecoverPassword, doctorChangePassword});
-			doctorAccountPanel.setLayout(gl_doctorAccountPanel);
+			doctorAccountPanel.setLayout(gl_doctorAccountPanel); //sets the layout of this panel to the above
 			
 			doctorPaneEvents();//calls events method
 		}
-
+		
+		//method that refreshes the panel with the data whenever patients are added
 		public void refreshPanel(String file)
 		{
 				user=file;
@@ -422,7 +425,6 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					city = br.readLine();
 					state = br.readLine();
 					zip = br.readLine();
-				
 				//people.printList();
 				fr.close();
 				
@@ -440,7 +442,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				doctorContactPanelZipInput.setText(zip);
 				
 		}
-		
+		//refreshes the patient List table
 		public void refreshTable()
 		{
 			
@@ -491,12 +493,13 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 				temp = temp.getNext();
 			}
 		}
-		
+		//method for the button listeners
 		private void doctorPaneEvents()
 		{
 			btnDoctorEditInformation.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) 
 				{
+					//allows the following textboxes to be edited
 					doctorContactPanelEmailInput.setEditable(true);
 					doctorContactPanelOfficePhoneInput.setEditable(true);
 				}
@@ -515,7 +518,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					
 					String newEmail=doctorContactPanelEmailInput.getText();
 					String newPhone=doctorContactPanelOfficePhoneInput.getText();
-					
+					//reads the line in the doctors file
 					name = br.readLine();
 					id = br.readLine();
 					email = br.readLine();
@@ -524,10 +527,11 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					city=br.readLine();
 					state = br.readLine();
 					zip = br.readLine();
-					
+					//swaps the old data with the new data
 					email=newEmail;
 					phone=newPhone;
 					
+					//rewrites the file using the new data
 					FileWriter fr=new FileWriter(file);
 					fr.write(name+"\n");
 					
@@ -548,7 +552,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			addNurseButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					addNursePanel aN=new addNursePanel();
+					addNursePanel aN=new addNursePanel(); //calls add nurse panel
 				}
 			});
 			
@@ -583,31 +587,20 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 			doctorChangePassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					//popUp p3=new popUp();
-					changePassword cp=new changePassword(); //calls creatpasswrd panel
-					//p3.getContentPane().add(cp); //addes it to popup window
-					//p3.pack();
-					//p3.show();
+					changePassword cp=new changePassword(); //calls createpassword panel
 				}
 			});
 			doctorRecoverPassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					//popUp p4=new popUp();
+
 					passwordReset pr=new passwordReset(disGuiseFrame.Username); //calls resetpassword Panel
-					//p4.getContentPane().add(pr); //adds it to popUpwindow
-					//p4.pack();
-					//p4.show();
 				}
 			});
 			doctorManageSecurityQuestions.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					//popUp p5=new popUp();
 					securityQuestion sq=new securityQuestion(); //calls security question Panel
-					//p5.getContentPane().add(sq); //calls secuity question Panel
-					//p5.pack();
-					//p5.show();
 				}
 			});
 
