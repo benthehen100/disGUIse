@@ -294,6 +294,7 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 						"Date", "Weight", "Blood Pressure", "Blood Glucose" //columns of the table
 				}
 				));
+		SelectedPatientPatientHealthRecordsTable.setEnabled(false);
 		scrollPane.setViewportView(SelectedPatientPatientHealthRecordsTable);
 		HealthRecordsPanel.setLayout(gl_HealthRecordsPanel); //sets the layout to the group layout
 		
@@ -474,6 +475,7 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 						"Date", "Prescription", "Comments" //table columns
 				}
 				));
+		SelectedPatientPresciptionsTable.setEnabled(false);
 		SelectedPatientPresciptionsTable.getColumnModel().getColumn(1).setPreferredWidth(140); //columns width
 		SelectedPatientPresciptionsTable.getColumnModel().getColumn(2).setPreferredWidth(420);
 		scrollPane_1.setViewportView(SelectedPatientPresciptionsTable);
