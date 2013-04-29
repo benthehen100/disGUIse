@@ -576,7 +576,7 @@ public class doctorPane extends JTabbedPane{ //creates a Doctrpane class of type
 					spp.refreshIndicatorTable((String)doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(), 0));
 					spp.refreshPrescriptionTable((String)doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(), 0));
 					spp.patientID = (String)doctorPatientList.getValueAt(doctorPatientList.getSelectedRow(),0);
-					spp2=spp;
+					spp2=spp; //stores spp into public spp2
 					p2.getContentPane().add(spp); //adds the selectedPateintPane to a popup window
 					p2.pack();
 					System.out.println(fileName);
