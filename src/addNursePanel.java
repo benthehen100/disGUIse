@@ -267,6 +267,12 @@ public class addNursePanel extends JPanel { //creates class that extends JPanel
 						if (!file.exists()) {
 							file.createNewFile();
 						}
+						else
+						{
+							//if username already exists retunrs
+							JOptionPane.showMessageDialog(addNursePanelSubmit, "This user already exists"); 
+							return;
+						}
 			 
 						FileWriter fw = new FileWriter(file.getAbsoluteFile());
 						BufferedWriter bw = new BufferedWriter(fw);
