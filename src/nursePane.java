@@ -27,7 +27,8 @@ import javax.swing.SwingConstants;
 import java.awt.Component;
 
 
-public class nursePane extends JTabbedPane {
+public class nursePane extends JTabbedPane { //creates class nursePane of type tabedPane
+		//field variables
 		private JPanel nurseContactPanel;
 		private JPanel nursePatientsPanel;
 		private JPanel nurseAccountPanel;
@@ -66,6 +67,7 @@ public class nursePane extends JTabbedPane {
 		private JButton btnNurseAcceptInfor;
 		private String user;
 		
+		//refreshes the apne
 		public void refreshPane(String username)
 		{
 			user=username;
@@ -107,33 +109,40 @@ public class nursePane extends JTabbedPane {
 		}
 		
 	
-		
+		//main method
 		public nursePane()
 		{
 			
-			
-			
-			setTabPlacement(JTabbedPane.LEFT);
-			nurseContactPanel = new JPanel();
+			setTabPlacement(JTabbedPane.LEFT); //sets the tabs to the left
+			nurseContactPanel = new JPanel(); //creates new Japnel for contact info
 			nurseContactPanel.setBorder(null);
 			nurseContactPanel.setBackground(Color.WHITE);
 			//nurseContactPanel.setVisible(true);
-			addTab("Contact Information", null, nurseContactPanel, null);
-
+			addTab("Contact Information", null, nurseContactPanel, null); //adds panel to the tab
+			
+			//creates Contact Info Banner
 			nurseContactBanner = new JTextArea();
 			nurseContactBanner.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 			nurseContactBanner.setBackground(Color.WHITE);
 			nurseContactBanner.setFont(new Font("Times New Roman", Font.BOLD, 13));
 			nurseContactBanner.setForeground(new Color(0, 0, 102));
 			nurseContactBanner.setText(" \t    Welcome\r\n\r\n            disGUIse Well-Check Clinic");
-
+			
+			//creates labels for contactinfo panel
 			nurseContactNameLbl = new JLabel("Name:");
 			nurseContactIdLbl = new JLabel("ID:");
 			nurseContactDoctorLbl = new JLabel("Doctor:");
 			nurseContactDoctorIdLbl = new JLabel("Doctor ID:");
 			nurseContactEmailLbl = new JLabel("Email Address:");
 			nurseContactPhoneLbl = new JLabel("Office Phone:");
-			
+			label = new JLabel("Office Address:");
+			label.setHorizontalAlignment(SwingConstants.CENTER);
+			label_1 = new JLabel("Street:");
+			lblCity = new JLabel("City:");
+			label_2 = new JLabel("State:");
+			label_3 = new JLabel("Zip:");
+		
+			//creates textboxes for contact info Panel
 			nurseContactPanelNameInput = new JTextField();
 			nurseContactPanelNameInput.setEditable(false);
 			nurseContactPanelNameInput.setColumns(10);
@@ -164,13 +173,6 @@ public class nursePane extends JTabbedPane {
 			nurseContactPanelOfficePhoneInput.setColumns(10);
 			nurseContactPanelOfficePhoneInput.setText("N/A");
 			
-			label = new JLabel("Office Address:");
-			label.setHorizontalAlignment(SwingConstants.CENTER);
-			
-			label_1 = new JLabel("Street:");
-			label_2 = new JLabel("State:");
-			label_3 = new JLabel("Zip:");
-			
 			nurseContactPanelOfficeZipInput = new JTextField();
 			nurseContactPanelOfficeZipInput.setEditable(false);
 			nurseContactPanelOfficeZipInput.setColumns(10);
@@ -183,17 +185,15 @@ public class nursePane extends JTabbedPane {
 			nurseContactPanelOfficeStreetInput.setEditable(false);
 			nurseContactPanelOfficeStreetInput.setColumns(10);
 			
-			lblCity = new JLabel("City:");
-			
 			nurseContacPanelOfficeCityInput = new JTextField();
 			nurseContacPanelOfficeCityInput.setEditable(false);
 			nurseContacPanelOfficeCityInput.setColumns(10);
 			
+			//creates buttons for contact info panel
 			btnNurseEditInformation = new JButton("Edit Information");
 			btnNurseAcceptInfor = new JButton("Accept");
 			
-			
-			GroupLayout gl_nurseContactPanel = new GroupLayout(nurseContactPanel);
+			GroupLayout gl_nurseContactPanel = new GroupLayout(nurseContactPanel); //creates new grouplayout for contact infopanel
 			gl_nurseContactPanel.setHorizontalGroup(
 				gl_nurseContactPanel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_nurseContactPanel.createSequentialGroup()
@@ -335,18 +335,20 @@ public class nursePane extends JTabbedPane {
 									.addComponent(btnNurseAcceptInfor))
 								.addContainerGap())))
 			);
-			nurseContactPanel.setLayout(gl_nurseContactPanel);
+			nurseContactPanel.setLayout(gl_nurseContactPanel); //sets the layout fo the contact info panel to the above
+			//Patients Panel
+			nursePatientsPanel = new JPanel(); //creats new panel
+			addTab("Patient List", null, nursePatientsPanel, null); //adds the panel to the left tab
 			
-			nursePatientsPanel = new JPanel();
-			addTab("Patient List", null, nursePatientsPanel, null);
-
+			//adds new scroll pane
 			nurseScrollPane = new JScrollPane();
 			nurseScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 			nurseScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
+			//creates buttons
 			nurseAddPatient = new JButton("Add Patient");
 			nurseSelectPatient = new JButton("Select Patient");
-
+			
+			//creates new layout for pateints Tab with WindowBUilder
 			GroupLayout gl_nursePatientsPanel = new GroupLayout(nursePatientsPanel);
 			gl_nursePatientsPanel.setHorizontalGroup(
 					gl_nursePatientsPanel.createParallelGroup(Alignment.TRAILING)
@@ -374,23 +376,24 @@ public class nursePane extends JTabbedPane {
 									.addGap(43))
 					);
 
+			//creates new Table
 			nursePatientList = new JTable();
 			nursePatientList.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-					"Patient ID:", "First Name:", "Last Name:", "Doctor Name:", "Last Visit:"
+					"Patient ID:", "First Name:", "Last Name:", "Doctor Name:", "Last Visit:" //columns of table
 				}
 			));
-			nursePatientList.getColumnModel().getColumn(0).setPreferredWidth(80);
+			nursePatientList.getColumnModel().getColumn(0).setPreferredWidth(80); //sets width of each column
 			nursePatientList.getColumnModel().getColumn(1).setPreferredWidth(80);
 			nursePatientList.getColumnModel().getColumn(2).setPreferredWidth(80);
 			nursePatientList.getColumnModel().getColumn(3).setPreferredWidth(80);
 			
-			
 			DefaultTableModel model = (DefaultTableModel) nursePatientList.getModel();
-			createPatientList list1 = new createPatientList();
+			createPatientList list1 = new createPatientList(); //creates new list
 			patientLinkedList temp = list1.head;
+			//gets files of all the paitiens using their Id numbers and stores it in the table
 			while( temp != null)
 			{
 				String date, weight, blood1, blood2, glucose;
@@ -422,17 +425,18 @@ public class nursePane extends JTabbedPane {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+				//adds data to table
 				model.addRow(new Object[]{temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getNurseId(),date});
 				temp = temp.getNext();
 			}
-			nurseScrollPane.setViewportView(nursePatientList);
-			nursePatientsPanel.setLayout(gl_nursePatientsPanel);
+			nurseScrollPane.setViewportView(nursePatientList); //adds table to scrolPane
+			nursePatientsPanel.setLayout(gl_nursePatientsPanel); //sets the layout of the panel to the created layout
 
-			////////////////////////////////////AcountManagement Tab
-			nurseAccountPanel = new JPanel();
-			addTab("Account Management", null, nurseAccountPanel, null);
+			/////////////AcountManagement Tab
+			nurseAccountPanel = new JPanel(); //creates new panel for accouunta management
+			addTab("Account Management", null, nurseAccountPanel, null); //adds the panel as a tab
 
+			//creates new banner
 			nurseAccountManagementBanner = new JTextArea();
 			nurseAccountManagementBanner.setEditable(false);
 			nurseAccountManagementBanner.setFont(new Font("Times New Roman", Font.PLAIN, 18));
@@ -440,13 +444,15 @@ public class nursePane extends JTabbedPane {
 			nurseAccountManagementBanner.setForeground(new Color(0, 0, 102));
 			nurseAccountManagementBanner.setText("         disGUIse Account Management");
 
+			//creates buttons
 			nurseChangePassword = new JButton("Change Password?");
 			nurseRecoverPassword = new JButton("Recover Password?");
 			nurseManageSecurityQuestions = new JButton("Manage Security Questions?");
 			nurseChangePassword.setForeground(new Color(0, 0, 102));
 			nurseRecoverPassword.setForeground(new Color(0, 0, 102));
 			nurseManageSecurityQuestions.setForeground(new Color(0, 0, 102));
-
+			
+			//creates new grouplayout for account managment panel
 			GroupLayout gl_nurseAccountPanel = new GroupLayout(nurseAccountPanel);
 			gl_nurseAccountPanel.setHorizontalGroup(
 				gl_nurseAccountPanel.createParallelGroup(Alignment.LEADING)
@@ -473,8 +479,8 @@ public class nursePane extends JTabbedPane {
 						.addContainerGap(84, Short.MAX_VALUE))
 			);
 			gl_nurseAccountPanel.linkSize(SwingConstants.HORIZONTAL, new Component[] {nurseChangePassword, nurseRecoverPassword, nurseManageSecurityQuestions});
-			nurseAccountPanel.setLayout(gl_nurseAccountPanel);
-			nursePaneEvents();
+			nurseAccountPanel.setLayout(gl_nurseAccountPanel); //sets the layout to the layout above
+			nursePaneEvents(); //calls nurse pane events method
 		}
 		
 		public void refreshTable()
@@ -527,12 +533,13 @@ public class nursePane extends JTabbedPane {
 				temp = temp.getNext();
 			}
 		}
-		
+		//method for all the button listenrs in this calls
 		private void nursePaneEvents()
 		{
 			btnNurseEditInformation.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
+					//sets the follwoing editable
 					nurseContactPanelEmailInput.setEditable(true);
 					nurseContactPanelOfficePhoneInput.setEditable(true);
 					
@@ -544,7 +551,7 @@ public class nursePane extends JTabbedPane {
 					//updates file
 					nurseContactPanelEmailInput.setEditable(false);
 					nurseContactPanelOfficePhoneInput.setEditable(false);
-					
+					//gets info from textboxes
 					String newEmail=nurseContactPanelEmailInput.getText();
 					String newPhone=nurseContactPanelOfficePhoneInput.getText();
 					
@@ -552,7 +559,7 @@ public class nursePane extends JTabbedPane {
 					{
 					File file=new File(user);
 					BufferedReader br=new BufferedReader(new FileReader(file));
-					
+					//reads nurse info from file
 					name = br.readLine();
 					id = br.readLine();
 					doctor = br.readLine();
@@ -564,9 +571,9 @@ public class nursePane extends JTabbedPane {
 					state = br.readLine();
 					zip = br.readLine();
 					
-					email=newEmail;
+					email=newEmail; //swaps old info with no
 					phone=newPhone;
-					
+					//rewrites file using new info
 					FileWriter fr=new FileWriter(file);
 					fr.write(name+"\n");
 					
@@ -591,7 +598,7 @@ public class nursePane extends JTabbedPane {
 				public void actionPerformed(ActionEvent e) 
 				{
 					//when the nurse adds a patient
-					addPatientPanel ap=new addPatientPanel();
+					addPatientPanel ap=new addPatientPanel(); //calls addpateint fiel
 				}
 			});
 			nurseSelectPatient.addActionListener(new ActionListener() {
@@ -615,31 +622,19 @@ public class nursePane extends JTabbedPane {
 			nurseChangePassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e)
 				{
-					//popUp p3=new popUp();
-					changePassword cp=new changePassword();
-					//p3.getContentPane().add(cp);
-					//p3.pack();
-					//p3.show();
+					changePassword cp=new changePassword(); //calls changePassword Class
 				}
 			});
 			nurseRecoverPassword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e)
 				{
-					//popUp p4=new popUp();
-					passwordReset pr=new passwordReset(disGuiseFrame.Username);
-					//p4.getContentPane().add(pr);
-					//p4.pack();
-					//p4.show();
+					passwordReset pr=new passwordReset(disGuiseFrame.Username); //calls password reset class
 				}
 			});
 			nurseManageSecurityQuestions.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) 
 				{
-					//popUp p5=new popUp();
-					securityQuestion sq=new securityQuestion();
-					//p5.getContentPane().add(sq);
-					//p5.pack();
-					//p5.show();
+					securityQuestion sq=new securityQuestion(); //calls secuity question class
 				}
 			});
 		}
