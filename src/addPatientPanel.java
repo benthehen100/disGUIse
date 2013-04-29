@@ -328,21 +328,6 @@ public class addPatientPanel extends JPanel { //this panel is the called when a 
 					}
 		 
 					FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);//adds informaiton to bottom of file
-					/*BufferedWriter bw = new BufferedWriter(fw);
-					patientLinkedList temp;
-					temp = list1.head;
-					
-					while(temp != null)
-					{
-					
-						bw.write(temp.getId() + "\n");
-						bw.write(temp.getFirstName() + "\n");
-						bw.write(temp.getLastName() + "\n");
-						bw.write(temp.getNurseId() + "\n");
-						bw.write("None" + "\n");
-						temp = temp.getNext();
-					}
-					*/
 					//writes the patients ID and Name
 					fw.write(pPatientID + "\n");
 					fw.write(pFirst + "\n");

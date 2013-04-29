@@ -2,14 +2,14 @@ dbach
 123456
 doctor
 100
-N/A
-N/A
+What University did you go to?
+ASU
 migi
 123
 doctor
 200
-N/A
-N/A
+What is Your Favorite Color?
+Red
 aawad
 123456
 nurse
@@ -20,23 +20,5 @@ shanson
 123456
 patient
 0
-Not set
-N/A
-deedub
-987654
-patient
-1
-Not set
-N/A
-gtest
-123456
-patient
-2
-Not set
-N/A
-gtester2
-123456
-patient
-3
-Not set
-N/A
+What is your Mom's maiden name?
+Mom
