@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -732,12 +733,23 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 				String patientIndicatorFile; // Establishes variable for patient file
 				System.out.println("Current patient: " + user); // console test
 				
+				String indGlucose=HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput.getText();
+				String indP1=HealthRecordsPanelUpdateIndicatorsPanelPressureInput1.getText();
+				String indP2=HealthRecordsPanelUpdateIndicatorsPanelPressureInput2.getText();
+				String indWeight=HealthRecordsPanelUpdateIndicatorsPanelWeightInput.getText();
+				
+				if(indGlucose.length()!=0 &&
+						indP1.length()!=0 &&
+						indP2.length()!=0 &&
+						indWeight.length()!=0)
+				{
 				// Fields are not editable after clicking the 'Submit' button
 				updateIndicatorsPanelDateInput.setEditable(false);
 				HealthRecordsPanelUpdateIndicatorsPanelGlucoseInput.setEditable(false);
 				HealthRecordsPanelUpdateIndicatorsPanelPressureInput1.setEditable(false);
 				HealthRecordsPanelUpdateIndicatorsPanelPressureInput2.setEditable(false);
 				HealthRecordsPanelUpdateIndicatorsPanelWeightInput.setEditable(false);
+				HealthRecordsPanelUpdateIndicatorsPanelSubmit.setEnabled(false);
 				
 				// Defines patientIndicatorFile
 				patientIndicatorFile = user + "indicators.txt";
@@ -785,6 +797,11 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 					e1.printStackTrace();
 				}
 				refreshIndicatorTable(patientid);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(HealthRecordsPanelUpdateIndicatorsPanelSubmit, "Please Fill in All Fields");
+				}
 			}
 		});
 		btnPatientEditInformation.addActionListener(new ActionListener() {
