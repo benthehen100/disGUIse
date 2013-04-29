@@ -105,7 +105,7 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 	{
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		String dateInput = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
+		String dateInput = Integer.toString(date.getMonth()+1) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
 		userText = file;
 		user = userText.replaceAll(".txt", "");
 		FileReader fr; //reads data from file
@@ -182,7 +182,7 @@ public class patientPane extends JTabbedPane //creates patientPane class of type
 	{
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		String dateInput = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
+		String dateInput = Integer.toString(date.getMonth()+1) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
 
 		setTabPlacement(LEFT); //sets the patinets tabbs to the left
 		patientRecordsPane = new JTabbedPane(JTabbedPane.TOP); //creats a new JTabbedPane with tabs on the top

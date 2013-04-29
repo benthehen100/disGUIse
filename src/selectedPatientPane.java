@@ -57,7 +57,7 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		String dateString = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
+		String dateString = Integer.toString(date.getMonth()+1) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900);
 		
 		JPanel PatientInformationPanel = new JPanel(); //creates new JPanel
 		addTab("Patient Information", null, PatientInformationPanel, null); //adds the Panel to the tab
@@ -575,7 +575,7 @@ public class selectedPatientPane extends JTabbedPane { //new class of type Jtabb
 			{
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 				Date date = new Date();
-				String dateString = Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900); //years after 1900
+				String dateString = Integer.toString(date.getMonth()+1) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear()+1900); //years after 1900
 				// Updates patient indicators when 'Submit' is clicked
 				
 				String indGlucose=updateIndicatorsPanelGlucoseInput.getText();
