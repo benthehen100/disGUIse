@@ -174,7 +174,7 @@ public class addPrescription extends JPanel { //creates addprescription jPanel
 				addPresciptionPrescriptionInput.setEditable(false);
 				addPrescriptionCommentInput.setEditable(false);
 				JOptionPane.showMessageDialog(addPrescriptionSubmit, "Prescription Added");//notifies that prscription is added
-				disGuiseFrame.doctor.spp.refreshPrescriptionTable(disGuiseFrame.doctor.spp.patientID); //refreshes prescription table
+				disGuiseFrame.doctor.spp2.refreshPrescriptionTable(disGuiseFrame.doctor.spp2.patientID); //refreshes prescription table
 				p1.dispose(); //closes frame
 				}
 				else
